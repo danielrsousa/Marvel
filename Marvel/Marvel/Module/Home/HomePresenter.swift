@@ -41,6 +41,10 @@ class HomePresenter {
     
     func getCharacters(name: String) {
         
+        if name == "" {
+            return
+        }
+        
         self.delegate?.showLoading(loading: true)
         
         self.interactor.getCharacters(name: name, success: { (characters) in
