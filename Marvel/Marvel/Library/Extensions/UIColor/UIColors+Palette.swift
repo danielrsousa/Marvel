@@ -24,6 +24,10 @@ extension UIColor {
         return self.createColor(red: 226.0, green: 54.0, blue: 54.0, alpha: 1.0)
     }
     
+    static public var redMarvel: UIColor {
+        return self.createColor(red: 226.0, green: 54.0, blue: 54.0, alpha: 1.0)
+    }
+    
     // MARK: Color helper
     
     /**

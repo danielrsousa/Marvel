@@ -13,24 +13,35 @@ class MarvelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    /**
+     Testar se o mapper esta sendo feito de forma correta
+     */
+    func testMapperCharacter() {
+
+        let mock: MockAbstractNetworking = MockAbstractNetworking()
+        
+        let api: CharactersAPI = CharactersAPI(networking: mock)
+        
+        api.getCharacters(offset: 1, success: { (response) in
+            
+            guard let result = response?.results else {
+                XCTFail("Deve retornar um response valido")
+                return
+            }
+            
+            XCTAssertEqual(result[0].id , 1009146, "O id não é o esperado, possivel falha no mapper")
+            XCTAssertEqual(result[0].name , "Abomination (Emil Blonsky)", "O nome não é o esperado, possivel falha no mapper")
+            
+        }) { (error) in
+            XCTFail("Deve retornar um response valido")
         }
     }
+    
     
 }

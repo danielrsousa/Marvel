@@ -7,3 +7,21 @@
 //
 
 import Foundation
+
+protocol DetailPresenterDelegate: class {
+}
+
+class DetailPresenter {
+    
+    weak var delegate: DetailPresenterDelegate?
+    
+    private var router: DetailRouter
+    
+    //Initialize dependences here
+    init(router: DetailRouter) {
+        self.router = router
+    }
+    
+    
+}
+

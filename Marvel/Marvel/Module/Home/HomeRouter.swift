@@ -31,5 +31,13 @@ class HomeRouter: AbstractRouter {
         return vc
     }
     
+    func goToDetails(character: Character) {
+        
+        let vc = DetailRouter.viewController()
+        vc.character = character
+        
+        self.viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }

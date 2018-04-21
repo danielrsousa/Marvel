@@ -21,6 +21,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var cardButton: UIButton!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var notFoundView: UIView!
+    private var refresher: UIRefreshControl!
+    private var isRefresh: Bool = false
     
     var presenter: HomePresenter?
     var offset = 1
@@ -42,10 +44,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.presenter?.delegate = self
         
         self.load()
+        
+        self.addRefresh()
     }
     
     func load() {
         self.presenter?.getCharacters(offset: self.offset)
+    }
+    
+    func addRefresh() {
+        self.refresher = UIRefreshControl()
+        self.collectionView!.alwaysBounceVertical = true
+        self.refresher.tintColor = UIColor.black
+        self.refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.collectionView!.addSubview(refresher)
+        self.refresher.layer.zPosition = -1;
+    }
+    
+    @objc func refresh() {
+        self.offset = 1
+        self.isRefresh = true
+        self.presenter?.getCharacters(offset: self.offset)
+        self.refresher.endRefreshing()
     }
     
     @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -69,6 +89,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: HomePresenterDelegate
     
     func finishLoadCharacters(characters: [Character]) {
+        
+        if self.isRefresh {
+            self.characters = []
+            self.isRefresh = false
+        }
+        
         self.characters.append(contentsOf: characters)
 
         self.notFoundView.isHidden = self.characters.count != 0
@@ -77,7 +103,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func showLoading(loading: Bool) {
-        if loading {
+        if loading && self.isRefresh == false {
             LoadingViewController.shared.show()
         } else {
             LoadingViewController.shared.dismiss()
@@ -116,7 +142,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             AlamofireImageNetworking().requestImage(url: self.characters[indexPath.row].thumbnail, success: { (image) in
                 cell.image.image = image
             }) { (error) in
-                cell.image = nil
+                cell.image.image = nil
             }
             
             cell.title.text = self.characters[indexPath.row].name
@@ -143,6 +169,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let character = self.characters[indexPath.row]
+        self.presenter?.callDetails(character: character)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if self.collectionType == .card {
@@ -153,11 +185,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return CGSize(width: width, height: 90)
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
-    }
-    
+
 
     // MARK UITextFieldDelegate
     

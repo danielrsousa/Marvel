@@ -51,4 +51,8 @@ class HomePresenter {
             self.delegate?.showLoading(loading: false)
         }
     }
+    
+    func callDetails(character: Character) {
+        self.router.goToDetails(character: character)
+    }
 }
