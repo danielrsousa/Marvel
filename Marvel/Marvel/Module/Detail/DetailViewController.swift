@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
         self.idMarvel.text = "\(character.id)"
         self.name.text = character.name
         
-        self.descriptionHero.text = character.description == "" ? "Não temos mais informações sobre este personagem" : character.description
+        self.descriptionHero.text = character.description == "" ? "Não temos mais informações sobre esta personagem" : character.description
     }
 
 
