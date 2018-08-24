@@ -30,9 +30,10 @@ class AlamofireNetworking: AbstractNetworking {
     /**
      Conforms to AbstractRxNetworking
      */
-    override func doPost<P: AbstractRequest, R: AbstractResponse>(requestObject: P,
-                                                                  success: @escaping (_ responseObject: R?) -> ()?,
-                                                                  failure: @escaping (NetworkingError?) -> ()) {
+    override func doPost<P: AbstractRequest,
+                         R: AbstractResponse>(requestObject: P,
+                                              success: @escaping (_ responseObject: R?) -> ()?,
+                                              failure: @escaping (NetworkingError?) -> ()) {
         
         return self.doRequestWithBlock(requestObject: requestObject,
                                        method: HTTPMethod.post,
@@ -43,12 +44,13 @@ class AlamofireNetworking: AbstractNetworking {
     /**
      Makes the HTTP request and parses the response with block
      */
-    private func doRequestWithBlock<P: AbstractRequest, R: AbstractResponse>(requestObject: P,
-                                                                             method: HTTPMethod,
-                                                                             success: @escaping (_ responseObject: R?) -> ()?,
-                                                                             failure: @escaping (NetworkingError?) -> ()) {
+    private func doRequestWithBlock<P: AbstractRequest,
+                                    R: AbstractResponse>(requestObject: P,
+                                                         method: HTTPMethod,
+                                                         success: @escaping (_ responseObject: R?) -> ()?,
+                                                         failure: @escaping (NetworkingError?) -> ()) {
         
-        print(requestObject.url)
+        print("ULR Request: " + requestObject.url)
         
         var paramters: Parameters? = nil
         
@@ -68,6 +70,7 @@ class AlamofireNetworking: AbstractNetworking {
                         return
                     }
                     
+                    print("Response: " + (responseObject.toJSONString() ?? ""))
                     
                     success(responseObject)
                     
@@ -79,7 +82,7 @@ class AlamofireNetworking: AbstractNetworking {
                         
                         failure(apiError)
                         
-                        print(error.localizedDescription)
+                        print("Erro de requisição: " + error.localizedDescription)
                         
                         return
                     }

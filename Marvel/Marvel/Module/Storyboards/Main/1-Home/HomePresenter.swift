@@ -19,6 +19,7 @@ class HomePresenter {
     weak var delegate: HomePresenterDelegate?
     private var interactor: HomeInteractor
     private var router: HomeRouter
+    var isRequest = false
     
     //Initialize dependences here
     init(interactor: HomeInteractor, router: HomeRouter) {
@@ -29,11 +30,14 @@ class HomePresenter {
     func getCharacters(offset: Int) {
         
         self.delegate?.showLoading(loading: true)
+        self.isRequest = true
         
         self.interactor.getCharacters(offset: offset, success: { (chatacters) in
+            self.isRequest = false
             self.delegate?.finishLoadCharacters(characters: chatacters)
             self.delegate?.showLoading(loading: false)
         }) { (error) in
+            self.isRequest = false
             self.delegate?.showConnectionError()
             self.delegate?.showLoading(loading: false)
         }

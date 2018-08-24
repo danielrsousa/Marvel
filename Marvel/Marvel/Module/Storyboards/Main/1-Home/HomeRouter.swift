@@ -13,14 +13,10 @@ class HomeRouter: AbstractRouter {
     /**
      It creates all VIPER modules and inject necessary dependencies
      */
-    static func viewController(vc: UIViewController) -> UIViewController {
+    static func viewController() -> UIViewController {
         
-        guard let vc = vc as? HomeViewController else {
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            
-            return vc
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         
         let r = HomeRouter(viewController: vc)
         let i = HomeInteractor(charactersAPI: APIInjector.inject(CharactersAPI.self))
@@ -28,7 +24,16 @@ class HomeRouter: AbstractRouter {
         
         vc.presenter = p
         
-        return vc
+        let navigationController: UINavigationController = UINavigationController(rootViewController: vc)
+        
+        return navigationController
+    }
+    
+    /**
+     It makes Authentication view the main view of the app
+     */
+    static func showHomeView() {
+        UIApplication.shared.getWindow()?.rootViewController = HomeRouter.viewController()
     }
     
     func goToDetails(character: Character) {
@@ -38,6 +43,5 @@ class HomeRouter: AbstractRouter {
         
         self.viewController?.navigationController?.pushViewController(vc, animated: true)
     }
-    
     
 }

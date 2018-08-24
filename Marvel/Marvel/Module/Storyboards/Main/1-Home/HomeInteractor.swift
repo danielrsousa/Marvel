@@ -12,11 +12,9 @@ class HomeInteractor {
     
     private var characterAPI: CharactersAPI
 
-    
     init(charactersAPI: CharactersAPI) {
         self.characterAPI = charactersAPI
     }
-    
     
     func getCharacters(offset: Int,
                        success: @escaping (_ characters: [Character]) -> (),
@@ -58,9 +56,5 @@ class HomeInteractor {
         }) { (error) in
             failure(error)
         }
-        
-        
     }
-    
-    
 }

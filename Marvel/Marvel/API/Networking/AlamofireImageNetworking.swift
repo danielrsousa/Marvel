@@ -25,7 +25,7 @@ class AlamofireImageNetworking {
         
         if let urlRequest = URL(string: url) {
             
-            imgView.af_setImage(withURL: urlRequest, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: UIImageView.ImageTransition.noTransition, runImageTransitionIfCached: true){ (response) in
+            imgView.af_setImage(withURL: urlRequest, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: UIImageView.ImageTransition.crossDissolve(2.0), runImageTransitionIfCached: true){ (response) in
                 
                 switch response.result {
                 case .success(let value):

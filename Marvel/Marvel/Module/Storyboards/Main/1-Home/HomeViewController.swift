@@ -35,8 +35,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         self.title = "Marvel"
         
-        _ = HomeRouter.viewController(vc: self)
-        
         self.collectionView.delegate = self
         self.collectionView.dataSource  = self
         self.filter.delegate = self
@@ -99,6 +97,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         self.notFoundView.isHidden = self.characters.count != 0
         
+        self.offset = self.characters.count + 1
+        
         self.collectionView.reloadData()
     }
     
@@ -120,14 +120,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // MARK: UICollectionViewDataSource
-
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row == (self.characters.count - 5)) {
-            self.offset = self.offset + 1
-            
-            self.presenter?.getCharacters(offset: offset)
-        }
-    }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.characters.count
@@ -218,3 +210,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
 }
 
+extension HomeViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.size.height {
+            
+            if let presenter = self.presenter, !presenter.isRequest {
+                self.presenter?.getCharacters(offset: self.offset)
+            }
+
+        }
+    }
+    
+}
