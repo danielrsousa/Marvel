@@ -40,7 +40,7 @@ class LoadingViewController {
         if let viewContainer = viewContainer {
             self.loadingView.frame = CGRect(x: 0, y:0, width:viewContainer.frame.size.width, height: viewContainer.frame.size.height)
             viewContainer.addSubview(self.loadingView)
-            viewContainer.bringSubview(toFront: self.loadingView)
+            viewContainer.bringSubviewToFront(self.loadingView)
         } else {           
             
             self.loadingView.frame = UIScreen.main.bounds

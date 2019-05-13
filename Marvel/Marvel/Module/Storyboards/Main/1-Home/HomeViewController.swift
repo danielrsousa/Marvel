@@ -114,7 +114,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ConnectionErrorController.shared.showConnectionError(target: self, action: #selector(update))
     }
     
-    func update() {
+    @objc func update() {
         ConnectionErrorController.shared.dismissConnectionError()
         self.load()
     }

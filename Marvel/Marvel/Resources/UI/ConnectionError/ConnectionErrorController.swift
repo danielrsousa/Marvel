@@ -38,7 +38,7 @@ class ConnectionErrorController {
         
         self.conectionErrorView.frame = UIScreen.main.bounds
     
-        self.conectionErrorView.buttonOffline.addTarget(target, action: action, for: UIControlEvents.touchUpInside)
+        self.conectionErrorView.buttonOffline.addTarget(target, action: action, for: UIControl.Event.touchUpInside)
         
         
         UIApplication.shared.getWindow()?.addSubview(self.conectionErrorView)
