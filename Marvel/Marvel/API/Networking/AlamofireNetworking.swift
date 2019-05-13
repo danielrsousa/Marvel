@@ -12,45 +12,29 @@ import ObjectMapper
 /**
  Networking implementation using Alamofire
  */
-class AlamofireNetworking: AbstractNetworking {
+class AlamofireNetworking: NetworkingProtocol {
     
-    /**
-     Conforms to AbstractRxNetworking
-     */
-    override func doGet<P: AbstractRequest, R: AbstractResponse>(requestObject: P,
-                                                                 success: @escaping (_ responseObject: R?) -> ()?,
-                                                                 failure: @escaping (NetworkingError?) -> ()) {
-        
-        return self.doRequestWithBlock(requestObject: requestObject,
-                                       method: HTTPMethod.get,
-                                       success: success,
-                                       failure: failure)
+
+    // MARK: - Conforms to NetworkingProtocol
+ 
+    func doGet<P: AbstractRequest, R: AbstractResponse>(requestObject: P,
+                                                        success: @escaping NetworkSuccessBlock<R>,
+                                                        failure: @escaping NetworkFailureBlock) {
+        return self.doRequest(requestObject: requestObject, method: HTTPMethod.get, success: success, failure: failure)
     }
     
-    /**
-     Conforms to AbstractRxNetworking
-     */
-    override func doPost<P: AbstractRequest,
-                         R: AbstractResponse>(requestObject: P,
-                                              success: @escaping (_ responseObject: R?) -> ()?,
-                                              failure: @escaping (NetworkingError?) -> ()) {
-        
-        return self.doRequestWithBlock(requestObject: requestObject,
-                                       method: HTTPMethod.post,
-                                       success: success,
-                                       failure: failure)
+    func doPost<P: AbstractRequest, R: AbstractResponse>(requestObject: P,
+                                                         success: @escaping NetworkSuccessBlock<R>,
+                                                         failure: @escaping NetworkFailureBlock) {
+        return self.doRequest(requestObject: requestObject, method: HTTPMethod.post, success: success, failure: failure)
     }
-    
-    /**
-     Makes the HTTP request and parses the response with block
-     */
-    private func doRequestWithBlock<P: AbstractRequest,
-                                    R: AbstractResponse>(requestObject: P,
-                                                         method: HTTPMethod,
-                                                         success: @escaping (_ responseObject: R?) -> ()?,
-                                                         failure: @escaping (NetworkingError?) -> ()) {
+
+    //Makes the HTTP request and parses the response with block
+    private func doRequest<P: AbstractRequest, R: AbstractResponse>(requestObject: P,method: HTTPMethod,
+                                                         success: @escaping NetworkSuccessBlock<R>,
+                                                         failure: @escaping NetworkFailureBlock) {
         
-        print("ULR Request: " + requestObject.url)
+        print("🚀 URL: \(requestObject.url)")
         
         var paramters: Parameters? = nil
         
@@ -70,7 +54,7 @@ class AlamofireNetworking: AbstractNetworking {
                         return
                     }
                     
-                    print("Response: " + (responseObject.toJSONString() ?? ""))
+                    print("✅ Response: " + (responseObject.toJSONString() ?? ""))
                     
                     success(responseObject)
                     
@@ -82,7 +66,7 @@ class AlamofireNetworking: AbstractNetworking {
                         
                         failure(apiError)
                         
-                        print("Erro de requisição: " + error.localizedDescription)
+                        print("❌ Erro de requisição: " + error.localizedDescription)
                         
                         return
                     }

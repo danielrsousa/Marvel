@@ -12,13 +12,13 @@ extension ConstantsService {
     
     struct EndPoint {
 
-        struct Caracters {
-            fileprivate static let Caracters = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%i"
-            fileprivate static let CaractersByName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&nameStartsWith=%@"
+        private struct Caracters {
+            static let Caracters = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%@"
+            static let CaractersByName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&nameStartsWith=%@"
         }
 
-        static let Marver_Characters = BaseURL + Caracters.Caracters
-        static let Marver_CharactersByName = BaseURL + Caracters.CaractersByName
+        static let MarvelCharacters = BaseURL + Caracters.Caracters
+        static let MarvelCharactersByName = BaseURL + Caracters.CaractersByName
         
     }
     

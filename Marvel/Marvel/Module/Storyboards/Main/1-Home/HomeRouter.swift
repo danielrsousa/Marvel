@@ -10,9 +10,8 @@ import UIKit
 
 class HomeRouter: AbstractRouter {
     
-    /**
-     It creates all VIPER modules and inject necessary dependencies
-     */
+    // MARK: - Static Methods
+    
     static func viewController() -> UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -29,12 +28,11 @@ class HomeRouter: AbstractRouter {
         return navigationController
     }
     
-    /**
-     It makes Authentication view the main view of the app
-     */
     static func showHomeView() {
         UIApplication.shared.getWindow()?.rootViewController = HomeRouter.viewController()
     }
+    
+    // MARK: - Internal Methods
     
     func goToDetails(character: Character) {
         

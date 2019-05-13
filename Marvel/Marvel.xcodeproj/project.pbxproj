@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E9783B92E9FC10A0C5014D1 /* Pods_Marvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AC2167E3C8923EA56B8054 /* Pods_Marvel.framework */; };
+		52BB1523228A0A4F002251C2 /* MarvelAPIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BB1522228A0A4F002251C2 /* MarvelAPIUtil.swift */; };
 		76983E88C96002ACBBD34FA8 /* Pods_MarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2103BD486B6F5BC40DED11 /* Pods_MarvelUITests.framework */; };
 		B32D3ACB208AE82300C5D1B5 /* MockAbstractNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32D3ACA208AE82200C5D1B5 /* MockAbstractNetworking.swift */; };
 		B3EFA9832130B199009C5A2D /* HomeCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFA9772130B199009C5A2D /* HomeCardCollectionViewCell.swift */; };
@@ -26,9 +27,8 @@
 		C7323B40208A64DC00544816 /* MarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B3F208A64DC00544816 /* MarvelUITests.swift */; };
 		C7323B6C208A651300544816 /* ConstantsService+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B4F208A651300544816 /* ConstantsService+EndPoint.swift */; };
 		C7323B6D208A651300544816 /* ConstantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B50208A651300544816 /* ConstantsService.swift */; };
-		C7323B6E208A651300544816 /* AlamofireImageNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B52208A651300544816 /* AlamofireImageNetworking.swift */; };
 		C7323B6F208A651300544816 /* AlamofireNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B53208A651300544816 /* AlamofireNetworking.swift */; };
-		C7323B70208A651300544816 /* AbstractNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B54208A651300544816 /* AbstractNetworking.swift */; };
+		C7323B70208A651300544816 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B54208A651300544816 /* NetworkingProtocol.swift */; };
 		C7323B71208A651300544816 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B56208A651300544816 /* NetworkingError.swift */; };
 		C7323B72208A651300544816 /* AbstractResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B59208A651300544816 /* AbstractResponse.swift */; };
 		C7323B73208A651300544816 /* AbstractRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B5A208A651300544816 /* AbstractRequest.swift */; };
@@ -82,6 +82,7 @@
 		30778005912181A28EBAC83C /* Pods_MarvelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32AC2167E3C8923EA56B8054 /* Pods_Marvel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		491827F70F482DBD022BADDA /* Pods-MarvelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelUITests/Pods-MarvelUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		52BB1522228A0A4F002251C2 /* MarvelAPIUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIUtil.swift; sourceTree = "<group>"; };
 		65C00F2AF6D102B200B052EC /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
 		B32D3ACA208AE82200C5D1B5 /* MockAbstractNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAbstractNetworking.swift; sourceTree = "<group>"; };
 		B3EFA9772130B199009C5A2D /* HomeCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -105,9 +106,8 @@
 		C7323B41208A64DC00544816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7323B4F208A651300544816 /* ConstantsService+EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConstantsService+EndPoint.swift"; sourceTree = "<group>"; };
 		C7323B50208A651300544816 /* ConstantsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsService.swift; sourceTree = "<group>"; };
-		C7323B52208A651300544816 /* AlamofireImageNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImageNetworking.swift; sourceTree = "<group>"; };
 		C7323B53208A651300544816 /* AlamofireNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireNetworking.swift; sourceTree = "<group>"; };
-		C7323B54208A651300544816 /* AbstractNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractNetworking.swift; sourceTree = "<group>"; };
+		C7323B54208A651300544816 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		C7323B56208A651300544816 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		C7323B59208A651300544816 /* AbstractResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractResponse.swift; sourceTree = "<group>"; };
 		C7323B5A208A651300544816 /* AbstractRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractRequest.swift; sourceTree = "<group>"; };
@@ -195,6 +195,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		52BB1521228A0A10002251C2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52BB1522228A0A4F002251C2 /* MarvelAPIUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B3EFA9742130B199009C5A2D /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,19 +216,18 @@
 			children = (
 				B3EFA97D2130B199009C5A2D /* 1-Home */,
 				B3EFA9792130B199009C5A2D /* 2-Detail */,
-				B3EFA9762130B199009C5A2D /* Components */,
 				B3EFA9822130B199009C5A2D /* Main.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		B3EFA9762130B199009C5A2D /* Components */ = {
+		B3EFA9762130B199009C5A2D /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
 				B3EFA9772130B199009C5A2D /* HomeCardCollectionViewCell.swift */,
 				B3EFA9782130B199009C5A2D /* HomeListCollectionViewCell.swift */,
 			);
-			path = Components;
+			path = CollectionCells;
 			sourceTree = "<group>";
 		};
 		B3EFA9792130B199009C5A2D /* 2-Detail */ = {
@@ -236,6 +243,7 @@
 		B3EFA97D2130B199009C5A2D /* 1-Home */ = {
 			isa = PBXGroup;
 			children = (
+				B3EFA9762130B199009C5A2D /* CollectionCells */,
 				B3EFA97E2130B199009C5A2D /* HomeInteractor.swift */,
 				B3EFA97F2130B199009C5A2D /* HomePresenter.swift */,
 				B3EFA9802130B199009C5A2D /* HomeRouter.swift */,
@@ -324,9 +332,8 @@
 		C7323B51208A651300544816 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				C7323B52208A651300544816 /* AlamofireImageNetworking.swift */,
 				C7323B53208A651300544816 /* AlamofireNetworking.swift */,
-				C7323B54208A651300544816 /* AbstractNetworking.swift */,
+				C7323B54208A651300544816 /* NetworkingProtocol.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -414,6 +421,7 @@
 		C7323BA6208A7A5800544816 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				52BB1521228A0A10002251C2 /* Utils */,
 				C7323BC2208A7DFE00544816 /* Encrypt */,
 				C7323BA7208A7A5800544816 /* Constants */,
 				C7323BAB208A7A5800544816 /* Extensions */,
@@ -800,13 +808,13 @@
 				C7323B71208A651300544816 /* NetworkingError.swift in Sources */,
 				C7323B7F208A651300544816 /* ResultCharactersResponse.swift in Sources */,
 				B3EFA9842130B199009C5A2D /* HomeListCollectionViewCell.swift in Sources */,
+				52BB1523228A0A4F002251C2 /* MarvelAPIUtil.swift in Sources */,
 				B3EFA9882130B199009C5A2D /* HomeInteractor.swift in Sources */,
 				C7323B72208A651300544816 /* AbstractResponse.swift in Sources */,
 				B3EFA9892130B199009C5A2D /* HomePresenter.swift in Sources */,
-				C7323B6E208A651300544816 /* AlamofireImageNetworking.swift in Sources */,
 				C7323BC4208A7E0A00544816 /* M5.swift in Sources */,
 				C7323BB9208A7A5800544816 /* Application+PropertyAccess.swift in Sources */,
-				C7323B70208A651300544816 /* AbstractNetworking.swift in Sources */,
+				C7323B70208A651300544816 /* NetworkingProtocol.swift in Sources */,
 				C7323BB7208A7A5800544816 /* Constants+FontSize.swift in Sources */,
 				B3EFA98A2130B199009C5A2D /* HomeRouter.swift in Sources */,
 				B3EFA98E2130B37B009C5A2D /* InitialRouter.swift in Sources */,

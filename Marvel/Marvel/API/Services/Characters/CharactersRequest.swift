@@ -24,11 +24,5 @@ class CharactersRequest: AbstractRequest {
     override func toDictionary() -> [String : Any] {
         return [:]
     }
-    
-    /**
-     Conforms to AbstractRequest
-     */
-    override func prettyPrint() -> String {
-        return ""
-    }
+
 }

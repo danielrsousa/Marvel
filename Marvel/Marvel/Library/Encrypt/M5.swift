@@ -26,5 +26,4 @@ class M5 {
         return string
     }
     
-    
 }

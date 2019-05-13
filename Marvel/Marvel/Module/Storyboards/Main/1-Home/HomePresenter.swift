@@ -16,16 +16,22 @@ protocol HomePresenterDelegate: class {
 
 class HomePresenter {
     
+    // MARK: - Properties
+    
     weak var delegate: HomePresenterDelegate?
-    private var interactor: HomeInteractor
-    private var router: HomeRouter
     var isRequest = false
     
-    //Initialize dependences here
+    private var interactor: HomeInteractor
+    private var router: HomeRouter
+    
+    // MARK: - Initializers
+    
     init(interactor: HomeInteractor, router: HomeRouter) {
         self.interactor = interactor
         self.router = router
     }
+    
+    // MARK: - Internal Methods
     
     func getCharacters(offset: Int) {
         
@@ -36,11 +42,11 @@ class HomePresenter {
             self.isRequest = false
             self.delegate?.finishLoadCharacters(characters: chatacters)
             self.delegate?.showLoading(loading: false)
-        }) { (error) in
+        }, failure: { (error) in
             self.isRequest = false
             self.delegate?.showConnectionError()
             self.delegate?.showLoading(loading: false)
-        }
+        })
     }
     
     func getCharacters(name: String) {
@@ -54,10 +60,10 @@ class HomePresenter {
         self.interactor.getCharacters(name: name, success: { (characters) in
             self.delegate?.finishLoadCharacters(characters: characters)
             self.delegate?.showLoading(loading: false)
-        }) { (error) in
+        }, failure: { (error) in
             self.delegate?.showConnectionError()
             self.delegate?.showLoading(loading: false)
-        }
+        })
     }
     
     func callDetails(character: Character) {

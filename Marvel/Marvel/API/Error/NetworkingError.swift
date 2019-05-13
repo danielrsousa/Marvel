@@ -12,7 +12,6 @@ class NetworkingError: Error {
     
     enum ErrorType {
         case responseParseError
-        
         case unitTestError
         case unknownError
     }
@@ -34,21 +33,16 @@ class NetworkingError: Error {
         switch errorType {
         case .responseParseError:
             self.errorCode = "8000"
-            self.errorMessage = "Error parsing response JSON"
-            
-            break
+            self.errorMessage = "Falha ao baixar as informações do servidor :("
             
         case .unknownError:
             self.errorCode = "-1"
-            self.errorMessage = "Unespected error"
-            
-            break
+            self.errorMessage = "Erro Inesperado"
             
         case .unitTestError:
             self.errorCode = "-3"
             self.errorMessage = "Error used for fake unit tests errors"
-            
-            break
+
         }
     }
     

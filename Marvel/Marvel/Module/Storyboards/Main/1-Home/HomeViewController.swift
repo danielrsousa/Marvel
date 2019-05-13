@@ -13,8 +13,11 @@ enum CollectionType {
     case list
 }
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, HomePresenterDelegate, UITextFieldDelegate {
+class HomeViewController: UIViewController {
 
+    
+    // Properties
+    
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filter: UITextField!
@@ -25,10 +28,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var isRefresh: Bool = false
     
     var presenter: HomePresenter?
-    var offset = 1
+    var offset = 0
     var characters: [Character]  = []
     var collectionType : CollectionType = .card
     
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +44,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.filter.delegate = self
         
         self.presenter?.delegate = self
-        
-        self.load()
-        
         self.addRefresh()
+        self.load()
+
     }
     
     func load() {
@@ -59,114 +62,72 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.refresher.layer.zPosition = -1;
     }
     
-    @objc func refresh() {
-        self.offset = 1
-        self.isRefresh = true
-        self.presenter?.getCharacters(offset: self.offset)
-        self.refresher.endRefreshing()
-    }
+    // MARK: - IBActions
     
-    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction
+    func viewTapped(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     
-    @IBAction func cardTapped(_ sender: UIButton) {
+    @IBAction
+    func cardTapped(_ sender: UIButton) {
         self.collectionType = .card
         sender.setImage(UIImage(named: "galery_on"), for: .normal)
         self.listButton.setImage(UIImage(named: "list_off"), for: .normal)
         self.collectionView.reloadData()
     }
     
-    @IBAction func listTapped(_ sender: UIButton) {
+    @IBAction
+    func listTapped(_ sender: UIButton) {
         self.collectionType = .list
         sender.setImage(UIImage(named: "list_on"), for: .normal)
         self.cardButton.setImage(UIImage(named: "galery_off"), for: .normal)
         self.collectionView.reloadData()
     }
     
-    // MARK: HomePresenterDelegate
-    
-    func finishLoadCharacters(characters: [Character]) {
-        
-        if self.isRefresh {
-            self.characters = []
-            self.isRefresh = false
-        }
-        
-        self.characters.append(contentsOf: characters)
-
-        self.notFoundView.isHidden = self.characters.count != 0
-        
-        self.offset = self.characters.count + 1
-        
-        self.collectionView.reloadData()
-    }
-    
-    func showLoading(loading: Bool) {
-        if loading && self.isRefresh == false {
-            LoadingViewController.shared.show()
-        } else {
-            LoadingViewController.shared.dismiss()
-        }
-    }
-    
-    func showConnectionError() {
-        ConnectionErrorController.shared.showConnectionError(target: self, action: #selector(update))
-    }
-    
-    @objc func update() {
+    @objc
+    func update() {
         ConnectionErrorController.shared.dismissConnectionError()
         self.load()
     }
     
-    // MARK: UICollectionViewDataSource
-    
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.characters.count
+    @objc
+    func refresh() {
+        self.offset = 0
+        self.isRefresh = true
+        self.presenter?.getCharacters(offset: self.offset)
+        self.refresher.endRefreshing()
     }
+
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
         
-        if collectionType == .card {
-            let cell: HomeCardCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCardCollectionViewCell",
-                                                                                      for: indexPath) as! HomeCardCollectionViewCell
+        if offsetY > contentHeight - scrollView.frame.size.height {
             
-            AlamofireImageNetworking().requestImage(url: self.characters[indexPath.row].thumbnail, success: { (image) in
-                cell.image.image = image
-            }) { (error) in
-                cell.image.image = nil
+            if let presenter = self.presenter, !presenter.isRequest {
+                self.presenter?.getCharacters(offset: self.offset)
             }
-            
-            cell.title.text = self.characters[indexPath.row].name
-        
-            return cell
-        } else {
-            
-            let cell: HomeListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeListCollectionViewCell",
-                                                                                      for: indexPath) as! HomeListCollectionViewCell
-            
-            AlamofireImageNetworking().requestImage(url: self.characters[indexPath.row].thumbnail, success: { (image) in
-                cell.image.image = image
-            }) { (error) in
-                cell.image = nil
-            }
-            
-            cell.title.text = self.characters[indexPath.row].name
-            
-            cell.descriptionCharacter.text = self.characters[indexPath.row].description
-            
-            return cell
+
         }
-        
-        
     }
     
+}
+
+extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let character = self.characters[indexPath.row]
         self.presenter?.callDetails(character: character)
     }
-    
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if self.collectionType == .card {
@@ -177,17 +138,68 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return CGSize(width: width, height: 90)
         }
     }
+}
 
-
-    // MARK UITextFieldDelegate
+extension HomeViewController: UICollectionViewDataSource {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.characters.count
+    }
     
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if collectionType == .card {
+            let cell: HomeCardCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCardCollectionViewCell",
+                                                                                      for: indexPath) as! HomeCardCollectionViewCell
+            
+            cell.configureCell(character: self.characters[indexPath.row])
+            
+            return cell
+        } else {
+            
+            let cell: HomeListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeListCollectionViewCell",
+                                                                                      for: indexPath) as! HomeListCollectionViewCell
+            
+            cell.configureCell(character: self.characters[indexPath.row])
+            
+            return cell
+        }
+    }
+}
+
+extension HomeViewController: HomePresenterDelegate {
+    func finishLoadCharacters(characters: [Character]) {
+        if self.isRefresh {
+            self.characters = []
+            self.isRefresh = false
+        }
+        
+        self.characters.append(contentsOf: characters)
+        self.notFoundView.isHidden = self.characters.count != 0
+        self.offset = self.characters.count + 1
+        self.collectionView.reloadData()
+    }
+    
+    func showLoading(loading: Bool) {
+//        if loading && self.isRefresh == false {
+//            LoadingViewController.shared.show()
+//        } else {
+//            LoadingViewController.shared.dismiss()
+//        }
+    }
+    
+    func showConnectionError() {
+        ConnectionErrorController.shared.showConnectionError(target: self, action: #selector(update))
+    }
+}
+
+extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    
+        
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         
         if newString.contains("\n") {
@@ -207,22 +219,4 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return true
         
     }
-    
-}
-
-extension HomeViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.size.height {
-            
-            if let presenter = self.presenter, !presenter.isRequest {
-                self.presenter?.getCharacters(offset: self.offset)
-            }
-
-        }
-    }
-    
 }

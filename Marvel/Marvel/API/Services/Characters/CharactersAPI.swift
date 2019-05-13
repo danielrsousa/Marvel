@@ -10,50 +10,51 @@ import Foundation
 
 class CharactersAPI {
     
-    var networking: AbstractNetworking
+    var networking: NetworkingProtocol
     
-    init(networking: AbstractNetworking) {
+    init(networking: NetworkingProtocol) {
         self.networking = networking
     }
     
-    func getCharacters( offset: Int, success: @escaping (_ responseObject: CharactersResponse?) -> (),
-                     failure: @escaping (NetworkingError?) -> ()) {
+    func getCharacters(offset: Int,
+                       success: @escaping NetworkSuccessBlock<CharactersResponse>,
+                       failure: @escaping NetworkFailureBlock) {
         
-        
-        let ts = String.init(format: "%f", NSDate().timeIntervalSince1970).replacingOccurrences(of: ".", with: "")
-        
-        let string = String.init(format: "%@%@%@", ts, ConstantsService.PrivateKey, ConstantsService.ApiKey)
-        
-        let hash = M5.md5(string: string)
-        
-        let charactersRequest: CharactersRequest = CharactersRequest()
-        
-        let buildUrl = String.init(format: ConstantsService.EndPoint.Marver_Characters, ConstantsService.ApiKey, ts, hash, offset)
-        
-        charactersRequest.url = buildUrl
-        
-        return self.networking.doGet(requestObject: charactersRequest, success: success, failure: failure)
+        return getCharacters(url: ConstantsService.EndPoint.MarvelCharacters,
+                             parm: "\(offset)",
+                             success: success,
+                             failure: failure)
         
     }
     
-    func getCharacters( name: String, success: @escaping (_ responseObject: CharactersResponse?) -> (),
-                        failure: @escaping (NetworkingError?) -> ()) {
+    func getCharacters(name: String,
+                       success: @escaping NetworkSuccessBlock<CharactersResponse>,
+                       failure: @escaping NetworkFailureBlock) {
         
+        return getCharacters(url: ConstantsService.EndPoint.MarvelCharactersByName,
+                             parm: name.replacingOccurrences(of: " ", with: "%20"),
+                             success: success,
+                             failure: failure)
         
-        let ts = String.init(format: "%f", NSDate().timeIntervalSince1970).replacingOccurrences(of: ".", with: "")
-        
-        let string = String.init(format: "%@%@%@", ts, ConstantsService.PrivateKey, ConstantsService.ApiKey)
-        
-        let hash = M5.md5(string: string)
-        
+    }
+    
+    private func getCharacters(url: String,
+                               parm: String,
+                               success: @escaping NetworkSuccessBlock<CharactersResponse>,
+                               failure: @escaping NetworkFailureBlock) {
         let charactersRequest: CharactersRequest = CharactersRequest()
         
-        let buildUrl = String.init(format: ConstantsService.EndPoint.Marver_CharactersByName, ConstantsService.ApiKey, ts, hash, name)
+        let marvel = MarvelAPIUtil.getHashAndTimestamp()
+        
+        let buildUrl = String.init(format: url,
+                                   ConstantsService.ApiKey,
+                                   marvel.timestamp,
+                                   marvel.hash,
+                                   parm)
         
         charactersRequest.url = buildUrl
         
         return self.networking.doGet(requestObject: charactersRequest, success: success, failure: failure)
-        
     }
     
 }

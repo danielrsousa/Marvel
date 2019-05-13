@@ -23,20 +23,13 @@ class AbstractRequest: Equatable {
     /**
      The end point to make the request
      */
-    var url: String!
+    var url: String = ""
     
     
     /**
      Converts all variables to a dictionary
      */
     func toDictionary() -> [String: Any] {
-        fatalError()
-    }
-    
-    /**
-     Converts all variables to a readable string for debug
-     */
-    func prettyPrint() -> String {
         fatalError()
     }
     

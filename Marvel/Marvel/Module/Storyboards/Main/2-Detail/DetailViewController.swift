@@ -25,15 +25,18 @@ class DetailViewController: UIViewController {
         
         self.title = "Detalhes"
         
-        guard let character = self.character else {
+        guard let character = self.character, let url = URL(string: character.thumbnail) else {
             return
         }
-        
-        AlamofireImageNetworking().requestImage(url: character.thumbnail, success: { (image) in
-            self.image.image = image
-        }) { (error) in
-            self.image.image = nil
-        }
+
+        self.image.af_setImage(withURL: url,
+                               placeholderImage: nil,
+                               filter: nil, progress: nil,
+                               progressQueue: .main,
+                               imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
+                               runImageTransitionIfCached: true,
+                               completion: nil)
+  
         
         self.idMarvel.text = "\(character.id)"
         self.name.text = character.name

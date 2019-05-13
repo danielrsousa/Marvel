@@ -16,8 +16,8 @@ class APIInjector {
          Services injection
          */
         
-        let networking: AbstractNetworking = AlamofireNetworking()
-        self.injection[String(describing: AbstractNetworking.self)] = networking
+        let networking: NetworkingProtocol = AlamofireNetworking()
+        self.injection[String(describing: NetworkingProtocol.self)] = networking
         
         let charactersAPI: CharactersAPI = CharactersAPI(networking: networking)
         self.injection[String(describing: CharactersAPI.self)] = charactersAPI        
