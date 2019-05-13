@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -86,8 +85,8 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vEc-mm-gjc">
-                                <rect key="frame" x="0.0" y="74" width="320" height="486"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="74" width="320" height="494"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zbA-FT-ZVI">
                                     <size key="itemSize" width="141" height="178"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -102,6 +101,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="141" height="178"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qZn-6n-DM4">
+                                                    <rect key="frame" x="60.5" y="79" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqj-0P-Xw4">
                                                     <rect key="frame" x="0.0" y="148" width="141" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -114,12 +116,14 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="qZn-6n-DM4" firstAttribute="centerX" secondItem="aKk-iq-o1M" secondAttribute="centerX" id="3bE-RK-TlV"/>
                                             <constraint firstAttribute="trailing" secondItem="7JA-HI-NgH" secondAttribute="trailing" id="7ZE-Wz-qcc"/>
                                             <constraint firstAttribute="bottom" secondItem="pqj-0P-Xw4" secondAttribute="bottom" id="QTG-Xd-C1t"/>
                                             <constraint firstAttribute="trailing" secondItem="pqj-0P-Xw4" secondAttribute="trailing" id="UXW-Q7-PXk"/>
                                             <constraint firstItem="pqj-0P-Xw4" firstAttribute="top" secondItem="7JA-HI-NgH" secondAttribute="bottom" id="ZEQ-fP-x2D"/>
                                             <constraint firstAttribute="bottom" secondItem="7JA-HI-NgH" secondAttribute="bottom" constant="30" id="eAf-BA-0hO"/>
                                             <constraint firstItem="pqj-0P-Xw4" firstAttribute="leading" secondItem="aKk-iq-o1M" secondAttribute="leading" id="huE-9U-NQo"/>
+                                            <constraint firstItem="qZn-6n-DM4" firstAttribute="centerY" secondItem="aKk-iq-o1M" secondAttribute="centerY" id="v1Z-nm-Pvh"/>
                                             <constraint firstItem="7JA-HI-NgH" firstAttribute="leading" secondItem="aKk-iq-o1M" secondAttribute="leading" id="vOT-st-Z7f"/>
                                             <constraint firstItem="7JA-HI-NgH" firstAttribute="top" secondItem="aKk-iq-o1M" secondAttribute="top" id="xmZ-oz-QVS"/>
                                         </constraints>
@@ -188,10 +192,10 @@
                                 </cells>
                             </collectionView>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pC-Iv-q8Q">
-                                <rect key="frame" x="0.0" y="74" width="320" height="486"/>
+                                <rect key="frame" x="0.0" y="74" width="320" height="494"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yD8-xt-avS">
-                                        <rect key="frame" x="0.0" y="222" width="320" height="41"/>
+                                        <rect key="frame" x="0.0" y="226.5" width="320" height="41"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Nenhum personagem 
@@ -213,13 +217,19 @@ foi encontrado</string>
                                     <constraint firstAttribute="trailing" secondItem="yD8-xt-avS" secondAttribute="trailing" id="xyX-V2-ccD"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UKH-TI-p7T">
+                                <rect key="frame" x="141.5" y="511" width="37" height="37"/>
+                                <color key="color" red="0.82973641157150269" green="0.15543215887551848" blue="0.1960266703007828" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="UKH-TI-p7T" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AbQ-rD-Ygb"/>
                             <constraint firstItem="vEc-mm-gjc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GjU-MG-AmZ"/>
                             <constraint firstItem="3pC-Iv-q8Q" firstAttribute="height" secondItem="vEc-mm-gjc" secondAttribute="height" id="OPa-x5-KeE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UKH-TI-p7T" secondAttribute="bottom" constant="20" id="XVo-M6-uQO"/>
                             <constraint firstItem="RYF-h6-oXp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="h5f-pK-hWw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vEc-mm-gjc" secondAttribute="bottom" constant="8" id="jJy-1A-qqr"/>
+                            <constraint firstAttribute="bottom" secondItem="vEc-mm-gjc" secondAttribute="bottom" id="jJy-1A-qqr"/>
                             <constraint firstItem="3pC-Iv-q8Q" firstAttribute="centerX" secondItem="vEc-mm-gjc" secondAttribute="centerX" id="kAc-yS-hn5"/>
                             <constraint firstItem="vEc-mm-gjc" firstAttribute="top" secondItem="3pC-Iv-q8Q" secondAttribute="top" id="lzp-KR-ahE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="RYF-h6-oXp" secondAttribute="leading" id="o7f-Hq-vqA"/>
@@ -239,6 +249,7 @@ foi encontrado</string>
                         <outlet property="collectionView" destination="vEc-mm-gjc" id="pGF-gF-jGF"/>
                         <outlet property="filter" destination="hNz-Ra-g1W" id="hoS-Hs-3fw"/>
                         <outlet property="listButton" destination="WuO-GH-B31" id="WUP-uG-T9P"/>
+                        <outlet property="loadingIndicator" destination="UKH-TI-p7T" id="iAx-sh-mrm"/>
                         <outlet property="notFoundView" destination="3pC-Iv-q8Q" id="LOW-0p-HMd"/>
                         <outlet property="searchTextField" destination="hNz-Ra-g1W" id="9eZ-Dm-Uqe"/>
                     </connections>

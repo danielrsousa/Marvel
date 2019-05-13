@@ -23,7 +23,7 @@ class HomeRouter: AbstractRouter {
         
         vc.presenter = p
         
-        let navigationController: UINavigationController = UINavigationController(rootViewController: vc)
+        let navigationController: MNavigationController = MNavigationController(rootViewController: vc)
         
         return navigationController
     }

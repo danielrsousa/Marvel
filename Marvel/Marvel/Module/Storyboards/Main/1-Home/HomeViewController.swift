@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var notFoundView: UIView!
     private var refresher: UIRefreshControl!
     private var isRefresh: Bool = false
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var presenter: HomePresenter?
     var offset = 0
@@ -180,11 +181,7 @@ extension HomeViewController: HomePresenterDelegate {
     }
     
     func showLoading(loading: Bool) {
-//        if loading && self.isRefresh == false {
-//            LoadingViewController.shared.show()
-//        } else {
-//            LoadingViewController.shared.dismiss()
-//        }
+        loadingIndicator.isHidden = !(loading && self.isRefresh == false)
     }
     
     func showConnectionError() {
