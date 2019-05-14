@@ -21,36 +21,50 @@ class CharactersAPI {
                        failure: @escaping NetworkFailureBlock) {
         
         return getCharacters(url: ConstantsService.EndPoint.MarvelCharacters,
-                             parm: "\(offset)",
+                             offset: "\(offset)",
                              success: success,
                              failure: failure)
         
     }
     
     func getCharacters(name: String,
+                       offset: Int,
                        success: @escaping NetworkSuccessBlock<CharactersResponse>,
                        failure: @escaping NetworkFailureBlock) {
         
         return getCharacters(url: ConstantsService.EndPoint.MarvelCharactersByName,
-                             parm: name.replacingOccurrences(of: " ", with: "%20"),
+                             offset: "\(offset)",
+                             name: name.replacingOccurrences(of: " ", with: "%20"),
                              success: success,
                              failure: failure)
         
     }
     
     private func getCharacters(url: String,
-                               parm: String,
+                               offset: String,
+                               name: String? = nil,
                                success: @escaping NetworkSuccessBlock<CharactersResponse>,
                                failure: @escaping NetworkFailureBlock) {
         let charactersRequest: CharactersRequest = CharactersRequest()
         
         let marvel = MarvelAPIUtil.getHashAndTimestamp()
         
-        let buildUrl = String.init(format: url,
+        var buildUrl = ""
+  
+        if let name = name {
+            buildUrl = String.init(format: url,
                                    ConstantsService.ApiKey,
                                    marvel.timestamp,
                                    marvel.hash,
-                                   parm)
+                                   offset,
+                                   name)
+        } else {
+            buildUrl = String.init(format: url,
+                                   ConstantsService.ApiKey,
+                                   marvel.timestamp,
+                                   marvel.hash,
+                                   offset)
+        }
         
         charactersRequest.url = buildUrl
         

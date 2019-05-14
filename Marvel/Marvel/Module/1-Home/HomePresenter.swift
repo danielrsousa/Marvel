@@ -49,18 +49,22 @@ class HomePresenter {
         })
     }
     
-    func getCharacters(name: String) {
+    func getCharacters(name: String,
+                       offset: Int) {
         
         if name == "" {
             return
         }
         
         self.delegate?.showLoading(loading: true)
+        self.isRequest = true
         
-        self.interactor.getCharacters(name: name, success: { (characters) in
+        self.interactor.getCharacters(name: name, offset: offset, success: { (characters) in
+            self.isRequest = false
             self.delegate?.finishLoadCharacters(characters: characters)
             self.delegate?.showLoading(loading: false)
         }, failure: { (error) in
+            self.isRequest = false
             self.delegate?.showConnectionError()
             self.delegate?.showLoading(loading: false)
         })

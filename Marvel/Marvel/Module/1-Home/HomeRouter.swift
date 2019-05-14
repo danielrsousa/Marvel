@@ -13,10 +13,8 @@ class HomeRouter: AbstractRouter {
     // MARK: - Static Methods
     
     static func viewController() -> UIViewController {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        
+
+        let vc = HomeViewController()
         let r = HomeRouter(viewController: vc)
         let i = HomeInteractor(charactersAPI: APIInjector.inject(CharactersAPI.self))
         let p = HomePresenter(interactor: i, router: r)

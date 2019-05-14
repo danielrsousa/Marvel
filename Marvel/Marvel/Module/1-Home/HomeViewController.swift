@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
     
     // Properties
     
-    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filter: UITextField!
     @IBOutlet weak var cardButton: UIButton!
@@ -40,14 +39,20 @@ class HomeViewController: UIViewController {
         
         self.title = "Marvel"
         
-        self.collectionView.delegate = self
-        self.collectionView.dataSource  = self
+        self.configureCollection()
         self.filter.delegate = self
         
         self.presenter?.delegate = self
         self.addRefresh()
         self.load()
 
+    }
+    
+    func configureCollection() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource  = self
+        self.collectionView.register(HomeCardCollectionViewCell.self)
+        self.collectionView.register(HomeListCollectionViewCell.self)
     }
     
     func load() {
@@ -65,21 +70,14 @@ class HomeViewController: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction
-    func viewTapped(_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
-    
-    @IBAction
-    func cardTapped(_ sender: UIButton) {
+    @IBAction func cardTapped(_ sender: UIButton) {
         self.collectionType = .card
         sender.setImage(UIImage(named: "galery_on"), for: .normal)
         self.listButton.setImage(UIImage(named: "list_off"), for: .normal)
         self.collectionView.reloadData()
     }
     
-    @IBAction
-    func listTapped(_ sender: UIButton) {
+    @IBAction func listTapped(_ sender: UIButton) {
         self.collectionType = .list
         sender.setImage(UIImage(named: "list_on"), for: .normal)
         self.cardButton.setImage(UIImage(named: "galery_off"), for: .normal)
@@ -96,10 +94,19 @@ class HomeViewController: UIViewController {
     func refresh() {
         self.offset = 0
         self.isRefresh = true
-        self.presenter?.getCharacters(offset: self.offset)
+        self.getCharacters()
         self.refresher.endRefreshing()
     }
 
+    func getCharacters() {
+        if let presenter = self.presenter, !presenter.isRequest, let filter = self.filter.text {
+            if filter.isEmpty {
+                self.presenter?.getCharacters(offset: self.offset)
+            } else {
+                self.presenter?.getCharacters(name: filter, offset: self.offset)
+            }
+        }
+    }
     
 }
 
@@ -110,11 +117,7 @@ extension HomeViewController: UIScrollViewDelegate {
         let contentHeight = scrollView.contentSize.height
         
         if offsetY > contentHeight - scrollView.frame.size.height {
-            
-            if let presenter = self.presenter, !presenter.isRequest {
-                self.presenter?.getCharacters(offset: self.offset)
-            }
-
+            self.getCharacters()
         }
     }
     
@@ -122,15 +125,14 @@ extension HomeViewController: UIScrollViewDelegate {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let character = self.characters[indexPath.row]
         self.presenter?.callDetails(character: character)
     }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if self.collectionType == .card {
             let width = (UIScreen.main.bounds.size.width / 2) - 15
             return CGSize(width: width, height: width * 1.4)
@@ -149,16 +151,20 @@ extension HomeViewController: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionType == .card {
-            let cell: HomeCardCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCardCollectionViewCell",
-                                                                                      for: indexPath) as! HomeCardCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCardCollectionViewCell",
+                                                                for: indexPath) as? HomeCardCollectionViewCell else {
+                                                                    return UICollectionViewCell()
+            }
             
             cell.configureCell(character: self.characters[indexPath.row])
             
             return cell
         } else {
             
-            let cell: HomeListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeListCollectionViewCell",
-                                                                                      for: indexPath) as! HomeListCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeListCollectionViewCell",
+                                                                for: indexPath) as? HomeListCollectionViewCell else {
+                                                                    return UICollectionViewCell()
+            }
             
             cell.configureCell(character: self.characters[indexPath.row])
             
@@ -170,14 +176,20 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: HomePresenterDelegate {
     func finishLoadCharacters(characters: [Character]) {
         if self.isRefresh {
-            self.characters = []
+            self.characters.removeAll()
             self.isRefresh = false
         }
         
+        if offset == 0 {
+            self.characters.removeAll()
+        }
+        
         self.characters.append(contentsOf: characters)
-        self.notFoundView.isHidden = self.characters.count != 0
-        self.offset = self.characters.count + 1
         self.collectionView.reloadData()
+        
+        self.notFoundView.isHidden = self.characters.count != 0
+        self.offset = self.characters.count
+        
     }
     
     func showLoading(loading: Bool) {
@@ -192,28 +204,10 @@ extension HomeViewController: HomePresenterDelegate {
 extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        
+        self.offset = 0
+        self.getCharacters()
+        
         return false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if newString.contains("\n") {
-            return true
-        }
-        
-        self.characters = []
-        self.offset = 1
-        
-        if newString == "" {
-            self.load()
-            return true
-        }
-        
-        self.presenter?.getCharacters(name: newString)
-        
-        return true
-        
     }
 }

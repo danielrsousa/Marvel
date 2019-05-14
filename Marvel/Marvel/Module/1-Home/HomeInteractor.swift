@@ -48,10 +48,11 @@ class HomeInteractor {
     }
     
     func getCharacters(name: String,
+                       offset: Int,
                        success: @escaping (_ characters: [Character]) -> (),
                        failure: @escaping (NetworkingError) -> ()) {
         
-        self.characterAPI.getCharacters(name: name, success: { (response) -> () in
+        self.characterAPI.getCharacters(name: name, offset: offset, success: { (response) -> () in
             guard let response = response else {
                 failure(NetworkingError(errorCode: "-1", errorMessage: "Falha ao carregar personagens"))
                 return

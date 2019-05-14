@@ -22,11 +22,20 @@ class HomeListCollectionViewCell: UICollectionViewCell {
                               filter: nil, progress: nil,
                               progressQueue: .main,
                               imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
-                              runImageTransitionIfCached: true,
+                              runImageTransitionIfCached: false,
                               completion: nil)
         }
         
         title.text = character.name
         descriptionCharacter.text = character.description
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.1) {
+                let scale: CGFloat = 0.9
+                self.transform = self.isHighlighted ? CGAffineTransform(scaleX: scale, y: scale) : .identity
+            }
+        }
     }
 }

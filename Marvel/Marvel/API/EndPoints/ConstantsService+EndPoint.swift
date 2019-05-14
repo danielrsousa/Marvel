@@ -14,7 +14,7 @@ extension ConstantsService {
 
         private struct Caracters {
             static let Caracters = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%@"
-            static let CaractersByName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&nameStartsWith=%@"
+            static let CaractersByName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%@&nameStartsWith=%@"
         }
 
         static let MarvelCharacters = BaseURL + Caracters.Caracters

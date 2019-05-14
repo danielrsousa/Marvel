@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
                                filter: nil, progress: nil,
                                progressQueue: .main,
                                imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
-                               runImageTransitionIfCached: true,
+                               runImageTransitionIfCached: false,
                                completion: nil)
   
         
