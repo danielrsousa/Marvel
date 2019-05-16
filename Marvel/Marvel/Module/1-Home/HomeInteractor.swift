@@ -31,9 +31,10 @@ class HomeInteractor {
                 failure(NetworkingError(errorCode: "-1", errorMessage: "Falha ao carregar personagens"))
                 return
             }
-            
-            let character = CharacterMapper.convertResponseToCharacterList(response: response)
-            success(character)
+            if let response = response as? CharactersResponse {
+                let character = CharacterMapper.convertResponseToCharacterList(response: response)
+                success(character)
+            }
 
         }, failure: { (error) -> () in
             guard let error = error else {
@@ -57,9 +58,11 @@ class HomeInteractor {
                 failure(NetworkingError(errorCode: "-1", errorMessage: "Falha ao carregar personagens"))
                 return
             }
-                
-            let character = CharacterMapper.convertResponseToCharacterList(response: response)
-            success(character)
+            
+            if let response = response as? CharactersResponse {
+                let character = CharacterMapper.convertResponseToCharacterList(response: response)
+                success(character)
+            }
             
         }, failure: { (error) -> () in
             guard let error = error else {

@@ -29,7 +29,7 @@ class AbstractRequest: Equatable {
     /**
      Converts all variables to a dictionary
      */
-    func toDictionary() -> [String: Any] {
+    func toDictionary() -> [String: Any]? {
         fatalError()
     }
     

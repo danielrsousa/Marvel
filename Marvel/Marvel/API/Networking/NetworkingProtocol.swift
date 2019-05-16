@@ -12,11 +12,11 @@ typealias NetworkFailureBlock = (NetworkingError?) -> ()
 
 protocol NetworkingProtocol: AnyObject {
     
-    func doGet<P: AbstractRequest, R: AbstractResponse>(requestObject: P,
+    func doGet<P: AbstractRequest, R: ResponseProtocol>(requestObject: P,
                                                         success: @escaping NetworkSuccessBlock<R>,
                                                         failure: @escaping NetworkFailureBlock)
     
-    func doPost<P: AbstractRequest, R: AbstractResponse>(requestObject: P,
+    func doPost<P: AbstractRequest, R: ResponseProtocol>(requestObject: P,
                                                          success: @escaping NetworkSuccessBlock<R>,
                                                          failure: @escaping NetworkFailureBlock)
 }

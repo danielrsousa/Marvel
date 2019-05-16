@@ -21,8 +21,8 @@ class CharactersRequest: AbstractRequest {
     /**
      Conforms to AbstractRequest
      */
-    override func toDictionary() -> [String : Any] {
-        return [:]
+    override func toDictionary() -> [String : Any]? {
+        return nil
     }
 
 }

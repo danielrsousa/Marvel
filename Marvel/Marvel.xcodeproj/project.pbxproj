@@ -34,10 +34,10 @@
 		C7323B40208A64DC00544816 /* MarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B3F208A64DC00544816 /* MarvelUITests.swift */; };
 		C7323B6C208A651300544816 /* ConstantsService+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B4F208A651300544816 /* ConstantsService+EndPoint.swift */; };
 		C7323B6D208A651300544816 /* ConstantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B50208A651300544816 /* ConstantsService.swift */; };
-		C7323B6F208A651300544816 /* AlamofireNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B53208A651300544816 /* AlamofireNetworking.swift */; };
+		C7323B6F208A651300544816 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B53208A651300544816 /* Networking.swift */; };
 		C7323B70208A651300544816 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B54208A651300544816 /* NetworkingProtocol.swift */; };
 		C7323B71208A651300544816 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B56208A651300544816 /* NetworkingError.swift */; };
-		C7323B72208A651300544816 /* AbstractResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B59208A651300544816 /* AbstractResponse.swift */; };
+		C7323B72208A651300544816 /* ResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B59208A651300544816 /* ResponseProtocol.swift */; };
 		C7323B73208A651300544816 /* AbstractRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B5A208A651300544816 /* AbstractRequest.swift */; };
 		C7323B7C208A651300544816 /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B66208A651300544816 /* CharactersResponse.swift */; };
 		C7323B7D208A651300544816 /* CharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323B67208A651300544816 /* CharactersRequest.swift */; };
@@ -120,10 +120,10 @@
 		C7323B41208A64DC00544816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7323B4F208A651300544816 /* ConstantsService+EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConstantsService+EndPoint.swift"; sourceTree = "<group>"; };
 		C7323B50208A651300544816 /* ConstantsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsService.swift; sourceTree = "<group>"; };
-		C7323B53208A651300544816 /* AlamofireNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireNetworking.swift; sourceTree = "<group>"; };
+		C7323B53208A651300544816 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		C7323B54208A651300544816 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		C7323B56208A651300544816 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
-		C7323B59208A651300544816 /* AbstractResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractResponse.swift; sourceTree = "<group>"; };
+		C7323B59208A651300544816 /* ResponseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseProtocol.swift; sourceTree = "<group>"; };
 		C7323B5A208A651300544816 /* AbstractRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractRequest.swift; sourceTree = "<group>"; };
 		C7323B66208A651300544816 /* CharactersResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
 		C7323B67208A651300544816 /* CharactersRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersRequest.swift; sourceTree = "<group>"; };
@@ -241,6 +241,23 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		B3CCE771228DF9100064F3E9 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				C7323B69208A651300544816 /* ResultCharactersResponse.swift */,
+				C7323B66208A651300544816 /* CharactersResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		B3CCE772228DF9270064F3E9 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				C7323B67208A651300544816 /* CharactersRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		B3EFA9762130B199009C5A2D /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,7 +373,7 @@
 		C7323B51208A651300544816 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				C7323B53208A651300544816 /* AlamofireNetworking.swift */,
+				C7323B53208A651300544816 /* Networking.swift */,
 				C7323B54208A651300544816 /* NetworkingProtocol.swift */,
 			);
 			path = Networking;
@@ -382,7 +399,7 @@
 		C7323B58208A651300544816 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				C7323B59208A651300544816 /* AbstractResponse.swift */,
+				C7323B59208A651300544816 /* ResponseProtocol.swift */,
 				C7323B5A208A651300544816 /* AbstractRequest.swift */,
 			);
 			path = Abstract;
@@ -391,10 +408,9 @@
 		C7323B65208A651300544816 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				C7323B66208A651300544816 /* CharactersResponse.swift */,
-				C7323B67208A651300544816 /* CharactersRequest.swift */,
+				B3CCE772228DF9270064F3E9 /* Request */,
+				B3CCE771228DF9100064F3E9 /* Response */,
 				C7323B68208A651300544816 /* CharactersAPI.swift */,
-				C7323B69208A651300544816 /* ResultCharactersResponse.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -666,7 +682,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Daniel Sousa";
 				TargetAttributes = {
 					C7323B1B208A64DC00544816 = {
@@ -746,7 +762,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Marvel/Pods-Marvel-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Marvel/Pods-Marvel-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
@@ -761,7 +777,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Marvel/Pods-Marvel-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Marvel/Pods-Marvel-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		23D7919F42EAB2D03ECCC5E4 /* [CP] Check Pods Manifest.lock */ = {
@@ -844,7 +860,7 @@
 				B3EFA9842130B199009C5A2D /* HomeListCollectionViewCell.swift in Sources */,
 				52BB1523228A0A4F002251C2 /* MarvelAPIUtil.swift in Sources */,
 				B3EFA9882130B199009C5A2D /* HomeInteractor.swift in Sources */,
-				C7323B72208A651300544816 /* AbstractResponse.swift in Sources */,
+				C7323B72208A651300544816 /* ResponseProtocol.swift in Sources */,
 				B3EFA9892130B199009C5A2D /* HomePresenter.swift in Sources */,
 				C7323BC4208A7E0A00544816 /* M5.swift in Sources */,
 				C7323BB9208A7A5800544816 /* Application+PropertyAccess.swift in Sources */,
@@ -854,7 +870,7 @@
 				B3EFA98A2130B199009C5A2D /* HomeRouter.swift in Sources */,
 				B3EFA98E2130B37B009C5A2D /* InitialRouter.swift in Sources */,
 				C7323BE5208A947E00544816 /* CustomButton.swift in Sources */,
-				C7323B6F208A651300544816 /* AlamofireNetworking.swift in Sources */,
+				C7323B6F208A651300544816 /* Networking.swift in Sources */,
 				C7323BB8208A7A5800544816 /* UIScreen+ViewSize.swift in Sources */,
 				B3EFA9832130B199009C5A2D /* HomeCardCollectionViewCell.swift in Sources */,
 				52BB1532228B01F7002251C2 /* UIView+Utils.swift in Sources */,
@@ -929,6 +945,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -936,6 +953,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -987,6 +1005,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -994,6 +1013,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
