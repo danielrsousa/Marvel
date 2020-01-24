@@ -8,9 +8,12 @@
 
 import Foundation
 
-
-struct HomeViewModel {
+class HomeViewModel {
     
     weak var coordinatorDelegate: HomeCoordinatorDelegate?
+    
+    func select() {
+        coordinatorDelegate?.didOpenDetail(self)
+    }
     
 }

@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     let viewModel: HomeViewModel
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -27,6 +28,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+//        containerView.layer.cornerRadius = 20.0
+//        containerView.clipsToBounds = true
+        title = "Home"
     }
     
     func registerCells() {
@@ -37,7 +41,9 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.select()
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -52,7 +58,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         return tableView.dequeueReusableCell(of: HomeItemTableCell.self, for: indexPath) { (cell) in
-            
+            cell.hero.id = "containerView"
         }
         
     }

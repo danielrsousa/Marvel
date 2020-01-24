@@ -29,7 +29,10 @@
 		B376AD9B23D939E10088324B /* TitleTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B376AD9923D939E10088324B /* TitleTableHeader.xib */; };
 		B376AD9F23D93E160088324B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD9D23D93E150088324B /* DetailViewController.swift */; };
 		B376ADA023D93E160088324B /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B376AD9E23D93E150088324B /* DetailViewController.xib */; };
-		B376ADA723D9437C0088324B /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B376ADA623D9437C0088324B /* Hero.framework */; };
+		B38014B623DA27850002AEF6 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38014B423DA25EC0002AEF6 /* Hero.framework */; };
+		B38014B723DA27850002AEF6 /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B38014B423DA25EC0002AEF6 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B38014BC23DB83AA0002AEF6 /* MNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */; };
+		B38014BF23DB94190002AEF6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38014BE23DB94190002AEF6 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,20 @@
 			remoteInfo = MarvelMVVM;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B38014AF23DA12520002AEF6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B38014B723DA27850002AEF6 /* Hero.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B376AD3B23D901B00088324B /* MarvelMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +95,9 @@
 		B376AD9923D939E10088324B /* TitleTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableHeader.xib; sourceTree = "<group>"; };
 		B376AD9D23D93E150088324B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B376AD9E23D93E150088324B /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		B376ADA623D9437C0088324B /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = SOURCE_ROOT; };
+		B38014B423DA25EC0002AEF6 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
+		B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigationController.swift; sourceTree = "<group>"; };
+		B38014BE23DB94190002AEF6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B376ADA723D9437C0088324B /* Hero.framework in Frameworks */,
+				B38014B623DA27850002AEF6 /* Hero.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +133,7 @@
 				B376AD5423D901B40088324B /* MarvelMVVMTests */,
 				B376AD5F23D901B40088324B /* MarvelMVVMUITests */,
 				B376AD3C23D901B00088324B /* Products */,
-				B376ADA523D9426A0088324B /* Frameworks */,
+				B38014AA23DA114F0002AEF6 /* Framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				B376AD7C23D916820088324B /* Application */,
-				B376AD7823D9081A0088324B /* Comons */,
+				B376AD7823D9081A0088324B /* Commons */,
 				B376AD6E23D907840088324B /* Modules */,
 				B376AD4223D901B00088324B /* ViewController.swift */,
 				B376AD4723D901B40088324B /* Assets.xcassets */,
@@ -181,13 +200,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		B376AD7823D9081A0088324B /* Comons */ = {
+		B376AD7823D9081A0088324B /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				B38014BD23DB94090002AEF6 /* GradientView */,
+				B38014BA23DB836D0002AEF6 /* MNavigation */,
 				B376AD9223D932A40088324B /* Utils */,
 				B376AD7923D908260088324B /* BaseCoordinator */,
 			);
-			path = Comons;
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		B376AD7923D908260088324B /* BaseCoordinator */ = {
@@ -262,12 +283,28 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
-		B376ADA523D9426A0088324B /* Frameworks */ = {
+		B38014AA23DA114F0002AEF6 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				B376ADA623D9437C0088324B /* Hero.framework */,
+				B38014B423DA25EC0002AEF6 /* Hero.framework */,
 			);
-			path = Frameworks;
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		B38014BA23DB836D0002AEF6 /* MNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */,
+			);
+			path = MNavigation;
+			sourceTree = "<group>";
+		};
+		B38014BD23DB94090002AEF6 /* GradientView */ = {
+			isa = PBXGroup;
+			children = (
+				B38014BE23DB94190002AEF6 /* GradientView.swift */,
+			);
+			path = GradientView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +317,7 @@
 				B376AD3723D901B00088324B /* Sources */,
 				B376AD3823D901B00088324B /* Frameworks */,
 				B376AD3923D901B00088324B /* Resources */,
+				B38014AF23DA12520002AEF6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -407,6 +445,7 @@
 			files = (
 				B376AD9F23D93E160088324B /* DetailViewController.swift in Sources */,
 				B376AD7B23D908730088324B /* BaseCoordinator.swift in Sources */,
+				B38014BF23DB94190002AEF6 /* GradientView.swift in Sources */,
 				B376AD4323D901B00088324B /* ViewController.swift in Sources */,
 				B376AD3F23D901B00088324B /* AppDelegate.swift in Sources */,
 				B376AD9023D92D600088324B /* HomeItemTableCell.swift in Sources */,
@@ -414,6 +453,7 @@
 				B376AD4123D901B00088324B /* SceneDelegate.swift in Sources */,
 				B376AD7523D907D50088324B /* HomeViewModel.swift in Sources */,
 				B376AD8623D929620088324B /* HomeCategoryTableCell.swift in Sources */,
+				B38014BC23DB83AA0002AEF6 /* MNavigationController.swift in Sources */,
 				B376AD7223D907BD0088324B /* HomeViewController.swift in Sources */,
 				B376AD7723D907E30088324B /* HomeCoordinator.swift in Sources */,
 				B376AD9423D932BF0088324B /* UITableView+Utils.swift in Sources */,
@@ -586,7 +626,7 @@
 				DEVELOPMENT_TEAM = Y55X2VP8Z8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Framework",
 				);
 				INFOPLIST_FILE = MarvelMVVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -608,7 +648,7 @@
 				DEVELOPMENT_TEAM = Y55X2VP8Z8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Framework",
 				);
 				INFOPLIST_FILE = MarvelMVVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

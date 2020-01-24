@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,25 +16,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="578" height="115"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Os melhores quadrinhos de 2020" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMc-sC-9Ut">
-                        <rect key="frame" x="16" y="16" width="546" height="83"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMg-ne-Scz">
+                        <rect key="frame" x="0.0" y="0.0" width="578" height="115"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Os melhores quadrinhos de 2020" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMc-sC-9Ut">
+                                <rect key="frame" x="16" y="16" width="546" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="pHB-og-SBB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="83" id="pHB-og-SBB"/>
+                            <constraint firstAttribute="trailing" secondItem="WMc-sC-9Ut" secondAttribute="trailing" constant="16" id="cku-zD-Ohu"/>
+                            <constraint firstItem="WMc-sC-9Ut" firstAttribute="centerY" secondItem="FMg-ne-Scz" secondAttribute="centerY" id="l64-r7-qHr"/>
+                            <constraint firstItem="WMc-sC-9Ut" firstAttribute="leading" secondItem="FMg-ne-Scz" secondAttribute="leading" constant="16" id="mLp-04-zim"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnY-IU-rH3">
+                        <rect key="frame" x="0.0" y="115" width="578" height="0.0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" id="xF7-uV-2pb"/>
+                        </constraints>
+                    </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="WMc-sC-9Ut" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qaf-C7-EIQ"/>
-                    <constraint firstAttribute="bottom" secondItem="WMc-sC-9Ut" secondAttribute="bottom" constant="16" id="cyF-Bu-vhp"/>
-                    <constraint firstAttribute="trailing" secondItem="WMc-sC-9Ut" secondAttribute="trailing" constant="16" id="qBC-Ju-IJj"/>
-                    <constraint firstItem="WMc-sC-9Ut" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="zZF-Tt-WCi"/>
+                    <constraint firstItem="wnY-IU-rH3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7fY-rc-V8Q"/>
+                    <constraint firstAttribute="trailing" secondItem="wnY-IU-rH3" secondAttribute="trailing" id="9lS-uR-O5t"/>
+                    <constraint firstAttribute="bottom" secondItem="wnY-IU-rH3" secondAttribute="bottom" id="CME-R4-tGp"/>
+                    <constraint firstItem="FMg-ne-Scz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gyf-p6-ade"/>
+                    <constraint firstAttribute="bottom" secondItem="FMg-ne-Scz" secondAttribute="bottom" id="h25-mf-1oZ"/>
+                    <constraint firstAttribute="trailing" secondItem="FMg-ne-Scz" secondAttribute="trailing" id="kdL-G4-Wv1"/>
+                    <constraint firstItem="FMg-ne-Scz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vte-gr-Bpd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="circularView" destination="FMg-ne-Scz" id="Y23-9J-0ZL"/>
+            </connections>
             <point key="canvasLocation" x="188.40579710144928" y="177.12053571428569"/>
         </tableViewCell>
     </objects>
