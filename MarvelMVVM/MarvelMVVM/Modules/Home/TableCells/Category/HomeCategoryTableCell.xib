@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,8 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="515" height="225"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="v3R-vK-2xY">
-                        <rect key="frame" x="0.0" y="0.0" width="515" height="225"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="v3R-vK-2xY">
+                        <rect key="frame" x="16" y="0.0" width="483" height="225"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="asr-jN-wcZ">
                             <size key="itemSize" width="50" height="50"/>
@@ -25,16 +25,23 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="hf4-f8-UyY"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="lzR-83-zMQ"/>
+                        </connections>
                     </collectionView>
                 </subviews>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="v3R-vK-2xY" secondAttribute="trailing" id="DVm-6q-Odw"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="v3R-vK-2xY" secondAttribute="trailing" constant="16" id="DVm-6q-Odw"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="v3R-vK-2xY" secondAttribute="bottom" id="WwG-cV-Kzg"/>
-                <constraint firstItem="v3R-vK-2xY" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" id="mas-K9-qgn"/>
+                <constraint firstItem="v3R-vK-2xY" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="16" id="mas-K9-qgn"/>
                 <constraint firstItem="v3R-vK-2xY" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" id="zb8-5B-KTL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="collectionView" destination="v3R-vK-2xY" id="JYR-mi-Mzk"/>
+            </connections>
             <point key="canvasLocation" x="112.31884057971016" y="128.23660714285714"/>
         </tableViewCell>
     </objects>

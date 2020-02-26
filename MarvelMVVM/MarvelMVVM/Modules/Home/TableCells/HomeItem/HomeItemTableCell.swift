@@ -7,22 +7,29 @@
 //
 
 import UIKit
+import QuartzCore
 
 class HomeItemTableCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var imageTeste: UIImageView!
+    @IBOutlet weak var readMoreButton: UIButton!
+    @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var photoImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.layer.cornerRadius = 15.0
-        containerView.clipsToBounds = true
-//        imageTeste.hero.isEnabled = true
-//        containerView.hero.isEnabled = true
-//        imageTeste.hero.id = "teste"
-//        containerView.hero.id = "containerView"
+        containerView.layer.cornerRadius = 25.0
+        containerView.layer.addShadow()
+        imageContainerView.layer.cornerRadius = 25.0
+        imageContainerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        readMoreButton.layer.cornerRadius = readMoreButton.frame.height / 2
+
     }
 
+    override func prepareForReuse() {
+        photoImage.image = nil
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

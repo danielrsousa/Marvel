@@ -20,8 +20,8 @@ class MNavigationController: UINavigationController {
     }
     
     private func transparentNavigation() {
-        navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .never
+//        navigationBar.prefersLargeTitles = true
+//        navigationItem.largeTitleDisplayMode = .never
         
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
@@ -30,7 +30,7 @@ class MNavigationController: UINavigationController {
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .light)
         ]
         
         navigationBar.largeTitleTextAttributes = [

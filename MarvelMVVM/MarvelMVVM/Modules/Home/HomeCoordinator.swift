@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Hero
 
 protocol HomeCoordinatorDelegate: AnyObject {
     func didOpenDetail(_ viewModel: HomeViewModel)
@@ -34,16 +33,9 @@ class HomeCoordinator: BaseCoordinator {
 // MARK: - HomeCoordinator
 extension HomeCoordinator: HomeCoordinatorDelegate {
     func didOpenDetail(_ viewModel: HomeViewModel) {
-
         let vc =  DetailViewController()
-//        viewController.hero.isEnabled = true
-//        vc.hero.isEnabled = true
-//
-//        vc.imageTeste.hero.id = "teste"
         
-        
-        
-        viewController.navigationController?.present(vc, animated: true)
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
         
 }
