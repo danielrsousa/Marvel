@@ -25,57 +25,67 @@ class Api: ApiProtocol {
     private let session = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
     
-    func request<R: Codable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) throws {
+    func request<R: Codable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) {
         dataTask?.cancel()
         
-        let url = try createURL(request)
+        do {
+            let url = try createURL(request)
 
-        var urlRequest = URLRequest(url: url)
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.httpMethod = request.method.rawValue
-        urlRequest.allHTTPHeaderFields = request.headers
-        urlRequest.httpBody = try createBody(request)
-        
-        dataTask = session.dataTask(with: urlRequest, completionHandler: { [weak self] (data, response, error) in
-            defer { self?.dataTask = nil }
-            
-            guard let http = response as? HTTPURLResponse else {
-                print("❌ Problemas de conexão")
-                result(.failure(ApiError.connectionFailure))
+             var urlRequest = URLRequest(url: url)
+             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+             urlRequest.httpMethod = request.method.rawValue
+             urlRequest.allHTTPHeaderFields = request.headers
+             urlRequest.httpBody = try createBody(request)
+             
+             dataTask = session.dataTask(with: urlRequest, completionHandler: { [weak self] (data, response, error) in
+                 defer { self?.dataTask = nil }
+                 
+                 guard let http = response as? HTTPURLResponse else {
+                     print("❌ Problemas de conexão")
+                     result(.failure(ApiError.connectionFailure))
+                     return
+                 }
+                 
+                 guard let status = HTTPStatusCode(rawValue: http.statusCode), let data = data else {
+                     print("❌ Falha ao converter status code ou data")
+                     result(.failure(ApiError.connectionFailure))
+                     return
+                 }
+                 
+                 self?.printJson(http.statusCode, data: data)
+                 let model = try? JSONDecoder().decode(R.self, from: data) as R
+                 
+                 switch status {
+                 case .ok:
+                     result(.success(model!))
+                 case .unauthorized:
+                     print("❌ Não autorizado")
+                     result(.failure(ApiError.unauthorized))
+                 case .badRequest:
+                     print("❌ Requisição mal sucedida")
+                     result(.failure(ApiError.badRequest))
+                 default:
+                     if let error = error {
+                         print("❌ Erro de requisição \(error.localizedDescription)")
+                         result(.failure(ApiError.requestError(error)))
+                         return
+                     }
+                     
+                     result(.failure(ApiError.unknown))
+                 }
+                 
+             })
+             
+             dataTask?.resume()
+       
+        } catch let error {
+            print("❌ Lançamento de falha \(error.localizedDescription)")
+            guard let error = error as? ApiError else {
+                result(.failure(.unknown))
                 return
             }
-            
-            guard let status = HTTPStatusCode(rawValue: http.statusCode), let data = data else {
-                print("❌ Falha ao converter status code ou data")
-                result(.failure(ApiError.connectionFailure))
-                return
-            }
-            
-            self?.printJson(http.statusCode, data: data)
-            let model = try? JSONDecoder().decode(R.self, from: data) as R
-            
-            switch status {
-            case .ok:
-                result(.success(model!))
-            case .unauthorized:
-                print("❌ Não autorizado")
-                result(.failure(ApiError.unauthorized))
-            case .badRequest:
-                print("❌ Requisição mal sucedida")
-                result(.failure(ApiError.badRequest))
-            default:
-                if let error = error {
-                    print("❌ Erro de requisição \(error.localizedDescription)")
-                    result(.failure(ApiError.requestError(error)))
-                    return
-                }
-                
-                result(.failure(ApiError.unknown))
-            }
-            
-        })
-        
-        dataTask?.resume()
+            result(.failure(error))
+        }
     }
     
     private func createURL(_ request: ApiRequestProtocol) throws -> URL {
