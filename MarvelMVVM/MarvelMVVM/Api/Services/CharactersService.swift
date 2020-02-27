@@ -29,11 +29,16 @@ fileprivate struct CharactersRequest: ApiRequestProtocol {
 struct CharactersService {
     let api = Api()
     
-    func fetchCharacters(offSet: Int) {
+    func fetchCharacters(offSet: Int, completion: @escaping (Result<[Character], ApiError>) -> Void) {
         let request = CharactersRequest(parameters: [:])
         
         api.request(request: request, result: {(result: Result<Response<Character>, ApiError>) in
-            
+            switch result {
+            case .success(let response):
+                completion(.success(response.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         })
     }
 }
