@@ -13,8 +13,8 @@ protocol ApiProtocol {
     func request<R: Codable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) throws
 }
 
-protocol ApiRequestProtocol: Codable {
-    var baseURL: URL { get }
+protocol ApiRequestProtocol {
+    var baseURL: String { get }
     var path: String { get }
     var method: HTTPMethod { get }
     var headers: [String: String]? { get }
@@ -25,7 +25,7 @@ class Api: ApiProtocol {
     private let session = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
     
-    func request<R: Codable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) {
+    func request<R: Decodable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) {
         dataTask?.cancel()
         
         do {
@@ -58,12 +58,6 @@ class Api: ApiProtocol {
                  switch status {
                  case .ok:
                      result(.success(model!))
-                 case .unauthorized:
-                     print("❌ Não autorizado")
-                     result(.failure(ApiError.unauthorized))
-                 case .badRequest:
-                     print("❌ Requisição mal sucedida")
-                     result(.failure(ApiError.badRequest))
                  default:
                      if let error = error {
                          print("❌ Erro de requisição \(error.localizedDescription)")
