@@ -18,4 +18,9 @@ struct Character: Decodable {
 struct Thumbnail: Decodable {
     let path: String?
     let extensionThumb: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case path
+        case extensionThumb = "extension"
+    }
 }

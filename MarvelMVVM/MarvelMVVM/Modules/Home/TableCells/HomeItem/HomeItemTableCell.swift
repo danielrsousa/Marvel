@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import QuartzCore
+//import QuartzCore
+import Kingfisher
 
 class HomeItemTableCell: UITableViewCell {
 
@@ -32,5 +33,11 @@ class HomeItemTableCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func setup(character: Character) {
+        let urlString = "\(character.thumbnail?.path ?? "").\(character.thumbnail?.extensionThumb ?? "")"
+        let url = URL(string: urlString)
+        photoImage.kf.setImage(with: url)
     }
 }

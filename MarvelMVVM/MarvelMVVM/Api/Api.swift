@@ -21,6 +21,14 @@ protocol ApiRequestProtocol {
     var parameters: [String: Any] { get }
 }
 
+extension ApiRequestProtocol {
+    static func getHashAndTimestamp() -> (timestamp: String, hash: String ) {
+        let ts = String.init(format: "%f", NSDate().timeIntervalSince1970).replacingOccurrences(of: ".", with: "")
+        let string = String.init(format: "%@%@%@", ts, ServicesInfo.privateKey, ServicesInfo.apiKey)
+        return (timestamp: ts, hash: M5.md5(string: string))
+    }
+}
+
 class Api: ApiProtocol {
     private let session = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
@@ -64,7 +72,7 @@ class Api: ApiProtocol {
                          result(.failure(ApiError.requestError(error)))
                          return
                      }
-                     
+                     print("❌ Erro de requisição desconhecido")
                      result(.failure(ApiError.unknown))
                  }
                  

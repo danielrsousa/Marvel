@@ -17,7 +17,6 @@ class HomeCoordinator: BaseCoordinator {
     // MARK: - Properties
     var navigationController: UINavigationController {
         let nav = MNavigationController(rootViewController: viewController)
-        nav.hero.isEnabled = true
         return nav
     }
     

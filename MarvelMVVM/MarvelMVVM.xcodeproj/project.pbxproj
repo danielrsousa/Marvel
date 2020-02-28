@@ -40,10 +40,10 @@
 		B376ADA023D93E160088324B /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B376AD9E23D93E150088324B /* DetailViewController.xib */; };
 		B37BEE7C23E22290009FE1DA /* CardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37BEE7A23E22290009FE1DA /* CardCollectionCell.swift */; };
 		B37BEE7D23E22290009FE1DA /* CardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37BEE7B23E22290009FE1DA /* CardCollectionCell.xib */; };
-		B38014B623DA27850002AEF6 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38014B423DA25EC0002AEF6 /* Hero.framework */; };
-		B38014B723DA27850002AEF6 /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B38014B423DA25EC0002AEF6 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B38014BC23DB83AA0002AEF6 /* MNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */; };
 		B38014BF23DB94190002AEF6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38014BE23DB94190002AEF6 /* GradientView.swift */; };
+		B396B0AB2408A9970063680A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B396B0A82408A9060063680A /* Kingfisher.framework */; };
+		B396B0AC2408A9970063680A /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B396B0A82408A9060063680A /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B3CA4AF824005B82004C950C /* CALayer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CA4AF724005B82004C950C /* CALayer+Utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +71,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B38014B723DA27850002AEF6 /* Hero.framework in Embed Frameworks */,
+				B396B0AC2408A9970063680A /* Kingfisher.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,9 +118,9 @@
 		B376AD9E23D93E150088324B /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B37BEE7A23E22290009FE1DA /* CardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCell.swift; sourceTree = "<group>"; };
 		B37BEE7B23E22290009FE1DA /* CardCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionCell.xib; sourceTree = "<group>"; };
-		B38014B423DA25EC0002AEF6 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
 		B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigationController.swift; sourceTree = "<group>"; };
 		B38014BE23DB94190002AEF6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		B396B0A82408A9060063680A /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
 		B3CA4AF724005B82004C950C /* CALayer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B38014B623DA27850002AEF6 /* Hero.framework in Frameworks */,
+				B396B0AB2408A9970063680A /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +362,7 @@
 		B38014AA23DA114F0002AEF6 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				B38014B423DA25EC0002AEF6 /* Hero.framework */,
+				B396B0A82408A9060063680A /* Kingfisher.framework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -739,6 +739,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Framework",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = MarvelMVVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -761,6 +762,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Framework",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = MarvelMVVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

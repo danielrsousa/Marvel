@@ -9,20 +9,10 @@
 import Foundation
 
 fileprivate struct CharactersRequest: ApiRequestProtocol {
-    var baseURL: String {
-        return ServicesInfo.baseURL
-    }
-    
-    var path: String {
-        return ServicesInfo.EndPoints.Caracters.caracters.rawValue
-    }
-    
-    var method: HTTPMethod {
-        return .post
-    }
-    
+    var baseURL = ServicesInfo.baseURL
+    var path: String
+    var method: HTTPMethod  = .get
     var headers: [String : String]?
-    
     var parameters: [String : Any]
 }
 
@@ -30,7 +20,17 @@ struct CharactersService {
     let api = Api()
     
     func fetchCharacters(offSet: Int, completion: @escaping (Result<[Character], ApiError>) -> Void) {
-        let request = CharactersRequest(parameters: [:])
+        let tuple = CharactersRequest.getHashAndTimestamp()
+        
+        let path = String.init(
+            format: ServicesInfo.EndPoints.Caracters.caracters.rawValue,
+            ServicesInfo.apiKey,
+            tuple.timestamp,
+            tuple.hash,
+            offSet
+        )
+        
+        let request = CharactersRequest(path: path, parameters: [:])
         
         api.request(request: request, result: {(result: Result<Response<Character>, ApiError>) in
             switch result {
