@@ -30,8 +30,23 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
-        title = "Home"
+        title = "Personagens"
         viewModel.fetchCharacteres()
+        
+        let search = UISearchController(searchResultsController: nil)
+//        search.obscuresBackgroundDuringPresentation = true
+//        search.hidesNavigationBarDuringPresentation = false
+//        search.automaticallyShowsCancelButton = false
+//        search.searchBar.searchBarStyle = .minimal
+//        search.searchBar.placeholder = "Type something here to search"
+        navigationItem.searchController = search
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        definesPresentationContext = true
+        
+        self.tableView.contentInsetAdjustmentBehavior = .never
+        
+        
     }
     
     func registerCells() {
@@ -66,23 +81,19 @@ extension HomeViewController: UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "TitleTableHeader") as?
-            TitleTableHeader else { return UITableViewCell() }
-
-        return headerCell
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "TitleTableHeader") as?
+//            TitleTableHeader else { return UITableViewCell() }
+//
+//        return headerCell
+//    }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 115.0
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 110
+//    }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row = 0 {
-//            return 200
-//        }
-        
-        return 200
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {      
+        return 213
     }
     
 }

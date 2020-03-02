@@ -15,7 +15,7 @@ struct ServicesInfo {
     
     struct EndPoints {
         enum Caracters: String {
-            case caracters = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%@"
+            case caracters = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%i"
             case caractersByName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%@&nameStartsWith=%@"
         }
     }

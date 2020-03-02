@@ -9,46 +9,44 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleTableHeader" rowHeight="115" id="KGk-i7-Jjw" customClass="TitleTableHeader" customModule="MarvelMVVM" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="578" height="115"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleTableHeader" rowHeight="107" id="KGk-i7-Jjw" customClass="TitleTableHeader" customModule="MarvelMVVM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="578" height="107"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="578" height="115"/>
+                <rect key="frame" x="0.0" y="0.0" width="578" height="107"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnY-IU-rH3">
-                        <rect key="frame" x="0.0" y="65" width="578" height="50"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="xF7-uV-2pb"/>
-                        </constraints>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMg-ne-Scz">
-                        <rect key="frame" x="0.0" y="0.0" width="578" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="578" height="107"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Os melhores quadrinhos de 2020" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMc-sC-9Ut">
-                                <rect key="frame" x="16" y="16" width="546" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="83" id="pHB-og-SBB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personagens" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMc-sC-9Ut">
+                                <rect key="frame" x="16" y="16" width="546" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Pesquise seu personagem" translatesAutoresizingMaskIntoConstraints="NO" id="st4-G0-mtY">
+                                <rect key="frame" x="8" y="45" width="562" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="WMc-sC-9Ut" firstAttribute="top" secondItem="FMg-ne-Scz" secondAttribute="top" constant="16" id="D5P-9g-Z4r"/>
+                            <constraint firstAttribute="trailing" secondItem="st4-G0-mtY" secondAttribute="trailing" constant="8" id="GeP-dh-qYM"/>
+                            <constraint firstItem="st4-G0-mtY" firstAttribute="top" secondItem="WMc-sC-9Ut" secondAttribute="bottom" id="PHx-6K-m9M"/>
                             <constraint firstAttribute="trailing" secondItem="WMc-sC-9Ut" secondAttribute="trailing" constant="16" id="cku-zD-Ohu"/>
-                            <constraint firstItem="WMc-sC-9Ut" firstAttribute="centerY" secondItem="FMg-ne-Scz" secondAttribute="centerY" id="l64-r7-qHr"/>
+                            <constraint firstItem="st4-G0-mtY" firstAttribute="leading" secondItem="FMg-ne-Scz" secondAttribute="leading" constant="8" id="lGg-F2-WJa"/>
                             <constraint firstItem="WMc-sC-9Ut" firstAttribute="leading" secondItem="FMg-ne-Scz" secondAttribute="leading" constant="16" id="mLp-04-zim"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="wnY-IU-rH3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7fY-rc-V8Q"/>
-                    <constraint firstAttribute="trailing" secondItem="wnY-IU-rH3" secondAttribute="trailing" id="9lS-uR-O5t"/>
-                    <constraint firstAttribute="bottom" secondItem="wnY-IU-rH3" secondAttribute="bottom" id="CME-R4-tGp"/>
                     <constraint firstItem="FMg-ne-Scz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gyf-p6-ade"/>
                     <constraint firstAttribute="bottom" secondItem="FMg-ne-Scz" secondAttribute="bottom" id="h25-mf-1oZ"/>
                     <constraint firstAttribute="trailing" secondItem="FMg-ne-Scz" secondAttribute="trailing" id="kdL-G4-Wv1"/>
@@ -60,7 +58,7 @@
             <connections>
                 <outlet property="circularView" destination="FMg-ne-Scz" id="Y23-9J-0ZL"/>
             </connections>
-            <point key="canvasLocation" x="188.40579710144928" y="177.12053571428569"/>
+            <point key="canvasLocation" x="188.40579710144928" y="174.44196428571428"/>
         </tableViewCell>
     </objects>
 </document>

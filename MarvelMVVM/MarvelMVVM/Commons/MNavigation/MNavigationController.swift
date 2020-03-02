@@ -16,7 +16,7 @@ class MNavigationController: UINavigationController {
     }
 
     private func setup() {
-        transparentNavigation()
+        gradientNavigaiton()
     }
     
     private func transparentNavigation() {
@@ -39,28 +39,26 @@ class MNavigationController: UINavigationController {
     }
     
     private func gradientNavigaiton() {
-//        navigationBar.prefersLargeTitles = true
-//        navigationItem.largeTitleDisplayMode = .never
-//
-//        let search = UISearchController(searchResultsController: nil)
-//        navigationItem.searchController = search
-        
-        let gradient = CAGradientLayer()
-        var bounds = navigationBar.bounds
-        bounds.size.height += view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        gradient.frame = bounds
-        gradient.colors = [UIColor.red.cgColor, UIColor.init(red: 255/255, green: 20/255, blue: 147/255, alpha: 1.0).cgColor]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
-        if let image = getImageFrom(gradientLayer: gradient) {
-//            navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
-            navigationBar.barTintColor = UIColor(patternImage: image)
-        }
-        navigationBar.tintColor = .white
-        navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)
-        ]
+        navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .never
+////        
+////        let gradient = CAGradientLayer()
+////        var bounds = navigationBar.bounds
+////        bounds.size.height += view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+////        gradient.frame = bounds
+////        gradient.colors = [UIColor.red.cgColor, UIColor.init(red: 255/255, green: 20/255, blue: 147/255, alpha: 1.0).cgColor]
+////        gradient.startPoint = CGPoint(x: 0, y: 0)
+////        gradient.endPoint = CGPoint(x: 1, y: 1)
+////        if let image = getImageFrom(gradientLayer: gradient) {
+//////            navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
+////            navigationBar.barTintColor = UIColor(patternImage: image)
+////        }
+//        
+//        navigationBar.tintColor = .white
+//        navigationBar.titleTextAttributes = [
+//            NSAttributedString.Key.foregroundColor: UIColor.black,
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)
+//        ]
     }
     
     func getImageFrom(gradientLayer: CAGradientLayer) -> UIImage? {

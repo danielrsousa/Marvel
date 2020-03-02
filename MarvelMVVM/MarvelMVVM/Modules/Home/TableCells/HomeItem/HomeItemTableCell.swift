@@ -16,6 +16,8 @@ class HomeItemTableCell: UITableViewCell {
     @IBOutlet weak var readMoreButton: UIButton!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var resume: UILabel!
+    @IBOutlet weak var name: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,8 +38,12 @@ class HomeItemTableCell: UITableViewCell {
     }
     
     func setup(character: Character) {
-        let urlString = "\(character.thumbnail?.path ?? "").\(character.thumbnail?.extensionThumb ?? "")"
-        let url = URL(string: urlString)
+        var url: URL? {
+            let urlString = "\(character.thumbnail?.path ?? "").\(character.thumbnail?.extensionThumb ?? "")"
+            return URL(string: urlString)
+        }
         photoImage.kf.setImage(with: url)
+        name.text = character.name
+        resume.text = character.description?.isEmpty == false ? character.description : "Este personagem não possui descrição"
     }
 }
