@@ -29,7 +29,7 @@ class HomeCoordinator: BaseCoordinator {
 // MARK: - Conforms HomeViewModelDelegate
 extension HomeCoordinator: HomeViewModelDelegate {
     func didOpenDetail(_ character: Character) {
-        childCoordinator = DetailCoordinator()
+        childCoordinator = DetailCoordinator(character: character)
         childCoordinator?.finish = { [weak self] in
             self?.childCoordinator = nil
         }

@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
 
 //    @IBOutlet weak var imageTeste: UIImageView!
 //    let imageTeste = UIImageView(image: UIImage(named: "teste"))
+    @IBOutlet weak var image: UIImageView!
     
     //MARK: - Private Properties
     private let viewModel: DetailViewModel?
@@ -29,9 +30,18 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         viewModel?.finish()
+    }
+    
+    func setupView() {
+        var url: URL? {
+            let urlString = "\(viewModel?.character.thumbnail?.path ?? "").\(viewModel?.character.thumbnail?.extensionThumb ?? "")"
+            return URL(string: urlString)
+        }
+        image.kf.setImage(with: url)
     }
 }

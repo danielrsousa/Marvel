@@ -11,8 +11,8 @@ import Foundation
 class DetailCoordinator: BaseCoordinator {
     
     // MARK: - Initializers
-    init() {
-        let viewModel = DetailViewModel()
+    init(character: Character) {
+        let viewModel = DetailViewModel(character: character)
         let viewController = DetailViewController(viewModel: viewModel)
         super.init(viewController)
         viewModel.delegate = self

@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="MarvelMVVM" customModuleProvider="target">
             <connections>
+                <outlet property="image" destination="jcp-AU-mm8" id="zbh-Y3-PTm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -53,11 +54,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5iU-Fo-JKs" secondAttribute="trailing" id="1cO-oy-K5O"/>
-                <constraint firstItem="jcp-AU-mm8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2yd-c1-Qpf"/>
+                <constraint firstItem="jcp-AU-mm8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2yd-c1-Qpf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jcp-AU-mm8" secondAttribute="trailing" id="CtO-RG-GEW"/>
                 <constraint firstItem="5iU-Fo-JKs" firstAttribute="height" secondItem="jcp-AU-mm8" secondAttribute="height" id="HAE-Jk-m36"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="5iU-Fo-JKs" secondAttribute="leading" id="WDA-fk-NRL"/>
-                <constraint firstItem="5iU-Fo-JKs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hF4-zN-17X"/>
+                <constraint firstItem="5iU-Fo-JKs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hF4-zN-17X"/>
                 <constraint firstItem="OZT-kr-uyB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="iDz-AY-ylB"/>
                 <constraint firstItem="jcp-AU-mm8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lZL-N3-kxM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OZT-kr-uyB" secondAttribute="trailing" constant="16" id="v32-pO-kbX"/>

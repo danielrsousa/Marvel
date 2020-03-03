@@ -13,6 +13,11 @@ protocol DetailViewModelDelegate: AnyObject, ViewModelDelegate {}
 class DetailViewModel {
     
     weak var delegate: DetailViewModelDelegate?
+    let character: Character
+    
+    init(character: Character) {
+        self.character = character
+    }
     
     func finish() {
         delegate?.finishCoordinator()
