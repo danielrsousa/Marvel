@@ -16,8 +16,8 @@ fileprivate struct CharactersRequest: ApiRequestProtocol {
     var parameters: [String : Any]
 }
 
-struct CharactersService {
-    let api = Api()
+struct CharactersService: ServiceProtocol {
+    var api: ApiProtocol
     
     func fetchCharacters(offSet: Int, completion: @escaping (Result<[Character], ApiError>) -> Void) {
         let tuple = CharactersRequest.getHashAndTimestamp()

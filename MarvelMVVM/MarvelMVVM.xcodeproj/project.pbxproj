@@ -16,6 +16,7 @@
 		B3484057240874000008AB76 /* ServicesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484056240874000008AB76 /* ServicesInfo.swift */; };
 		B348405A240875210008AB76 /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484059240875210008AB76 /* CharactersService.swift */; };
 		B348405D24087E060008AB76 /* M5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348405C24087E060008AB76 /* M5.swift */; };
+		B3484068240EF4B50008AB76 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484067240EF4B50008AB76 /* ServiceProtocol.swift */; };
 		B376AD3F23D901B00088324B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD3E23D901B00088324B /* AppDelegate.swift */; };
 		B376AD4123D901B00088324B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD4023D901B00088324B /* SceneDelegate.swift */; };
 		B376AD4323D901B00088324B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD4223D901B00088324B /* ViewController.swift */; };
@@ -88,6 +89,7 @@
 		B3484056240874000008AB76 /* ServicesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesInfo.swift; sourceTree = "<group>"; };
 		B3484059240875210008AB76 /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
 		B348405C24087E060008AB76 /* M5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M5.swift; sourceTree = "<group>"; };
+		B3484067240EF4B50008AB76 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		B376AD3B23D901B00088324B /* MarvelMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B376AD3E23D901B00088324B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B376AD4023D901B00088324B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		B3484058240874C00008AB76 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B3484066240EF49D0008AB76 /* Protocol */,
 				B3484059240875210008AB76 /* CharactersService.swift */,
 			);
 			path = Services;
@@ -186,6 +189,14 @@
 				B348405C24087E060008AB76 /* M5.swift */,
 			);
 			path = Encrypt;
+			sourceTree = "<group>";
+		};
+		B3484066240EF49D0008AB76 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B3484067240EF4B50008AB76 /* ServiceProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		B376AD3223D901B00088324B = {
@@ -559,6 +570,7 @@
 				B376AD4123D901B00088324B /* SceneDelegate.swift in Sources */,
 				B376AD7523D907D50088324B /* HomeViewModel.swift in Sources */,
 				B37BEE7C23E22290009FE1DA /* CardCollectionCell.swift in Sources */,
+				B3484068240EF4B50008AB76 /* ServiceProtocol.swift in Sources */,
 				B3484057240874000008AB76 /* ServicesInfo.swift in Sources */,
 				B376AD8623D929620088324B /* HomeCategoryTableCell.swift in Sources */,
 				B348404E2407017D0008AB76 /* HttpStatusCode.swift in Sources */,

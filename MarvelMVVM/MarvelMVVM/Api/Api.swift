@@ -10,7 +10,7 @@ import Foundation
 
 protocol ApiProtocol {
     typealias ResultCompletion<R> = (Result<R, ApiError>) -> Void
-    func request<R: Codable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) throws
+    func request<R: Decodable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>)
 }
 
 protocol ApiRequestProtocol {
@@ -30,9 +30,11 @@ extension ApiRequestProtocol {
 }
 
 class Api: ApiProtocol {
+    // MARK: - Private Properties
     private let session = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
     
+    // MARK: - Internal Methods
     func request<R: Decodable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) {
         dataTask?.cancel()
         
@@ -90,6 +92,7 @@ class Api: ApiProtocol {
         }
     }
     
+    // MARK: - Private Methods
     private func createURL(_ request: ApiRequestProtocol) throws -> URL {
         let requestUrl = "\(request.baseURL)\(request.path)"
         var component = URLComponents(string: requestUrl)

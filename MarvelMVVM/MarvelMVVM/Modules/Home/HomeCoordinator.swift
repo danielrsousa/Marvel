@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol HomeCoordinatorDelegate: AnyObject {
-    func didOpenDetail(_ viewModel: HomeViewModel)
-}
-
 class HomeCoordinator: BaseCoordinator {
     
     // MARK: - Properties
@@ -22,15 +18,16 @@ class HomeCoordinator: BaseCoordinator {
     
     // MARK: - Initializers
     init() {
-        let viewModel = HomeViewModel()
+        let service = CharactersService(api: Api())
+        let viewModel = HomeViewModel(service: service)
         let viewController = HomeViewController(viewModel: viewModel)
         super.init(viewController)
-        viewModel.coordinatorDelegate = self
+        viewModel.delegate = self
     }
 }
 
-// MARK: - HomeCoordinator
-extension HomeCoordinator: HomeCoordinatorDelegate {
+// MARK: - Conforms HomeViewModelDelegate
+extension HomeCoordinator: HomeViewModelDelegate {
     func didOpenDetail(_ viewModel: HomeViewModel) {
         let vc =  DetailViewController()
         

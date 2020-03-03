@@ -8,35 +8,45 @@
 
 import Foundation
 
-protocol HomeViewDelegate: AnyObject {
-    func updateView()
-    func showError()
+protocol HomeViewProtocol {
+    var characteres: [Character] { get }
+    func fetchCharacteres(success: @escaping () -> Void)
+}
+
+protocol HomeViewModelDelegate: AnyObject {
+    func didOpenDetail(_ viewModel: HomeViewModel)
 }
 
 class HomeViewModel {
+
+    //MARK: - Private Properties
+    private let service: CharactersService
+    private(set) var characteres: [Character] = []
     
-    let service = CharactersService()
-    var characteres: [Character] = []
+    //MARK: - Delegates
+    weak var delegate: HomeViewModelDelegate?
     
-    weak var coordinatorDelegate: HomeCoordinatorDelegate?
-    weak var viewDelegate: HomeViewDelegate?
+    //MARK: - Initializers
+    init(service: CharactersService) {
+        self.service = service
+    }
     
-    func fetchCharacteres() {
+    //MARK: - Internal Methods
+    func fetchCharacteres(success: @escaping () -> Void) {
         service.fetchCharacters(offSet: 0) { [weak self] (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let characters):
                     self?.characteres = characters
-                    self?.viewDelegate?.updateView()
+                    success()
                 case.failure(_):
-                    self?.viewDelegate?.showError()
+                    success()
                 }
             }
         }
     }
     
     func select() {
-        coordinatorDelegate?.didOpenDetail(self)
+        delegate?.didOpenDetail(self)
     }
-    
 }
