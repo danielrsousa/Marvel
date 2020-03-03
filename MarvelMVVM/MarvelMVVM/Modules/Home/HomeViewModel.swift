@@ -14,7 +14,7 @@ protocol HomeViewProtocol {
 }
 
 protocol HomeViewModelDelegate: AnyObject {
-    func didOpenDetail(_ viewModel: HomeViewModel)
+    func didOpenDetail(_ character: Character)
 }
 
 class HomeViewModel {
@@ -46,7 +46,7 @@ class HomeViewModel {
         }
     }
     
-    func select() {
-        delegate?.didOpenDetail(self)
+    func select(character: Character) {
+        delegate?.didOpenDetail(character)
     }
 }

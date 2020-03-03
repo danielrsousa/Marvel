@@ -13,14 +13,25 @@ class DetailViewController: UIViewController {
 //    @IBOutlet weak var imageTeste: UIImageView!
 //    let imageTeste = UIImageView(image: UIImage(named: "teste"))
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        view.addSubview(imageTeste)
-
+    //MARK: - Private Properties
+    private let viewModel: DetailViewModel?
+    
+    //MARK: - Initializers
+    init(viewModel: DetailViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
-//    override func viewDidLayoutSubviews() {
-//      super.viewDidLayoutSubviews()
-//        imageTeste.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 250.0)
-//    }
+    required init?(coder: NSCoder) {
+        self.viewModel = nil
+        super.init(coder: coder)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        viewModel?.finish()
+    }
 }

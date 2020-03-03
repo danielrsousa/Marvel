@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
         
-        // Needed for display large title in first time
+        // Needed to display large title the first time
         self.tableView.contentInsetAdjustmentBehavior = .never
     }
     
@@ -65,7 +65,8 @@ class HomeViewController: UIViewController {
 //MARK: - Conforms UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.select()
+        guard let character = self.viewModel?.characteres[indexPath.row] else { return }
+        viewModel?.select(character: character)
     }
 }
 

@@ -28,10 +28,12 @@ class HomeCoordinator: BaseCoordinator {
 
 // MARK: - Conforms HomeViewModelDelegate
 extension HomeCoordinator: HomeViewModelDelegate {
-    func didOpenDetail(_ viewModel: HomeViewModel) {
-        let vc =  DetailViewController()
-        
-        viewController.navigationController?.pushViewController(vc, animated: true)
+    func didOpenDetail(_ character: Character) {
+        childCoordinator = DetailCoordinator()
+        childCoordinator?.finish = { [weak self] in
+            self?.childCoordinator = nil
+        }
+        viewController.navigationController?.pushViewController(childCoordinator!.viewController, animated: true)
     }
         
 }
