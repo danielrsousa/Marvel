@@ -30,10 +30,9 @@ class HomeCoordinator: BaseCoordinator {
 extension HomeCoordinator: HomeViewModelDelegate {
     func didOpenDetail(_ character: Character) {
         childCoordinator = DetailCoordinator(character: character)
-        childCoordinator?.finish = { [weak self] in
+        viewController.navigationController?.present(childCoordinator!.viewController, animated: true)
+        childCoordinator?.stop = { [weak self] in
             self?.childCoordinator = nil
         }
-        viewController.navigationController?.pushViewController(childCoordinator!.viewController, animated: true)
     }
-        
 }

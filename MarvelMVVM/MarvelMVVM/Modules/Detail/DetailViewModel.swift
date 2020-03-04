@@ -12,13 +12,16 @@ protocol DetailViewModelDelegate: AnyObject, ViewModelDelegate {}
 
 class DetailViewModel {
     
+    //MARK: - Properties
     weak var delegate: DetailViewModelDelegate?
     let character: Character
     
+    //MARK: - Initializers
     init(character: Character) {
         self.character = character
     }
     
+    //MARK: - Internal Methods
     func finish() {
         delegate?.finishCoordinator()
     }

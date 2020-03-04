@@ -26,7 +26,6 @@ class HomeItemTableCell: UITableViewCell {
         imageContainerView.layer.cornerRadius = 25.0
         imageContainerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         readMoreButton.layer.cornerRadius = readMoreButton.frame.height / 2
-
     }
 
     override func prepareForReuse() {

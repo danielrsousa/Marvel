@@ -21,7 +21,13 @@ class HomeViewModel {
 
     //MARK: - Private Properties
     private let service: CharactersService
-    private(set) var characteres: [Character] = []
+    private var offSet = 0
+    private var fetchMore = true
+    private(set) var characteres: [Character] {
+        didSet {
+            self.offSet = self.characteres.count
+        }
+    }
     
     //MARK: - Delegates
     weak var delegate: HomeViewModelDelegate?
@@ -29,19 +35,24 @@ class HomeViewModel {
     //MARK: - Initializers
     init(service: CharactersService) {
         self.service = service
+        self.characteres = []
     }
     
     //MARK: - Internal Methods
     func fetchCharacteres(success: @escaping () -> Void) {
-        service.fetchCharacters(offSet: 0) { [weak self] (result) in
+        guard fetchMore else { return }
+        fetchMore = false
+        service.fetchCharacters(offSet: offSet) { [weak self] (result) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let characters):
-                    self?.characteres = characters
+                    self.characteres.append(contentsOf: characters)
                     success()
                 case.failure(_):
                     success()
                 }
+                self.fetchMore = true
             }
         }
     }

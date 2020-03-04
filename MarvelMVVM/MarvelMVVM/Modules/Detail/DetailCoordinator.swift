@@ -19,5 +19,6 @@ class DetailCoordinator: BaseCoordinator {
     }
 }
 
+//MARK: - Conforms DetailViewModelDelegate
 extension DetailCoordinator: DetailViewModelDelegate {}
 

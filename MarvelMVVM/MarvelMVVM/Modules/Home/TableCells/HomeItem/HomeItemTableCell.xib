@@ -35,7 +35,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERI-WH-pk2">
                                 <rect key="frame" x="8" y="132" width="130" height="35"/>
-                                <color key="backgroundColor" red="0.80547684590000002" green="0.18026929480000001" blue="0.15278990270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.80392156862745101" green="0.18026929480000001" blue="0.15278990270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="E3N-ZU-hao"/>
                                     <constraint firstAttribute="width" constant="130" id="eaG-YL-bG2"/>
@@ -67,34 +67,20 @@
                                     <constraint firstItem="gV1-yV-RoI" firstAttribute="leading" secondItem="Szy-Fz-ROR" secondAttribute="leading" id="bht-Ge-uR6"/>
                                     <constraint firstAttribute="width" constant="150" id="k81-nT-MmU"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="0.80547684590000002" green="0.18026929480000001" blue="0.15278990270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NS7-8g-aJH">
-                                <rect key="frame" x="30" y="41.5" width="286" height="18"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TOy-iS-wH2" firstAttribute="leading" secondItem="yqY-Cu-HFT" secondAttribute="leading" constant="8" id="5YR-TW-hX3"/>
                             <constraint firstItem="e2c-zh-Zw7" firstAttribute="top" secondItem="TOy-iS-wH2" secondAttribute="top" id="6DD-Yu-1WO"/>
-                            <constraint firstItem="gV1-yV-RoI" firstAttribute="leading" secondItem="NS7-8g-aJH" secondAttribute="trailing" constant="32" id="A9P-j0-6MT"/>
                             <constraint firstAttribute="bottom" secondItem="Szy-Fz-ROR" secondAttribute="bottom" id="CpA-NC-uYb"/>
                             <constraint firstItem="gV1-yV-RoI" firstAttribute="leading" secondItem="e2c-zh-Zw7" secondAttribute="trailing" constant="32" id="Cpc-c7-6Nt"/>
                             <constraint firstItem="TOy-iS-wH2" firstAttribute="top" secondItem="yqY-Cu-HFT" secondAttribute="top" constant="16" id="Gug-GU-aZ6"/>
                             <constraint firstItem="gnv-J2-GBp" firstAttribute="top" secondItem="TOy-iS-wH2" secondAttribute="bottom" constant="8" id="KSK-IH-s7V"/>
                             <constraint firstAttribute="bottom" secondItem="ERI-WH-pk2" secondAttribute="bottom" constant="16" id="Qd1-Sr-0Pj"/>
-                            <constraint firstItem="NS7-8g-aJH" firstAttribute="leading" secondItem="e2c-zh-Zw7" secondAttribute="leading" id="QgO-C7-AQC"/>
                             <constraint firstItem="ERI-WH-pk2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gnv-J2-GBp" secondAttribute="bottom" constant="10" id="RwF-nH-eTO"/>
                             <constraint firstItem="Szy-Fz-ROR" firstAttribute="top" secondItem="yqY-Cu-HFT" secondAttribute="top" id="fFN-sz-wTt"/>
                             <constraint firstItem="gnv-J2-GBp" firstAttribute="leading" secondItem="TOy-iS-wH2" secondAttribute="leading" id="fIg-uw-Gre"/>
-                            <constraint firstItem="NS7-8g-aJH" firstAttribute="top" secondItem="e2c-zh-Zw7" secondAttribute="bottom" constant="5" id="iIC-12-shI"/>
                             <constraint firstItem="e2c-zh-Zw7" firstAttribute="leading" secondItem="TOy-iS-wH2" secondAttribute="trailing" constant="12" id="o3u-sl-hwL"/>
                             <constraint firstAttribute="trailing" secondItem="Szy-Fz-ROR" secondAttribute="trailing" id="o8M-Bw-0Af"/>
                             <constraint firstItem="ERI-WH-pk2" firstAttribute="leading" secondItem="gnv-J2-GBp" secondAttribute="leading" id="rgX-Cu-lq2"/>
@@ -102,7 +88,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="yqY-Cu-HFT" secondAttribute="trailing" constant="8" id="E5F-3P-Qs9"/>
                     <constraint firstItem="yqY-Cu-HFT" firstAttribute="topMargin" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="PEI-Ez-mTI"/>

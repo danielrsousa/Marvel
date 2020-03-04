@@ -50,7 +50,6 @@ class HomeViewController: UIViewController {
     }
     
     func registerCells() {
-        tableView.register(TitleTableHeader.self)
         tableView.register(HomeItemTableCell.self)
         tableView.register(HomeCategoryTableCell.self)
     }
@@ -86,5 +85,15 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {      
         return 213
+    }
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height {
+            loadCharacters()
+        }
     }
 }

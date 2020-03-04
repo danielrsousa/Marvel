@@ -11,7 +11,7 @@ import UIKit
 class BaseCoordinator {
     var viewController: UIViewController
     var childCoordinator: BaseCoordinator?
-    var finish: (() -> Void)?
+    var stop: (() -> Void)?
     
     init(_ viewController: UIViewController) {
         self.viewController = viewController
@@ -20,6 +20,6 @@ class BaseCoordinator {
 
 extension BaseCoordinator: ViewModelDelegate {
     func finishCoordinator() {
-        finish?()
+        stop?()
     }
 }

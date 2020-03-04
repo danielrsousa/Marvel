@@ -13,6 +13,8 @@ class DetailViewController: UIViewController {
 //    @IBOutlet weak var imageTeste: UIImageView!
 //    let imageTeste = UIImageView(image: UIImage(named: "teste"))
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var characterDescription: UILabel!
     
     //MARK: - Private Properties
     private let viewModel: DetailViewModel?
@@ -28,6 +30,7 @@ class DetailViewController: UIViewController {
         super.init(coder: coder)
     }
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -37,11 +40,14 @@ class DetailViewController: UIViewController {
         viewModel?.finish()
     }
     
+    //MARK: - Internal Methods
     func setupView() {
         var url: URL? {
             let urlString = "\(viewModel?.character.thumbnail?.path ?? "").\(viewModel?.character.thumbnail?.extensionThumb ?? "")"
             return URL(string: urlString)
         }
         image.kf.setImage(with: url)
+        name.text = viewModel?.character.name
+        characterDescription.text = viewModel?.character.description?.isEmpty == false ? viewModel?.character.description : "Este personagem não possui descrição"
     }
 }

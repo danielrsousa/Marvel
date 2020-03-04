@@ -47,6 +47,8 @@ class Api: ApiProtocol {
              urlRequest.allHTTPHeaderFields = request.headers
              urlRequest.httpBody = try createBody(request)
              
+            print("🚀 UrlRequest: \(urlRequest)")
+            
              dataTask = session.dataTask(with: urlRequest, completionHandler: { [weak self] (data, response, error) in
                  defer { self?.dataTask = nil }
                  
@@ -117,9 +119,10 @@ class Api: ApiProtocol {
     }
     
     private func printJson(_ status: Int, data: Data) {
-        if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-            print("✅ Status: \(status) Response: \(json)")
-        }
+        print("✅ Status: \(status)")
+//        if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+//            print("json: \(json)")
+//        }
     }
 }
 
