@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     
     //MARK: - Private Properties
     private let viewModel: HomeViewModel?
+    private var searchController: UISearchController?
     
     //MARK: - Initializers
     init(viewModel: HomeViewModel) {
@@ -40,9 +41,9 @@ class HomeViewController: UIViewController {
 
     //MARK: - Internal Methods
     func setupSerachBar(){
-        let search = UISearchController(searchResultsController: nil)
-        search.searchBar.delegate = self
-        navigationItem.searchController = search
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchBar.delegate = self
+        navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
         
@@ -106,5 +107,6 @@ extension HomeViewController: UISearchBarDelegate {
                 self?.tableView.reloadData()
             })
         }
+        searchController?.isActive = false
     }
 }
