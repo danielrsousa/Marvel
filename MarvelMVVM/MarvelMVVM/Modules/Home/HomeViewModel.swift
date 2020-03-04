@@ -11,6 +11,7 @@ import Foundation
 protocol HomeViewProtocol {
     var characteres: [Character] { get }
     func fetchCharacteres(success: @escaping () -> Void)
+    func fetchBy(_ name: String, success: @escaping () -> Void)
 }
 
 protocol HomeViewModelDelegate: AnyObject {
@@ -43,6 +44,25 @@ class HomeViewModel {
         guard fetchMore else { return }
         fetchMore = false
         service.fetchCharacters(offSet: offSet) { [weak self] (result) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let characters):
+                    self.characteres.append(contentsOf: characters)
+                    success()
+                case.failure(_):
+                    success()
+                }
+                self.fetchMore = true
+            }
+        }
+    }
+    
+    func fetchBy(_ name: String, success: @escaping () -> Void) {
+        self.characteres.removeAll()
+        guard fetchMore else { return }
+        fetchMore = false
+        service.fetchCharactersBy(name, offSet: offSet) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {

@@ -14,9 +14,9 @@ struct ServicesInfo {
     static let privateKey = "0fa52519671a52ec881c195f052318b34198d842"
     
     struct EndPoints {
-        enum Caracters: String {
-            case caracters = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%i"
-            case caractersByName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%@&nameStartsWith=%@"
+        enum Characters: String {
+            case characters = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%i"
+            case charactersByName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%i&nameStartsWith=%@"
         }
     }
 }

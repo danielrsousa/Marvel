@@ -23,11 +23,35 @@ struct CharactersService: ServiceProtocol {
         let tuple = CharactersRequest.getHashAndTimestamp()
         
         let path = String.init(
-            format: ServicesInfo.EndPoints.Caracters.caracters.rawValue,
+            format: ServicesInfo.EndPoints.Characters.characters.rawValue,
             ServicesInfo.apiKey,
             tuple.timestamp,
             tuple.hash,
             offSet
+        )
+        
+        let request = CharactersRequest(path: path, parameters: [:])
+        
+        api.request(request: request, result: {(result: Result<Response<Character>, ApiError>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
+    }
+    
+    func fetchCharactersBy(_ name: String, offSet: Int, completion: @escaping (Result<[Character], ApiError>) -> Void) {
+        let tuple = CharactersRequest.getHashAndTimestamp()
+        
+        let path = String.init(
+            format: ServicesInfo.EndPoints.Characters.charactersByName.rawValue,
+            ServicesInfo.apiKey,
+            tuple.timestamp,
+            tuple.hash,
+            offSet,
+            name
         )
         
         let request = CharactersRequest(path: path, parameters: [:])

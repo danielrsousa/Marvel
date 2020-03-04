@@ -41,6 +41,7 @@ class HomeViewController: UIViewController {
     //MARK: - Internal Methods
     func setupSerachBar(){
         let search = UISearchController(searchResultsController: nil)
+        search.searchBar.delegate = self
         navigationItem.searchController = search
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
@@ -94,6 +95,16 @@ extension HomeViewController: UIScrollViewDelegate {
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height {
             loadCharacters()
+        }
+    }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let name = searchBar.text, !name.isEmpty {
+            viewModel?.fetchBy(name, success: { [weak self] in
+                self?.tableView.reloadData()
+            })
         }
     }
 }
