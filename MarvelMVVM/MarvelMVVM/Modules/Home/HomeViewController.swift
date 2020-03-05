@@ -57,7 +57,7 @@ class HomeViewController: UIViewController {
     }
 
     func loadCharacters() {
-        viewModel?.fetchCharacteres(success: { [weak self] in
+        viewModel?.fetchBy(success: { [weak self] in
             self?.tableView.reloadData()
         })
     }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol HomeViewProtocol {
     var characteres: [Character] { get }
-    func fetchCharacteres(success: @escaping () -> Void)
+    var searchText: String {get}
     func fetchBy(_ name: String, success: @escaping () -> Void)
 }
 
@@ -24,6 +24,7 @@ class HomeViewModel {
     private let service: CharactersService
     private var offSet = 0
     private var fetchMore = true
+    private var searchText: String = ""
     private(set) var characteres: [Character] {
         didSet {
             self.offSet = self.characteres.count
@@ -40,7 +41,21 @@ class HomeViewModel {
     }
     
     //MARK: - Internal Methods
-    func fetchCharacteres(success: @escaping () -> Void) {
+    func fetchBy(_ name: String = "", success: @escaping () -> Void) {
+        guard name.isEmpty && searchText.isEmpty  else {
+            if !name.isEmpty {
+                searchText = name
+                self.characteres.removeAll()
+            }
+            
+            fetchCharactersBy(searchText, success: success)
+            return
+        }
+        
+        fetchCharacteres(success: success)
+    }
+    
+    private func fetchCharacteres(success: @escaping () -> Void) {
         guard fetchMore else { return }
         fetchMore = false
         service.fetchCharacters(offSet: offSet) { [weak self] (result) in
@@ -58,8 +73,7 @@ class HomeViewModel {
         }
     }
     
-    func fetchBy(_ name: String, success: @escaping () -> Void) {
-        self.characteres.removeAll()
+    private func fetchCharactersBy(_ name: String, success: @escaping () -> Void) {
         guard fetchMore else { return }
         fetchMore = false
         service.fetchCharactersBy(name, offSet: offSet) { [weak self] (result) in
