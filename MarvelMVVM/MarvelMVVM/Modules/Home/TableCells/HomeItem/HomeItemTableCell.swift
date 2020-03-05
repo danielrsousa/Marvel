@@ -13,7 +13,6 @@ import Kingfisher
 class HomeItemTableCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var readMoreButton: UIButton!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var resume: UILabel!
@@ -25,7 +24,6 @@ class HomeItemTableCell: UITableViewCell {
         containerView.layer.addShadow()
         imageContainerView.layer.cornerRadius = 25.0
         imageContainerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
-        readMoreButton.layer.cornerRadius = readMoreButton.frame.height / 2
     }
 
     override func prepareForReuse() {

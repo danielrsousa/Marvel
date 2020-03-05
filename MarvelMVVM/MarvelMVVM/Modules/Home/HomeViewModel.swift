@@ -10,7 +10,7 @@ import Foundation
 
 protocol HomeViewProtocol {
     var characteres: [Character] { get }
-    var searchText: String {get}
+    var searchText: String { get }
     func fetchBy(_ name: String, success: @escaping () -> Void)
 }
 
@@ -24,7 +24,7 @@ class HomeViewModel {
     private let service: CharactersService
     private var offSet = 0
     private var fetchMore = true
-    private var searchText: String = ""
+    private(set) var searchText: String = ""
     private(set) var characteres: [Character] {
         didSet {
             self.offSet = self.characteres.count
@@ -89,6 +89,15 @@ class HomeViewModel {
                 self.fetchMore = true
             }
         }
+    }
+    
+    func disableFilter() {
+        searchText = ""
+        self.characteres.removeAll()
+    }
+    
+    func showHeader() -> Bool {
+        return !searchText.isEmpty
     }
     
     func select(character: Character) {

@@ -8,17 +8,28 @@
 
 import UIKit
 
-class HomeHeaderCell: UITableViewCell {
+protocol HomeHeaderCellDelegate: AnyObject {
+    func disableFilter()
+}
 
+class HomeHeaderCell: UITableViewHeaderFooterView {
+    
+    @IBOutlet weak var filterButton: UIPrimaryButton!
+    weak var delegate: HomeHeaderCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    static var nib: UINib {
+        return UINib(nibName: String(describing: self), bundle: nil)
+    }
+    
+    func initFilter(_ filter: String) {
+        filterButton.setTitle(filter, for: .normal)
+    }
+    
+    @IBAction func filterAction(_ sender: Any) {
+        delegate?.disableFilter()
+    }
 }

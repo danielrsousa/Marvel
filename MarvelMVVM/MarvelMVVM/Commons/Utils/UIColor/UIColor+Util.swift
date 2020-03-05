@@ -6,4 +6,12 @@
 //  Copyright © 2020 Daniel Rocha. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIColor {
+    public convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1.0)
+    }
+    
+    static let priamryDarkRed = UIColor(r: 205, g: 46, b: 39, alpha: 1.0)
+}

@@ -52,14 +52,23 @@ class HomeViewController: UIViewController {
     }
     
     func registerCells() {
+        tableView.register(HomeHeaderCell.nib, forHeaderFooterViewReuseIdentifier: "HomeHeaderCell")
         tableView.register(HomeItemTableCell.self)
         tableView.register(HomeCategoryTableCell.self)
     }
 
-    func loadCharacters() {
+    func loadCharacters(animated: Bool = false, completion: (() -> Void)? = nil) {
         viewModel?.fetchBy(success: { [weak self] in
-            self?.tableView.reloadData()
+            guard let self = self else { return }
+            animated ? self.reloadTableWithAnimation() : self.tableView.reloadData()
+            completion?()
         })
+    }
+    
+    func reloadTableWithAnimation() {
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.tableView.reloadSections(sections as IndexSet, with: .fade)
     }
 }
 
@@ -82,11 +91,27 @@ extension HomeViewController: UITableViewDataSource {
             guard let character = self.viewModel?.characteres[indexPath.row] else { return }
             cell.setup(character: character)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard viewModel?.showHeader() == true else { return nil }
         
+        guard let headerCell = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: "HomeHeaderCell"
+        ) as? HomeHeaderCell else { return nil }
+        
+        headerCell.delegate = self
+        headerCell.initFilter(viewModel?.searchText ?? "")
+        return headerCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {      
         return 213
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard viewModel?.showHeader() == true else { return 0.0 }
+        return 60
     }
 }
 
@@ -104,9 +129,19 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let name = searchBar.text, !name.isEmpty {
             viewModel?.fetchBy(name, success: { [weak self] in
-                self?.tableView.reloadData()
+                self?.reloadTableWithAnimation()
+                self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             })
         }
         searchController?.isActive = false
+    }
+}
+
+extension HomeViewController: HomeHeaderCellDelegate {
+    func disableFilter() {
+        viewModel?.disableFilter()
+        loadCharacters(animated: true) { [weak self] in
+            self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
     }
 }

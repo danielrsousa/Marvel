@@ -33,7 +33,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERI-WH-pk2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERI-WH-pk2" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
                                 <rect key="frame" x="8" y="132" width="130" height="35"/>
                                 <color key="backgroundColor" red="0.80392156862745101" green="0.18026929480000001" blue="0.15278990270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -103,7 +103,6 @@
                 <outlet property="imageContainerView" destination="Szy-Fz-ROR" id="0Qq-cT-sS5"/>
                 <outlet property="name" destination="e2c-zh-Zw7" id="Q54-dt-JRQ"/>
                 <outlet property="photoImage" destination="gV1-yV-RoI" id="ufr-9q-6le"/>
-                <outlet property="readMoreButton" destination="ERI-WH-pk2" id="4yJ-U1-kwm"/>
                 <outlet property="resume" destination="gnv-J2-GBp" id="jcQ-1J-WBm"/>
             </connections>
             <point key="canvasLocation" x="-159.42028985507247" y="242.74553571428569"/>

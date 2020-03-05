@@ -20,6 +20,10 @@
 		B348406A240EFBF60008AB76 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484069240EFBF60008AB76 /* DetailViewModel.swift */; };
 		B348406C240EFC040008AB76 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348406B240EFC040008AB76 /* DetailCoordinator.swift */; };
 		B3484070240F08560008AB76 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348406F240F08560008AB76 /* ViewModelDelegate.swift */; };
+		B348407524119A2F0008AB76 /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348407324119A2F0008AB76 /* HomeHeaderCell.swift */; };
+		B348407624119A2F0008AB76 /* HomeHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B348407424119A2F0008AB76 /* HomeHeaderCell.xib */; };
+		B348407924119A920008AB76 /* UIPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348407824119A920008AB76 /* UIPrimaryButton.swift */; };
+		B348407C24119B960008AB76 /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348407B24119B960008AB76 /* UIColor+Util.swift */; };
 		B376AD3F23D901B00088324B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD3E23D901B00088324B /* AppDelegate.swift */; };
 		B376AD4123D901B00088324B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD4023D901B00088324B /* SceneDelegate.swift */; };
 		B376AD4823D901B40088324B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B376AD4723D901B40088324B /* Assets.xcassets */; };
@@ -93,6 +97,10 @@
 		B3484069240EFBF60008AB76 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		B348406B240EFC040008AB76 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		B348406F240F08560008AB76 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
+		B348407324119A2F0008AB76 /* HomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
+		B348407424119A2F0008AB76 /* HomeHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderCell.xib; sourceTree = "<group>"; };
+		B348407824119A920008AB76 /* UIPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPrimaryButton.swift; sourceTree = "<group>"; };
+		B348407B24119B960008AB76 /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		B376AD3B23D901B00088324B /* MarvelMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B376AD3E23D901B00088324B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B376AD4023D901B00088324B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +215,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B34840722411983A0008AB76 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				B348407324119A2F0008AB76 /* HomeHeaderCell.swift */,
+				B348407424119A2F0008AB76 /* HomeHeaderCell.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		B348407724119A800008AB76 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				B348407824119A920008AB76 /* UIPrimaryButton.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		B348407A24119B5F0008AB76 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				B348407B24119B960008AB76 /* UIColor+Util.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
 		B376AD3223D901B00088324B = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +318,7 @@
 		B376AD7823D9081A0088324B /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				B348407724119A800008AB76 /* UIButton */,
 				B348406E240F08400008AB76 /* ViewModel */,
 				B348405B24087DF00008AB76 /* Encrypt */,
 				B38014BD23DB94090002AEF6 /* GradientView */,
@@ -315,6 +349,7 @@
 		B376AD7F23D923A30088324B /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				B34840722411983A0008AB76 /* Header */,
 				B376AD8923D92A980088324B /* HomeItem */,
 				B376AD8823D9296C0088324B /* Category */,
 			);
@@ -343,6 +378,7 @@
 		B376AD9223D932A40088324B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B348407A24119B5F0008AB76 /* UIColor */,
 				B3CA4AFA24005BA2004C950C /* UIView */,
 				B3CA4AF924005B92004C950C /* UITableView */,
 				B3CA4AF624005B63004C950C /* CALayer */,
@@ -528,6 +564,7 @@
 				B376AD8723D929620088324B /* HomeCategoryTableCell.xib in Resources */,
 				B376AD4823D901B40088324B /* Assets.xcassets in Resources */,
 				B37BEE7D23E22290009FE1DA /* CardCollectionCell.xib in Resources */,
+				B348407624119A2F0008AB76 /* HomeHeaderCell.xib in Resources */,
 				B376AD7323D907BD0088324B /* HomeViewController.xib in Resources */,
 				B376AD9123D92D600088324B /* HomeItemTableCell.xib in Resources */,
 			);
@@ -566,10 +603,13 @@
 				B348405A240875210008AB76 /* CharactersService.swift in Sources */,
 				B348404C2407014B0008AB76 /* HTTPMethod.swift in Sources */,
 				B376AD4123D901B00088324B /* SceneDelegate.swift in Sources */,
+				B348407924119A920008AB76 /* UIPrimaryButton.swift in Sources */,
+				B348407524119A2F0008AB76 /* HomeHeaderCell.swift in Sources */,
 				B376AD7523D907D50088324B /* HomeViewModel.swift in Sources */,
 				B37BEE7C23E22290009FE1DA /* CardCollectionCell.swift in Sources */,
 				B3484068240EF4B50008AB76 /* ServiceProtocol.swift in Sources */,
 				B3484057240874000008AB76 /* ServicesInfo.swift in Sources */,
+				B348407C24119B960008AB76 /* UIColor+Util.swift in Sources */,
 				B376AD8623D929620088324B /* HomeCategoryTableCell.swift in Sources */,
 				B348404E2407017D0008AB76 /* HttpStatusCode.swift in Sources */,
 				B348404A240701110008AB76 /* ApiError.swift in Sources */,
