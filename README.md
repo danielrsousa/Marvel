@@ -27,11 +27,11 @@ The application offers supports  dark mode
 
 ## 🧩 How to build
 
-Before of build, run in terminal the command  [`carthage update`] and check your version of xcode, this is app only build in xcode 11.3.1+.
+Before of build, run in terminal the command  `carthage update` and check your version of xcode, this is app only build in xcode 11.3.1+.
 
 ## 📱 Contacts
 
-if you has interested contact me, just send a message in my  [`LinkedIn`](https://www.linkedin.com/in/danielrsousa/).*.
+if you has interested contact me, just send a message in my  [`LinkedIn`](https://www.linkedin.com/in/danielrsousa/)
 
 Thanks
 
