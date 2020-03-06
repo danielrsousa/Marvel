@@ -15,10 +15,10 @@
 ## 📸 Screenshoots
 
 <p>
-<img src="./images/hulk_darkmode.png" alt="Screenshot" width="220" height="417">
- <img src="./images/hulk.png" alt="Screenshot" width="220" height="417">
- <img src="./images/hulk_darkmode.png" alt="Screenshot" width="220" height="417">
- <img src="./images/hulk.png" alt="Screenshot" width="220" height="417">
+<img src="./images/hulk_darkmode.png" alt="Screenshot" width="210" height="407">
+ <img src="./images/hulk.png" alt="Screenshot" width="210" height="407">
+ <img src="./images/hulk_darkmode.png" alt="Screenshot" width="210" height="407">
+ <img src="./images/hulk.png" alt="Screenshot" width="210" height="407">
 </p>
 
 
