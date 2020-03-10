@@ -21,7 +21,7 @@ protocol HomeViewModelDelegate: AnyObject {
 class HomeViewModel {
 
     //MARK: - Private Properties
-    private let service: CharactersService
+    private let service: CharactersApi
     private var offSet = 0
     private var fetchMore = true
     private(set) var searchText: String = ""
@@ -35,7 +35,7 @@ class HomeViewModel {
     weak var delegate: HomeViewModelDelegate?
     
     //MARK: - Initializers
-    init(service: CharactersService) {
+    init(service: CharactersApi) {
         self.service = service
         self.characteres = []
     }

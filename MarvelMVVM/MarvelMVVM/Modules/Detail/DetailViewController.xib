@@ -23,7 +23,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87z-ZS-lil">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teste" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-AU-mm8">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-AU-mm8">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="300" id="sGt-A9-frm"/>
@@ -62,6 +62,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQQ-Zo-GNb" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
+                            <rect key="frame" x="16" y="358" width="288" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="HP8-me-hrg"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="jTn-FF-hhk" firstAttribute="leading" secondItem="OZT-kr-uyB" secondAttribute="leading" id="2Vq-lD-5jP"/>
@@ -69,9 +76,12 @@
                         <constraint firstItem="jcp-AU-mm8" firstAttribute="top" secondItem="87z-ZS-lil" secondAttribute="top" id="6n3-W9-dMM"/>
                         <constraint firstItem="5iU-Fo-JKs" firstAttribute="width" secondItem="jcp-AU-mm8" secondAttribute="width" id="8vg-9j-M8c"/>
                         <constraint firstItem="5iU-Fo-JKs" firstAttribute="centerX" secondItem="jcp-AU-mm8" secondAttribute="centerX" id="9Ro-ty-rdH"/>
+                        <constraint firstItem="LQQ-Zo-GNb" firstAttribute="trailing" secondItem="jTn-FF-hhk" secondAttribute="trailing" id="KCc-Gy-mFZ"/>
                         <constraint firstItem="jcp-AU-mm8" firstAttribute="leading" secondItem="87z-ZS-lil" secondAttribute="leading" id="SwC-R7-9iy"/>
                         <constraint firstItem="jTn-FF-hhk" firstAttribute="trailing" secondItem="OZT-kr-uyB" secondAttribute="trailing" id="Vra-nG-H8n"/>
                         <constraint firstItem="jTn-FF-hhk" firstAttribute="top" secondItem="5iU-Fo-JKs" secondAttribute="bottom" constant="16" id="g1r-J8-idd"/>
+                        <constraint firstItem="LQQ-Zo-GNb" firstAttribute="top" secondItem="jTn-FF-hhk" secondAttribute="bottom" constant="21.5" id="k0p-yE-qla"/>
+                        <constraint firstItem="LQQ-Zo-GNb" firstAttribute="leading" secondItem="jTn-FF-hhk" secondAttribute="leading" id="ubg-eB-9Nu"/>
                         <constraint firstAttribute="bottom" secondItem="jcp-AU-mm8" secondAttribute="bottom" id="wKF-zc-xv4"/>
                         <constraint firstItem="5iU-Fo-JKs" firstAttribute="height" secondItem="jcp-AU-mm8" secondAttribute="height" id="wNj-kh-TRF"/>
                         <constraint firstItem="5iU-Fo-JKs" firstAttribute="centerY" secondItem="jcp-AU-mm8" secondAttribute="centerY" id="z2e-aK-uo6"/>
@@ -89,10 +99,7 @@
                 <constraint firstItem="87z-ZS-lil" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xXm-hB-IYG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+            <point key="canvasLocation" x="131.25" y="153.16901408450704"/>
         </view>
     </objects>
-    <resources>
-        <image name="teste" width="159" height="79.5"/>
-    </resources>
 </document>

@@ -16,7 +16,7 @@ fileprivate struct CharactersRequest: ApiRequestProtocol {
     var parameters: [String : Any]
 }
 
-struct CharactersService: ServiceProtocol {
+struct CharactersApi: ServiceProtocol {
     var api: ApiProtocol
     
     func fetchCharacters(offSet: Int, completion: @escaping (Result<[Character], ApiError>) -> Void) {

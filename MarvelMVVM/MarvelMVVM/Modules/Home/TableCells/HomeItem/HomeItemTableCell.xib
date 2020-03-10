@@ -55,11 +55,11 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Szy-Fz-ROR">
                                 <rect key="frame" x="348" y="0.0" width="150" height="183"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyPHOTO" translatesAutoresizingMaskIntoConstraints="NO" id="gV1-yV-RoI">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gV1-yV-RoI">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="183"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="gV1-yV-RoI" firstAttribute="bottom" secondItem="Szy-Fz-ROR" secondAttribute="bottom" id="0ie-M9-Zn5"/>
                                     <constraint firstAttribute="trailing" secondItem="gV1-yV-RoI" secondAttribute="trailing" id="8JL-wA-HUC"/>
@@ -108,7 +108,4 @@
             <point key="canvasLocation" x="-159.42028985507247" y="242.74553571428569"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="MyPHOTO" width="640" height="803"/>
-    </resources>
 </document>

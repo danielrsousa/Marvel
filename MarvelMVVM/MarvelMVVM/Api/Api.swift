@@ -33,6 +33,9 @@ class Api: ApiProtocol {
     // MARK: - Private Properties
     private let session = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
+    public static let shared = Api()
+    
+    private init() {}
     
     // MARK: - Internal Methods
     func request<R: Decodable>(request: ApiRequestProtocol, result: @escaping ResultCompletion<R>) {

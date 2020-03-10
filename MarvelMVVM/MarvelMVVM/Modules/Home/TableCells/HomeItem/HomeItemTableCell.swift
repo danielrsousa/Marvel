@@ -35,11 +35,7 @@ class HomeItemTableCell: UITableViewCell {
     }
     
     func setup(character: Character) {
-        var url: URL? {
-            let urlString = "\(character.thumbnail?.path ?? "").\(character.thumbnail?.extensionThumb ?? "")"
-            return URL(string: urlString)
-        }
-        photoImage.kf.setImage(with: url)
+        photoImage.kf.setImage(with: character.thumbnail?.getUrl())
         name.text = character.name
         resume.text = character.description?.isEmpty == false ? character.description : "Este personagem não possui descrição"
     }

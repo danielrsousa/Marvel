@@ -14,7 +14,7 @@
 		B348405324084F6E0008AB76 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348405224084F6E0008AB76 /* Characters.swift */; };
 		B3484055240871BA0008AB76 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484054240871BA0008AB76 /* Response.swift */; };
 		B3484057240874000008AB76 /* ServicesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484056240874000008AB76 /* ServicesInfo.swift */; };
-		B348405A240875210008AB76 /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484059240875210008AB76 /* CharactersService.swift */; };
+		B348405A240875210008AB76 /* CharactersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484059240875210008AB76 /* CharactersApi.swift */; };
 		B348405D24087E060008AB76 /* M5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348405C24087E060008AB76 /* M5.swift */; };
 		B3484068240EF4B50008AB76 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484067240EF4B50008AB76 /* ServiceProtocol.swift */; };
 		B348406A240EFBF60008AB76 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3484069240EFBF60008AB76 /* DetailViewModel.swift */; };
@@ -43,6 +43,15 @@
 		B376AD9623D9332C0088324B /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD9523D9332C0088324B /* UIView+Utils.swift */; };
 		B376AD9F23D93E160088324B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376AD9D23D93E150088324B /* DetailViewController.swift */; };
 		B376ADA023D93E160088324B /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B376AD9E23D93E150088324B /* DetailViewController.xib */; };
+		B37AA534241833B5007BFA57 /* MarvelTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA533241833B5007BFA57 /* MarvelTabBarController.swift */; };
+		B37AA538241834EF007BFA57 /* CommicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA536241834EF007BFA57 /* CommicsViewController.swift */; };
+		B37AA539241834EF007BFA57 /* CommicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37AA537241834EF007BFA57 /* CommicsViewController.xib */; };
+		B37AA53B24183509007BFA57 /* CommicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA53A24183509007BFA57 /* CommicsViewModel.swift */; };
+		B37AA53D24183518007BFA57 /* CommicsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA53C24183518007BFA57 /* CommicsCoordinator.swift */; };
+		B37AA53F241836F4007BFA57 /* CommicsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA53E241836F4007BFA57 /* CommicsApi.swift */; };
+		B37AA541241838A4007BFA57 /* Commics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA540241838A4007BFA57 /* Commics.swift */; };
+		B37AA543241838E4007BFA57 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA542241838E4007BFA57 /* Thumbnail.swift */; };
+		B37AA5462418395E007BFA57 /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA5452418395E007BFA57 /* Optional+String.swift */; };
 		B37BEE7C23E22290009FE1DA /* CardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37BEE7A23E22290009FE1DA /* CardCollectionCell.swift */; };
 		B37BEE7D23E22290009FE1DA /* CardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37BEE7B23E22290009FE1DA /* CardCollectionCell.xib */; };
 		B38014BC23DB83AA0002AEF6 /* MNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */; };
@@ -91,7 +100,7 @@
 		B348405224084F6E0008AB76 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		B3484054240871BA0008AB76 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		B3484056240874000008AB76 /* ServicesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesInfo.swift; sourceTree = "<group>"; };
-		B3484059240875210008AB76 /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
+		B3484059240875210008AB76 /* CharactersApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersApi.swift; sourceTree = "<group>"; };
 		B348405C24087E060008AB76 /* M5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M5.swift; sourceTree = "<group>"; };
 		B3484067240EF4B50008AB76 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		B3484069240EFBF60008AB76 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -126,6 +135,15 @@
 		B376AD9523D9332C0088324B /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		B376AD9D23D93E150088324B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B376AD9E23D93E150088324B /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		B37AA533241833B5007BFA57 /* MarvelTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelTabBarController.swift; sourceTree = "<group>"; };
+		B37AA536241834EF007BFA57 /* CommicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommicsViewController.swift; sourceTree = "<group>"; };
+		B37AA537241834EF007BFA57 /* CommicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommicsViewController.xib; sourceTree = "<group>"; };
+		B37AA53A24183509007BFA57 /* CommicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommicsViewModel.swift; sourceTree = "<group>"; };
+		B37AA53C24183518007BFA57 /* CommicsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommicsCoordinator.swift; sourceTree = "<group>"; };
+		B37AA53E241836F4007BFA57 /* CommicsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommicsApi.swift; sourceTree = "<group>"; };
+		B37AA540241838A4007BFA57 /* Commics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commics.swift; sourceTree = "<group>"; };
+		B37AA542241838E4007BFA57 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		B37AA5452418395E007BFA57 /* Optional+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+String.swift"; sourceTree = "<group>"; };
 		B37BEE7A23E22290009FE1DA /* CardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCell.swift; sourceTree = "<group>"; };
 		B37BEE7B23E22290009FE1DA /* CardCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionCell.xib; sourceTree = "<group>"; };
 		B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigationController.swift; sourceTree = "<group>"; };
@@ -178,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				B348405224084F6E0008AB76 /* Characters.swift */,
+				B37AA540241838A4007BFA57 /* Commics.swift */,
+				B37AA542241838E4007BFA57 /* Thumbnail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,7 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				B3484066240EF49D0008AB76 /* Protocol */,
-				B3484059240875210008AB76 /* CharactersService.swift */,
+				B3484059240875210008AB76 /* CharactersApi.swift */,
+				B37AA53E241836F4007BFA57 /* CommicsApi.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -297,6 +318,8 @@
 		B376AD6E23D907840088324B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B37AA5322418333D007BFA57 /* Tabbar */,
+				B37AA535241834D5007BFA57 /* Commics */,
 				B376AD6F23D9079C0088324B /* Home */,
 				B376AD9C23D93DFA0088324B /* Detail */,
 			);
@@ -378,6 +401,7 @@
 		B376AD9223D932A40088324B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B37AA5442418394C007BFA57 /* Optional */,
 				B348407A24119B5F0008AB76 /* UIColor */,
 				B3CA4AFA24005BA2004C950C /* UIView */,
 				B3CA4AF924005B92004C950C /* UITableView */,
@@ -395,6 +419,33 @@
 				B348406B240EFC040008AB76 /* DetailCoordinator.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		B37AA5322418333D007BFA57 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				B37AA533241833B5007BFA57 /* MarvelTabBarController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		B37AA535241834D5007BFA57 /* Commics */ = {
+			isa = PBXGroup;
+			children = (
+				B37AA536241834EF007BFA57 /* CommicsViewController.swift */,
+				B37AA537241834EF007BFA57 /* CommicsViewController.xib */,
+				B37AA53A24183509007BFA57 /* CommicsViewModel.swift */,
+				B37AA53C24183518007BFA57 /* CommicsCoordinator.swift */,
+			);
+			path = Commics;
+			sourceTree = "<group>";
+		};
+		B37AA5442418394C007BFA57 /* Optional */ = {
+			isa = PBXGroup;
+			children = (
+				B37AA5452418395E007BFA57 /* Optional+String.swift */,
+			);
+			path = Optional;
 			sourceTree = "<group>";
 		};
 		B37BEE7923E2225A009FE1DA /* CardCategoryCell */ = {
@@ -565,6 +616,7 @@
 				B376AD4823D901B40088324B /* Assets.xcassets in Resources */,
 				B37BEE7D23E22290009FE1DA /* CardCollectionCell.xib in Resources */,
 				B348407624119A2F0008AB76 /* HomeHeaderCell.xib in Resources */,
+				B37AA539241834EF007BFA57 /* CommicsViewController.xib in Resources */,
 				B376AD7323D907BD0088324B /* HomeViewController.xib in Resources */,
 				B376AD9123D92D600088324B /* HomeItemTableCell.xib in Resources */,
 			);
@@ -598,21 +650,29 @@
 				B348406A240EFBF60008AB76 /* DetailViewModel.swift in Sources */,
 				B38014BF23DB94190002AEF6 /* GradientView.swift in Sources */,
 				B376AD3F23D901B00088324B /* AppDelegate.swift in Sources */,
+				B37AA538241834EF007BFA57 /* CommicsViewController.swift in Sources */,
+				B37AA53B24183509007BFA57 /* CommicsViewModel.swift in Sources */,
 				B348405D24087E060008AB76 /* M5.swift in Sources */,
 				B376AD9023D92D600088324B /* HomeItemTableCell.swift in Sources */,
-				B348405A240875210008AB76 /* CharactersService.swift in Sources */,
+				B348405A240875210008AB76 /* CharactersApi.swift in Sources */,
 				B348404C2407014B0008AB76 /* HTTPMethod.swift in Sources */,
 				B376AD4123D901B00088324B /* SceneDelegate.swift in Sources */,
 				B348407924119A920008AB76 /* UIPrimaryButton.swift in Sources */,
 				B348407524119A2F0008AB76 /* HomeHeaderCell.swift in Sources */,
+				B37AA543241838E4007BFA57 /* Thumbnail.swift in Sources */,
+				B37AA534241833B5007BFA57 /* MarvelTabBarController.swift in Sources */,
 				B376AD7523D907D50088324B /* HomeViewModel.swift in Sources */,
 				B37BEE7C23E22290009FE1DA /* CardCollectionCell.swift in Sources */,
+				B37AA53F241836F4007BFA57 /* CommicsApi.swift in Sources */,
+				B37AA541241838A4007BFA57 /* Commics.swift in Sources */,
 				B3484068240EF4B50008AB76 /* ServiceProtocol.swift in Sources */,
 				B3484057240874000008AB76 /* ServicesInfo.swift in Sources */,
 				B348407C24119B960008AB76 /* UIColor+Util.swift in Sources */,
 				B376AD8623D929620088324B /* HomeCategoryTableCell.swift in Sources */,
+				B37AA53D24183518007BFA57 /* CommicsCoordinator.swift in Sources */,
 				B348404E2407017D0008AB76 /* HttpStatusCode.swift in Sources */,
 				B348404A240701110008AB76 /* ApiError.swift in Sources */,
+				B37AA5462418395E007BFA57 /* Optional+String.swift in Sources */,
 				B3484070240F08560008AB76 /* ViewModelDelegate.swift in Sources */,
 				B38014BC23DB83AA0002AEF6 /* MNavigationController.swift in Sources */,
 				B348406C240EFC040008AB76 /* DetailCoordinator.swift in Sources */,

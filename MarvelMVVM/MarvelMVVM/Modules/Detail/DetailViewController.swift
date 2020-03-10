@@ -42,11 +42,7 @@ class DetailViewController: UIViewController {
     
     //MARK: - Internal Methods
     func setupView() {
-        var url: URL? {
-            let urlString = "\(viewModel?.character.thumbnail?.path ?? "").\(viewModel?.character.thumbnail?.extensionThumb ?? "")"
-            return URL(string: urlString)
-        }
-        image.kf.setImage(with: url)
+        image.kf.setImage(with: viewModel?.character.thumbnail?.getUrl())
         name.text = viewModel?.character.name
         characterDescription.text = viewModel?.character.description?.isEmpty == false ? viewModel?.character.description : "Este personagem não possui descrição"
     }
