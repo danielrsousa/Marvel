@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Commics {
+struct Commics: Decodable {
     let id: Int?
-    let name: String?
+    let title: String?
     let description: String?
     let thumbnail : Thumbnail?
 }

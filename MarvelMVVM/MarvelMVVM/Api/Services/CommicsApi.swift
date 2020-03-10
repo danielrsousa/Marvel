@@ -8,6 +8,14 @@
 
 import Foundation
 
+fileprivate struct CommicsRequest: ApiRequestProtocol {
+    var baseURL = ServicesInfo.baseURL
+    var path: String
+    var method: HTTPMethod  = .get
+    var headers: [String : String]?
+    var parameters: [String : Any]
+}
+
 struct CommicsApi: ServiceProtocol {
     var api: ApiProtocol
     
@@ -15,8 +23,26 @@ struct CommicsApi: ServiceProtocol {
         self.api = api
     }
     
-    
-    func fetchCommics(offSet: Int) {
+    func fetchCommics(offSet: Int, completion: @escaping (Result<[Commics], ApiError>) -> Void) {
+        let tuple = CommicsRequest.getHashAndTimestamp()
         
+        let path = String.init(
+            format: ServicesInfo.EndPoints.Commics.all.rawValue,
+            ServicesInfo.apiKey,
+            tuple.timestamp,
+            tuple.hash,
+            offSet
+        )
+        
+        let request = CommicsRequest(path: path, parameters: [:])
+        
+        api.request(request: request, result: {(result: Result<Response<Commics>, ApiError>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
     }
 }

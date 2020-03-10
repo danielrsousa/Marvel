@@ -23,7 +23,7 @@ struct CharactersApi: ServiceProtocol {
         let tuple = CharactersRequest.getHashAndTimestamp()
         
         let path = String.init(
-            format: ServicesInfo.EndPoints.Characters.characters.rawValue,
+            format: ServicesInfo.EndPoints.Characters.all.rawValue,
             ServicesInfo.apiKey,
             tuple.timestamp,
             tuple.hash,
@@ -46,7 +46,7 @@ struct CharactersApi: ServiceProtocol {
         let tuple = CharactersRequest.getHashAndTimestamp()
         
         let path = String.init(
-            format: ServicesInfo.EndPoints.Characters.charactersByName.rawValue,
+            format: ServicesInfo.EndPoints.Characters.byName.rawValue,
             ServicesInfo.apiKey,
             tuple.timestamp,
             tuple.hash,
