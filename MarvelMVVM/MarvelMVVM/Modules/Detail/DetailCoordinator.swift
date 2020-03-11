@@ -12,7 +12,8 @@ class DetailCoordinator: BaseCoordinator {
     
     // MARK: - Initializers
     init(character: Character) {
-        let viewModel = DetailViewModel(character: character)
+        let service = CommicsApi(api: Api.shared)
+        let viewModel = DetailViewModel(character: character, service: service)
         let viewController = DetailViewController(viewModel: viewModel)
         super.init(viewController)
         viewModel.delegate = self

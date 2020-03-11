@@ -37,12 +37,7 @@ class CommicsViewController: UIViewController {
         })
     }
     
-    func registerCell() {
-        let layout = SnappingCollectionViewLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-        collectionView?.decelerationRate = UIScrollView.DecelerationRate.fast
-        
+    func registerCell() {        
         let nib = UINib(nibName: "CommicCollectionCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "CommicCollectionCell")
     }
@@ -106,49 +101,5 @@ extension CommicsViewController: UICollectionViewDelegateFlowLayout {
         let margin = width * 0.3
         return UIEdgeInsets(top: 10, left: margin / 2, bottom: 10, right: margin / 2)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let width = (UIScreen.main.bounds.width / 2)
-//        if let layout = collectionViewLayout as? SnappingCollectionViewLayout {
-//            let n = Double(viewModel?.commics.count ?? 0)
-//
-//            return layout.centerItemsInCollectionView(cellWidth: Double(width), numberOfItems: n, spaceBetweenCell: 0.0, collectionView: collectionView)
-//        }
-//
-//        return UIEdgeInsets()
-//    }
 
-    
-
-    
-    class SnappingCollectionViewLayout: UICollectionViewFlowLayout {
-        
-//        func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
-//            let totalWidth = cellWidth * numberOfItems
-//            let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
-//            let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
-//            let rightInset = leftInset
-//            return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-//        }
-        
-//        override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-//            guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
-//
-//            var offsetAdjustment = CGFloat.greatestFiniteMagnitude
-//            let horizontalOffset = proposedContentOffset.x + collectionView.contentInset.left
-//
-//            let targetRect = CGRect(x: proposedContentOffset.x, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
-//
-//            let layoutAttributesArray = super.layoutAttributesForElements(in: targetRect)
-//
-//            layoutAttributesArray?.forEach({ (layoutAttributes) in
-//                let itemOffset = layoutAttributes.frame.origin.x
-//                if fabsf(Float(itemOffset - horizontalOffset)) < fabsf(Float(offsetAdjustment)) {
-//                    offsetAdjustment = itemOffset - horizontalOffset
-//                }
-//            })
-//
-//            return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
-//        }
-    }
 }
