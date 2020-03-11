@@ -19,7 +19,7 @@ struct ServicesInfo {
             case byName = "/v1/public/characters?apikey=%@&ts=%@&hash=%@&offset=%i&nameStartsWith=%@"
         }
         enum Commics: String {
-            case all = "v1/public/comics?apikey=%@&ts=%@&hash=%@&offset=%i"
+            case all = "/v1/public/comics?apikey=%@&ts=%@&hash=%@&offset=%i"
         }
     }
 }

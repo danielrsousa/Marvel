@@ -52,6 +52,8 @@
 		B37AA541241838A4007BFA57 /* Commics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA540241838A4007BFA57 /* Commics.swift */; };
 		B37AA543241838E4007BFA57 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA542241838E4007BFA57 /* Thumbnail.swift */; };
 		B37AA5462418395E007BFA57 /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA5452418395E007BFA57 /* Optional+String.swift */; };
+		B37AA54A24196162007BFA57 /* CommicCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AA54824196162007BFA57 /* CommicCollectionCell.swift */; };
+		B37AA54B24196162007BFA57 /* CommicCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37AA54924196162007BFA57 /* CommicCollectionCell.xib */; };
 		B37BEE7C23E22290009FE1DA /* CardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37BEE7A23E22290009FE1DA /* CardCollectionCell.swift */; };
 		B37BEE7D23E22290009FE1DA /* CardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37BEE7B23E22290009FE1DA /* CardCollectionCell.xib */; };
 		B38014BC23DB83AA0002AEF6 /* MNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */; };
@@ -144,6 +146,8 @@
 		B37AA540241838A4007BFA57 /* Commics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commics.swift; sourceTree = "<group>"; };
 		B37AA542241838E4007BFA57 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		B37AA5452418395E007BFA57 /* Optional+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+String.swift"; sourceTree = "<group>"; };
+		B37AA54824196162007BFA57 /* CommicCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommicCollectionCell.swift; sourceTree = "<group>"; };
+		B37AA54924196162007BFA57 /* CommicCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommicCollectionCell.xib; sourceTree = "<group>"; };
 		B37BEE7A23E22290009FE1DA /* CardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCell.swift; sourceTree = "<group>"; };
 		B37BEE7B23E22290009FE1DA /* CardCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionCell.xib; sourceTree = "<group>"; };
 		B38014BB23DB83AA0002AEF6 /* MNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigationController.swift; sourceTree = "<group>"; };
@@ -432,6 +436,7 @@
 		B37AA535241834D5007BFA57 /* Commics */ = {
 			isa = PBXGroup;
 			children = (
+				B37AA54724195F90007BFA57 /* CollectionCell */,
 				B37AA536241834EF007BFA57 /* CommicsViewController.swift */,
 				B37AA537241834EF007BFA57 /* CommicsViewController.xib */,
 				B37AA53A24183509007BFA57 /* CommicsViewModel.swift */,
@@ -446,6 +451,15 @@
 				B37AA5452418395E007BFA57 /* Optional+String.swift */,
 			);
 			path = Optional;
+			sourceTree = "<group>";
+		};
+		B37AA54724195F90007BFA57 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				B37AA54824196162007BFA57 /* CommicCollectionCell.swift */,
+				B37AA54924196162007BFA57 /* CommicCollectionCell.xib */,
+			);
+			path = CollectionCell;
 			sourceTree = "<group>";
 		};
 		B37BEE7923E2225A009FE1DA /* CardCategoryCell */ = {
@@ -613,6 +627,7 @@
 				B376AD4B23D901B40088324B /* LaunchScreen.storyboard in Resources */,
 				B376ADA023D93E160088324B /* DetailViewController.xib in Resources */,
 				B376AD8723D929620088324B /* HomeCategoryTableCell.xib in Resources */,
+				B37AA54B24196162007BFA57 /* CommicCollectionCell.xib in Resources */,
 				B376AD4823D901B40088324B /* Assets.xcassets in Resources */,
 				B37BEE7D23E22290009FE1DA /* CardCollectionCell.xib in Resources */,
 				B348407624119A2F0008AB76 /* HomeHeaderCell.xib in Resources */,
@@ -644,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3484048240700110008AB76 /* Api.swift in Sources */,
+				B37AA54A24196162007BFA57 /* CommicCollectionCell.swift in Sources */,
 				B376AD9F23D93E160088324B /* DetailViewController.swift in Sources */,
 				B376AD7B23D908730088324B /* BaseCoordinator.swift in Sources */,
 				B348405324084F6E0008AB76 /* Characters.swift in Sources */,

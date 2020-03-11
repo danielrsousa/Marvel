@@ -12,7 +12,8 @@ class CommicsCoordinator: BaseCoordinator {
     
     // MARK: - Initializers
     init() {
-        let viewModel = CommicsViewModel()
+        let service = CommicsApi(api: Api.shared)
+        let viewModel = CommicsViewModel(service: service)
         let viewController = CommicsViewController(viewModel: viewModel)
         super.init(viewController)
     }

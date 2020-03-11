@@ -19,16 +19,17 @@ class MarvelTabBarController: UITabBarController {
     
     func setup() {
         let homeCoordinator = HomeCoordinator()
+        let commicsCoordinator = CommicsCoordinator()
         coordinators.append(homeCoordinator)
+        coordinators.append(commicsCoordinator)
+        
         let homeController = homeCoordinator.navigationController
-                
         homeController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
 
-//        let secondViewController = secondVC()
-//
-//        secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        let commicsController = commicsCoordinator.viewController
+        commicsController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
 
-        let controllers = [homeController]
+        let controllers = [homeController, commicsController]
 
         viewControllers = controllers
     }
