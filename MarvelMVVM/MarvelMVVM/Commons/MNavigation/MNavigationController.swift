@@ -20,8 +20,8 @@ class MNavigationController: UINavigationController {
     }
     
     private func transparentNavigation() {
-//        navigationBar.prefersLargeTitles = true
-//        navigationItem.largeTitleDisplayMode = .never
+        navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
         
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()

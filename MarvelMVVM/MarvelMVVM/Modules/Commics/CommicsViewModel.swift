@@ -33,7 +33,7 @@ class CommicsViewModel {
     func fetchCommics(success: @escaping () -> Void) {
         guard fetchMore else { return }
         fetchMore = false
-        service.fetchCommics(offSet: offSet) { [weak self] (result) in
+        service.fetchCommics(id: offSet) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {

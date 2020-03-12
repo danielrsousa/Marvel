@@ -30,7 +30,7 @@ class HomeCoordinator: BaseCoordinator {
 extension HomeCoordinator: HomeViewModelDelegate {
     func didOpenDetail(_ character: Character) {
         childCoordinator = DetailCoordinator(character: character)
-        viewController.navigationController?.present(childCoordinator!.viewController, animated: true)
+        viewController.navigationController?.pushViewController(childCoordinator!.viewController, animated: true)
         /**
             Necessary use of command CFRunLoopWakeUp(CFRunLoopGetCurrent()) for open the details correctly
             This occours because the main runloop sleep when selectionStyle the tablew is .none. For more informations see in https://stackoverflow.com/questions/21075540/presentviewcontrolleranimatedyes-view-will-not-appear-until-user-taps-again

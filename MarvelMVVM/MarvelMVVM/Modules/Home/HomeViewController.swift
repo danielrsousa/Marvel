@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Personagens"
-        
+        navigationItem.largeTitleDisplayMode = .always
         registerCells()
         setupSerachBar()
         loadCharacters()

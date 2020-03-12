@@ -18,9 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-//        coordinator = HomeCoordinator()
-        tabbarController = MarvelTabBarController()
-        window?.rootViewController = tabbarController//coordinator?.navigationController
+        coordinator = HomeCoordinator()
+//        tabbarController = MarvelTabBarController()
+        window?.rootViewController = coordinator?.navigationController
         window?.makeKeyAndVisible()
     }
 

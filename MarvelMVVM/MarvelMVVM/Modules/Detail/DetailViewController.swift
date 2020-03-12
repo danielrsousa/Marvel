@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var characterDescription: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var fixedButton: UIPrimaryButton!
+    @IBOutlet weak var floatButton: UIPrimaryButton!
     
     //MARK: - Private Properties
     private let viewModel: DetailViewModel?
@@ -34,6 +36,9 @@ class DetailViewController: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Details"
+        navigationItem.largeTitleDisplayMode = .never
+        
         setupView()
         registerCell()
         viewModel?.fetchCommics(success: { [weak self] in
@@ -57,28 +62,46 @@ class DetailViewController: UIViewController {
         collectionView.register(nib, forCellWithReuseIdentifier: "CommicCollectionCell")
     }
     
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let centerX = scrollView.contentOffset.x + scrollView.frame.size.width/2
+//        for cell in collectionView.visibleCells {
+//
+//            var offsetX = centerX - cell.center.x
+//            if offsetX < 0 {
+//                offsetX *= -1
+//            }
+//
+//            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+//            if offsetX > 50 {
+//
+//                let offsetPercentage = (offsetX - 50) / view.bounds.width
+//                var scaleX = 1-offsetPercentage
+//
+//                if scaleX < 0.8 {
+//                    scaleX = 0.8
+//                }
+//                cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
+//            }
+//        }
+//    }
+}
+
+extension DetailViewController: UIScrollViewDelegate {
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let centerX = scrollView.contentOffset.x + scrollView.frame.size.width/2
-        for cell in collectionView.visibleCells {
-
-            var offsetX = centerX - cell.center.x
-            if offsetX < 0 {
-                offsetX *= -1
+        if scrollView.bounds.contains(floatButton.frame) {
+            UIView.animate(withDuration: 0.2) {
+                self.fixedButton.alpha = 1.0
+                self.floatButton.alpha = 0.0
             }
-
-            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
-            if offsetX > 50 {
-
-                let offsetPercentage = (offsetX - 50) / view.bounds.width
-                var scaleX = 1-offsetPercentage
-
-                if scaleX < 0.8 {
-                    scaleX = 0.8
-                }
-                cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
+        } else {
+            UIView.animate(withDuration: 0.2) {
+                self.fixedButton.alpha = 0.0
+                self.floatButton.alpha = 1.0
             }
         }
     }
+
 }
 
 

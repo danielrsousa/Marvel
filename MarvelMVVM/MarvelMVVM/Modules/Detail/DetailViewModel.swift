@@ -33,9 +33,9 @@ class DetailViewModel {
     
     //MARK: - Internal Methods
     func fetchCommics(success: @escaping () -> Void) {
-        guard fetchMore else { return }
+        guard let id = character.id, fetchMore else { return }
         fetchMore = false
-        service.fetchCommics(offSet: offSet) { [weak self] (result) in
+        service.fetchCommics(id: id) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {

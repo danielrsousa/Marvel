@@ -23,15 +23,15 @@ struct CommicsApi: ServiceProtocol {
         self.api = api
     }
     
-    func fetchCommics(offSet: Int, completion: @escaping (Result<[Commics], ApiError>) -> Void) {
+    func fetchCommics(id: Int, completion: @escaping (Result<[Commics], ApiError>) -> Void) {
         let tuple = CommicsRequest.getHashAndTimestamp()
         
         let path = String.init(
-            format: ServicesInfo.EndPoints.Commics.all.rawValue,
+            format: ServicesInfo.EndPoints.Characters.commics.rawValue,
+            id,
             ServicesInfo.apiKey,
             tuple.timestamp,
-            tuple.hash,
-            offSet
+            tuple.hash
         )
         
         let request = CommicsRequest(path: path, parameters: [:])
