@@ -16,7 +16,7 @@ class MNavigationController: UINavigationController {
     }
 
     private func setup() {
-        gradientNavigaiton()
+        transparentNavigation()
     }
     
     private func transparentNavigation() {
@@ -27,14 +27,13 @@ class MNavigationController: UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
         view.backgroundColor = .clear
-        navigationBar.tintColor = .white
+        navigationBar.tintColor = .label
         navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .light)
+            NSAttributedString.Key.foregroundColor: UIColor.label
         ]
         
         navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.foregroundColor: UIColor.label,
         ]
     }
     

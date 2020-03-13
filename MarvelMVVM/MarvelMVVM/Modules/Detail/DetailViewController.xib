@@ -11,8 +11,6 @@
             <connections>
                 <outlet property="characterDescription" destination="jTn-FF-hhk" id="doM-Az-VYd"/>
                 <outlet property="collectionView" destination="aBV-HC-ASe" id="JwE-mC-AGu"/>
-                <outlet property="fixedButton" destination="9hC-mc-0LQ" id="Hpt-qu-89z"/>
-                <outlet property="floatButton" destination="jTv-Ew-szY" id="qfo-Sy-VVH"/>
                 <outlet property="image" destination="jcp-AU-mm8" id="zbh-Y3-PTm"/>
                 <outlet property="name" destination="OZT-kr-uyB" id="jwP-8M-0aD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -20,11 +18,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="877"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="793"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87z-ZS-lil">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="877"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="793"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-AU-mm8">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
@@ -60,8 +58,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="8kA-j8-QKF">
-                            <rect key="frame" x="16" y="316" width="288" height="505.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8kA-j8-QKF">
+                            <rect key="frame" x="16" y="316" width="288" height="372.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTn-FF-hhk">
                                     <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
@@ -69,18 +67,18 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhu-S0-VUT">
-                                    <rect key="frame" x="0.0" y="38.5" width="288" height="36"/>
+                                    <rect key="frame" x="0.0" y="28.5" width="288" height="36"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aBV-HC-ASe">
-                                    <rect key="frame" x="0.0" y="92.5" width="288" height="340"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aBV-HC-ASe">
+                                    <rect key="frame" x="0.0" y="72.5" width="288" height="300"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="340" id="IOy-0w-hMS"/>
+                                        <constraint firstAttribute="height" constant="300" id="IOy-0w-hMS"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qE5-gH-x3P">
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qE5-gH-x3P">
                                         <size key="itemSize" width="50" height="50"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -91,13 +89,6 @@
                                         <outlet property="delegate" destination="-1" id="LQ7-b1-Ns2"/>
                                     </connections>
                                 </collectionView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hC-mc-0LQ" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="450.5" width="288" height="55"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="55" id="Hg9-sC-7XV"/>
-                                    </constraints>
-                                    <state key="normal" title="Add in favorite"/>
-                                </button>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -114,35 +105,25 @@
                         <constraint firstItem="5iU-Fo-JKs" firstAttribute="height" secondItem="jcp-AU-mm8" secondAttribute="height" id="wNj-kh-TRF"/>
                         <constraint firstItem="5iU-Fo-JKs" firstAttribute="centerY" secondItem="jcp-AU-mm8" secondAttribute="centerY" id="z2e-aK-uo6"/>
                     </constraints>
-                    <viewLayoutGuide key="contentLayoutGuide" id="oVw-8n-tts"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="379-69-gdi"/>
+                    <viewLayoutGuide key="contentLayoutGuide" id="0RF-5e-tus"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="yqc-co-yWT"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="eZb-gb-P0G"/>
                     </connections>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTv-Ew-szY" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
-                    <rect key="frame" x="16" y="792" width="288" height="55"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="55" id="4Hq-Jr-xVI"/>
-                    </constraints>
-                    <state key="normal" title="Add in favorite"/>
-                </button>
             </subviews>
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="87z-ZS-lil" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OM2-Bo-fVC"/>
                 <constraint firstItem="jcp-AU-mm8" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="OuW-As-669"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jTv-Ew-szY" secondAttribute="trailing" constant="16" id="PkE-aJ-aj8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="87z-ZS-lil" secondAttribute="bottom" id="ZLw-eP-PrZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="87z-ZS-lil" secondAttribute="trailing" id="eCp-Jh-5XI"/>
-                <constraint firstItem="jTv-Ew-szY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="f7x-bV-S1s"/>
                 <constraint firstItem="87z-ZS-lil" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xXm-hB-IYG"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jTv-Ew-szY" secondAttribute="bottom" constant="30" id="xYq-ap-i90"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="131.25" y="316.37323943661971"/>
+            <point key="canvasLocation" x="131.25" y="272.00704225352115"/>
         </view>
     </objects>
 </document>

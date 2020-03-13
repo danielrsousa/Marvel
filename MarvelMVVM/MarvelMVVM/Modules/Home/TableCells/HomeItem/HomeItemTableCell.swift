@@ -35,6 +35,7 @@ class HomeItemTableCell: UITableViewCell {
     }
     
     func setup(character: Character) {
+        photoImage.kf.indicatorType = .activity
         photoImage.kf.setImage(with: character.thumbnail?.getUrl())
         name.text = character.name
         resume.text = character.description?.isEmpty == false ? character.description : "Este personagem não possui descrição"

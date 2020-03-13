@@ -19,6 +19,7 @@ class CommicCollectionCell: UICollectionViewCell {
     
     func setup(commic: Commics?) {
         guard let commic = commic else { return }
+        image.kf.indicatorType = .activity
         image.kf.setImage(with: commic.thumbnail?.getUrl())
     }
 

@@ -6,9 +6,14 @@
 //  Copyright © 2020 Daniel Rocha. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class DetailCoordinator: BaseCoordinator {
+    
+    var navigationController: UINavigationController {
+        let nav = MNavigationController(rootViewController: viewController)
+        return nav
+    }
     
     // MARK: - Initializers
     init(character: Character) {
