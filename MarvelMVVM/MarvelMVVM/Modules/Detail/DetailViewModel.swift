@@ -40,7 +40,8 @@ class DetailViewModel {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let commics):
-                    self.commics.append(contentsOf: commics)
+                    let filter = commics.filter { !$0.thumbnail.debugDescription.contains("image_not_available") }
+                    self.commics.append(contentsOf: filter)
                     success()
                 case.failure(_):
                     success()

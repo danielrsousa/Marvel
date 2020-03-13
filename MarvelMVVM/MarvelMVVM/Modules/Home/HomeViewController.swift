@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     
     //MARK: - Private Properties
-    private let viewModel: HomeViewModel?
+    private let viewModel: HomeViewModel
     private var searchController: UISearchController?
     
     //MARK: - Initializers
@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = nil
+        self.viewModel = HomeViewModel(service: nil)
         super.init(coder: coder)
     }
     
@@ -54,11 +54,10 @@ class HomeViewController: UIViewController {
     func registerCells() {
         tableView.register(HomeHeaderCell.nib, forHeaderFooterViewReuseIdentifier: "HomeHeaderCell")
         tableView.register(HomeItemTableCell.self)
-        tableView.register(HomeCategoryTableCell.self)
     }
 
     func loadCharacters(animated: Bool = false, completion: (() -> Void)? = nil) {
-        viewModel?.fetchBy(success: { [weak self] in
+        viewModel.fetchBy(success: { [weak self] in
             guard let self = self else { return }
             animated ? self.reloadTableWithAnimation() : self.tableView.reloadData()
             completion?()
@@ -66,6 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     func reloadTableWithAnimation() {
+        tableView.reloadData()
         let range = NSMakeRange(0, self.tableView.numberOfSections)
         let sections = NSIndexSet(indexesIn: range)
         self.tableView.reloadSections(sections as IndexSet, with: .fade)
@@ -75,33 +75,31 @@ class HomeViewController: UIViewController {
 //MARK: - Conforms UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let character = self.viewModel?.characteres[indexPath.row] else { return }
-        viewModel?.select(character: character)
+        viewModel.select(character: self.viewModel.characteres[indexPath.row])
     }
 }
 
 //MARK: - Conforms UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.characteres.count ?? 0
+        return viewModel.characteres.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(of: HomeItemTableCell.self, for: indexPath) { (cell) in
-            guard let character = self.viewModel?.characteres[indexPath.row] else { return }
-            cell.setup(character: character)
+            cell.setup(character: self.viewModel.characteres[indexPath.row])
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard viewModel?.showHeader() == true else { return nil }
+        guard viewModel.showHeader() == true else { return nil }
         
         guard let headerCell = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: "HomeHeaderCell"
         ) as? HomeHeaderCell else { return nil }
         
         headerCell.delegate = self
-        headerCell.initFilter(viewModel?.searchText ?? "")
+        headerCell.initFilter(viewModel.searchText)
         return headerCell
     }
     
@@ -110,13 +108,14 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard viewModel?.showHeader() == true else { return 0.0 }
+        guard viewModel.showHeader() == true else { return 0.0 }
         return 60
     }
 }
 
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard viewModel.foundAnyCharacter else { return }
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height {
@@ -128,9 +127,10 @@ extension HomeViewController: UIScrollViewDelegate {
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let name = searchBar.text, !name.isEmpty {
-            viewModel?.fetchBy(name, success: { [weak self] in
+            viewModel.fetchBy(name, success: { [weak self] in
                 self?.reloadTableWithAnimation()
-                self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                guard let self = self, self.viewModel.foundAnyCharacter else { return }
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             })
         }
         searchController?.isActive = false
@@ -139,7 +139,7 @@ extension HomeViewController: UISearchBarDelegate {
 
 extension HomeViewController: HomeHeaderCellDelegate {
     func disableFilter() {
-        viewModel?.disableFilter()
+        viewModel.disableFilter()
         loadCharacters(animated: true) { [weak self] in
             self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }

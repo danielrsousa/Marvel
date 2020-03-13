@@ -12,6 +12,9 @@ import Kingfisher
 class CommicCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var image: UIImageView!
+
+    static let width = UIScreen.main.bounds.width / 2
+    static let height = width * 1.54
     
     override func awakeFromNib() {
         super.awakeFromNib()

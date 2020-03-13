@@ -16,8 +16,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var characterDescription: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var fixedButton: UIPrimaryButton!
-    @IBOutlet weak var floatButton: UIPrimaryButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     
     //MARK: - Private Properties
     private let viewModel: DetailViewModel?
@@ -39,14 +39,19 @@ class DetailViewController: UIViewController {
         title = "Details"
         navigationItem.largeTitleDisplayMode = .never
         
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(close))
         
         setupView()
         registerCell()
         viewModel?.fetchCommics(success: { [weak self] in
-            self?.collectionView.reloadData()
+            guard let self = self else { return }
+            UIView.animate(withDuration: 0.0, animations: {
+                self.collectionView.reloadData()
+            }, completion: { (completion) in
+                self.scrollViewDidScroll(self.scrollView)
+            })
+            
         })
     }
     
@@ -67,6 +72,8 @@ class DetailViewController: UIViewController {
         image.kf.setImage(with: viewModel?.character.thumbnail?.getUrl())
         name.text = viewModel?.character.name
         characterDescription.text = viewModel?.character.description?.isEmpty == false ? viewModel?.character.description : "Este personagem não possui descrição"
+        
+        collectionHeight.constant = CommicCollectionCell.height + 1
     }
     
     func registerCell() {
@@ -75,25 +82,6 @@ class DetailViewController: UIViewController {
     }
 
 }
-
-//extension DetailViewController: UIScrollViewDelegate {
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.bounds.contains(floatButton.frame) {
-//            UIView.animate(withDuration: 0.2) {
-//                self.fixedButton.alpha = 1.0
-//                self.floatButton.alpha = 0.0
-//            }
-//        } else {
-//            UIView.animate(withDuration: 0.2) {
-//                self.fixedButton.alpha = 0.0
-//                self.floatButton.alpha = 1.0
-//            }
-//        }
-//    }
-//
-//}
-
 
 extension DetailViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -141,14 +129,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (UIScreen.main.bounds.width / 2)
-        return CGSize(width: width, height: width * 1.3)
+        return CGSize(width: CommicCollectionCell.width,
+                      height: CommicCollectionCell.height)
     }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let width = collectionView.frame.width
-//        let margin = width * 0.3
-//        return UIEdgeInsets(top: 10, left: margin / 2, bottom: 10, right: margin / 2)
-//    }
-
 }

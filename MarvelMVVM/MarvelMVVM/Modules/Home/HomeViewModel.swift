@@ -21,7 +21,7 @@ protocol HomeViewModelDelegate: AnyObject {
 class HomeViewModel {
 
     //MARK: - Private Properties
-    private let service: CharactersApi
+    private let service: CharactersApi?
     private var offSet = 0
     private var fetchMore = true
     private(set) var searchText: String = ""
@@ -30,12 +30,15 @@ class HomeViewModel {
             self.offSet = self.characteres.count
         }
     }
+    var foundAnyCharacter: Bool {
+         return characteres.count > 0
+    }
     
     //MARK: - Delegates
     weak var delegate: HomeViewModelDelegate?
     
     //MARK: - Initializers
-    init(service: CharactersApi) {
+    init(service: CharactersApi?) {
         self.service = service
         self.characteres = []
     }
@@ -58,7 +61,7 @@ class HomeViewModel {
     private func fetchCharacteres(success: @escaping () -> Void) {
         guard fetchMore else { return }
         fetchMore = false
-        service.fetchCharacters(offSet: offSet) { [weak self] (result) in
+        service?.fetchCharacters(offSet: offSet) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
@@ -76,7 +79,7 @@ class HomeViewModel {
     private func fetchCharactersBy(_ name: String, success: @escaping () -> Void) {
         guard fetchMore else { return }
         fetchMore = false
-        service.fetchCharactersBy(name, offSet: offSet) { [weak self] (result) in
+        service?.fetchCharactersBy(name, offSet: offSet) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {

@@ -16,25 +16,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="385" height="57"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnn-uH-se7" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
-                        <rect key="frame" x="20" y="11" width="75" height="35"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnn-uH-se7" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
+                        <rect key="frame" x="20" y="11" width="101" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="maO-pI-Ep2"/>
                         </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="contentEdgeInsets" minX="20" minY="4" maxX="20" maxY="4"/>
-                        <state key="normal" title="Filtro"/>
+                        <state key="normal" title="Filtro" image="magnifyingglass" catalog="system"/>
                         <connections>
                             <action selector="filterAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JtU-43-gGE"/>
                         </connections>
                     </button>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="Cnn-uH-se7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hfv-KG-ZOI"/>
                     <constraint firstItem="Cnn-uH-se7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="M7x-7C-272"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="filterButton" destination="Cnn-uH-se7" id="bjb-lm-FPq"/>
@@ -42,4 +41,7 @@
             <point key="canvasLocation" x="93.478260869565219" y="86.049107142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

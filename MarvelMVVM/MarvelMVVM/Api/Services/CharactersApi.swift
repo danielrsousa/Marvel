@@ -45,13 +45,15 @@ struct CharactersApi: ServiceProtocol {
     func fetchCharactersBy(_ name: String, offSet: Int, completion: @escaping (Result<[Character], ApiError>) -> Void) {
         let tuple = CharactersRequest.getHashAndTimestamp()
         
+        let nameInURLFormat = name.replacingOccurrences(of: " ", with: "%20")
+        
         let path = String.init(
             format: ServicesInfo.EndPoints.Characters.byName.rawValue,
             ServicesInfo.apiKey,
             tuple.timestamp,
             tuple.hash,
             offSet,
-            name
+            nameInURLFormat
         )
         
         let request = CharactersRequest(path: path, parameters: [:])
