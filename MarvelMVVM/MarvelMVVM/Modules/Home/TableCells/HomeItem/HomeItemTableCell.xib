@@ -33,7 +33,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERI-WH-pk2" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERI-WH-pk2" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
                                 <rect key="frame" x="8" y="132" width="130" height="35"/>
                                 <color key="backgroundColor" red="0.80392156862745101" green="0.18026929480000001" blue="0.15278990270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
