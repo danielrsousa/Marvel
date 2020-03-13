@@ -19,8 +19,8 @@ This application is a example of my knowledge with Swift 5.0 using architecture 
 The application offers supports  dark mode
 
 <p>
-<img src="./images/hulk_darkmode.png" alt="Screenshot" width="210" height="407">
- <img src="./images/hulk.png" alt="Screenshot" width="210" height="407">
+<img src="./images/hulk_home_darkmode.png" alt="Screenshot" width="210" height="407">
+ <img src="./images/hulk_home.png" alt="Screenshot" width="210" height="407">
  <img src="./images/detail_dark.png" alt="Screenshot" width="210" height="407">
  <img src="./images/detail.png" alt="Screenshot" width="210" height="407">
 </p>
