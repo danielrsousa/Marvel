@@ -52,6 +52,9 @@
 		B396B0AB2408A9970063680A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B396B0A82408A9060063680A /* Kingfisher.framework */; };
 		B396B0AC2408A9970063680A /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B396B0A82408A9060063680A /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B3CA4AF824005B82004C950C /* CALayer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CA4AF724005B82004C950C /* CALayer+Utils.swift */; };
+		B3E341D82421802F005700C9 /* StatusTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E341D62421802F005700C9 /* StatusTableCell.swift */; };
+		B3E341D92421802F005700C9 /* StatusTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E341D72421802F005700C9 /* StatusTableCell.xib */; };
+		B3E341DC24218902005700C9 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E341DB24218902005700C9 /* ProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +139,9 @@
 		B38014BE23DB94190002AEF6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B396B0A82408A9060063680A /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
 		B3CA4AF724005B82004C950C /* CALayer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Utils.swift"; sourceTree = "<group>"; };
+		B3E341D62421802F005700C9 /* StatusTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableCell.swift; sourceTree = "<group>"; };
+		B3E341D72421802F005700C9 /* StatusTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusTableCell.xib; sourceTree = "<group>"; };
+		B3E341DB24218902005700C9 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +331,7 @@
 		B376AD7823D9081A0088324B /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				B3E341DA242188EC005700C9 /* ProgressHUD */,
 				B348407724119A800008AB76 /* UIButton */,
 				B348406E240F08400008AB76 /* ViewModel */,
 				B348405B24087DF00008AB76 /* Encrypt */,
@@ -357,18 +364,19 @@
 			isa = PBXGroup;
 			children = (
 				B34840722411983A0008AB76 /* Header */,
-				B376AD8923D92A980088324B /* HomeItem */,
+				B3E341D524217FD6005700C9 /* EmptyState */,
+				B376AD8923D92A980088324B /* Character */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
 		};
-		B376AD8923D92A980088324B /* HomeItem */ = {
+		B376AD8923D92A980088324B /* Character */ = {
 			isa = PBXGroup;
 			children = (
 				B376AD8E23D92D600088324B /* HomeItemTableCell.swift */,
 				B376AD8F23D92D600088324B /* HomeItemTableCell.xib */,
 			);
-			path = HomeItem;
+			path = Character;
 			sourceTree = "<group>";
 		};
 		B376AD9223D932A40088324B /* Utils */ = {
@@ -458,6 +466,23 @@
 				B376AD9523D9332C0088324B /* UIView+Utils.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		B3E341D524217FD6005700C9 /* EmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				B3E341D62421802F005700C9 /* StatusTableCell.swift */,
+				B3E341D72421802F005700C9 /* StatusTableCell.xib */,
+			);
+			path = EmptyState;
+			sourceTree = "<group>";
+		};
+		B3E341DA242188EC005700C9 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B3E341DB24218902005700C9 /* ProgressHUD.swift */,
+			);
+			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,6 +590,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3E341D92421802F005700C9 /* StatusTableCell.xib in Resources */,
 				B376AD4B23D901B40088324B /* LaunchScreen.storyboard in Resources */,
 				B376ADA023D93E160088324B /* DetailViewController.xib in Resources */,
 				B37AA54B24196162007BFA57 /* CommicCollectionCell.xib in Resources */,
@@ -598,6 +624,8 @@
 			files = (
 				B3484048240700110008AB76 /* Api.swift in Sources */,
 				B37AA54A24196162007BFA57 /* CommicCollectionCell.swift in Sources */,
+				B3E341DC24218902005700C9 /* ProgressHUD.swift in Sources */,
+				B3E341D82421802F005700C9 /* StatusTableCell.swift in Sources */,
 				B376AD9F23D93E160088324B /* DetailViewController.swift in Sources */,
 				B376AD7B23D908730088324B /* BaseCoordinator.swift in Sources */,
 				B348405324084F6E0008AB76 /* Characters.swift in Sources */,

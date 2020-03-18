@@ -16,13 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="385" height="57"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnn-uH-se7" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnn-uH-se7" customClass="UIPrimaryButton" customModule="MarvelMVVM" customModuleProvider="target">
                         <rect key="frame" x="20" y="11" width="101" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="maO-pI-Ep2"/>
                         </constraints>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <inset key="contentEdgeInsets" minX="20" minY="4" maxX="20" maxY="4"/>
+                        <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-3" maxY="0.0"/>
                         <state key="normal" title="Filtro" image="magnifyingglass" catalog="system"/>
                         <connections>
                             <action selector="filterAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JtU-43-gGE"/>

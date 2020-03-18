@@ -53,11 +53,14 @@ class HomeViewController: UIViewController {
     
     func registerCells() {
         tableView.register(HomeHeaderCell.nib, forHeaderFooterViewReuseIdentifier: "HomeHeaderCell")
+        tableView.register(StatusTableCell.self)
         tableView.register(HomeItemTableCell.self)
     }
 
     func loadCharacters(animated: Bool = false, completion: (() -> Void)? = nil) {
+        ProgressHUD.show(tableView)
         viewModel.fetchBy(success: { [weak self] in
+            ProgressHUD.dismiss()
             guard let self = self else { return }
             animated ? self.reloadTableWithAnimation() : self.tableView.reloadData()
             completion?()
@@ -82,10 +85,17 @@ extension HomeViewController: UITableViewDelegate {
 //MARK: - Conforms UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard viewModel.foundAnyCharacter else { return 1 }
         return viewModel.characteres.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard viewModel.foundAnyCharacter else {
+            return tableView.dequeueReusableCell(of: StatusTableCell.self, for: indexPath) { (cell) in
+                cell.setup(status: .none)
+            }
+        }
+        
         return tableView.dequeueReusableCell(of: HomeItemTableCell.self, for: indexPath) { (cell) in
             cell.setup(character: self.viewModel.characteres[indexPath.row])
         }
@@ -103,7 +113,8 @@ extension HomeViewController: UITableViewDataSource {
         return headerCell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {      
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard viewModel.foundAnyCharacter else { return tableView.frame.height }
         return 213
     }
     
@@ -127,7 +138,9 @@ extension HomeViewController: UIScrollViewDelegate {
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let name = searchBar.text, !name.isEmpty {
+            ProgressHUD.show(tableView)
             viewModel.fetchBy(name, success: { [weak self] in
+                ProgressHUD.dismiss()
                 self?.reloadTableWithAnimation()
                 guard let self = self, self.viewModel.foundAnyCharacter else { return }
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
