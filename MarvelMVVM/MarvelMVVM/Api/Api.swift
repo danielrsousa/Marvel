@@ -56,18 +56,18 @@ class Api: ApiProtocol {
                  defer { self?.dataTask = nil }
                  
                  guard let http = response as? HTTPURLResponse else {
-                     print("❌ Problemas de conexão")
+                     printFailure("Problemas de conexão")
                      result(.failure(ApiError.connectionFailure))
                      return
                  }
                  
                  guard let status = HTTPStatusCode(rawValue: http.statusCode), let data = data else {
-                     print("❌ Falha ao converter status code ou data")
+                     printFailure("Falha ao converter status code ou data")
                      result(.failure(ApiError.connectionFailure))
                      return
                  }
                  
-                 self?.printJson(http.statusCode, data: data)
+                 printJson(http.statusCode, data: data)
                  let model = try? JSONDecoder().decode(R.self, from: data) as R
                  
                  switch status {
@@ -75,11 +75,11 @@ class Api: ApiProtocol {
                      result(.success(model!))
                  default:
                      if let error = error {
-                         print("❌ Erro de requisição \(error.localizedDescription)")
+                         printFailure("Erro de requisição \(error.localizedDescription)")
                          result(.failure(ApiError.requestError(error)))
                          return
                      }
-                     print("❌ Erro de requisição desconhecido")
+                     printFailure("Erro de requisição desconhecido")
                      result(.failure(ApiError.unknown))
                  }
                  
@@ -88,7 +88,7 @@ class Api: ApiProtocol {
              dataTask?.resume()
        
         } catch let error {
-            print("❌ Lançamento de falha \(error.localizedDescription)")
+            printFailure("Lançamento de falha \(error.localizedDescription)")
             guard let error = error as? ApiError else {
                 result(.failure(.unknown))
                 return
@@ -109,7 +109,7 @@ class Api: ApiProtocol {
         }
         
         guard let url = component?.url else {
-            print("❌ Problemas ao converter url")
+            printFailure("Problemas ao converter url")
             throw ApiError.malformedRequest
         }
         
@@ -120,13 +120,17 @@ class Api: ApiProtocol {
         guard  request.method != .get else { return nil }
         return try JSONSerialization.data(withJSONObject: request.parameters)
     }
-    
-    private func printJson(_ status: Int, data: Data) {
-        print("✅ Status: \(status)")
+}
+
+fileprivate func printFailure(_ message: String) {
+    print("❌ \(message)")
+}
+
+fileprivate func printJson(_ status: Int, data: Data) {
+    print("✅ Status: \(status)")
 //        if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
 //            print("json: \(json)")
 //        }
-    }
 }
 
 
