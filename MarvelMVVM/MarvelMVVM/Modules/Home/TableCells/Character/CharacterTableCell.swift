@@ -7,10 +7,9 @@
 //
 
 import UIKit
-//import QuartzCore
 import Kingfisher
 
-class HomeItemTableCell: UITableViewCell {
+class CharacterTableCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageContainerView: UIView!
@@ -38,6 +37,6 @@ class HomeItemTableCell: UITableViewCell {
         photoImage.kf.indicatorType = .activity
         photoImage.kf.setImage(with: character.thumbnail?.getUrl())
         name.text = character.name
-        resume.text = character.description?.isEmpty == false ? character.description : "Este personagem não possui descrição"
+        resume.text = character.description?.isEmpty == false ? character.description : "This character has no description"
     }
 }

@@ -10,8 +10,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-//    @IBOutlet weak var imageTeste: UIImageView!
-//    let imageTeste = UIImageView(image: UIImage(named: "teste"))
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var characterDescription: UILabel!
@@ -38,9 +36,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         title = "Details"
         navigationItem.largeTitleDisplayMode = .never
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(close))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
         
         setupView()
         registerCell()
@@ -55,13 +51,6 @@ class DetailViewController: UIViewController {
         })
     }
     
-    @objc func close() {
-        self.dismiss(animated: true)
-    }
-    
-    @objc func addTapped() {
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         viewModel?.finish()
     }
@@ -71,7 +60,7 @@ class DetailViewController: UIViewController {
         image.kf.indicatorType = .activity
         image.kf.setImage(with: viewModel?.character.thumbnail?.getUrl())
         name.text = viewModel?.character.name
-        characterDescription.text = viewModel?.character.description?.isEmpty == false ? viewModel?.character.description : "Este personagem não possui descrição"
+        characterDescription.text = viewModel?.character.description?.isEmpty == false ? viewModel?.character.description : "This character has no description"
         
         collectionHeight.constant = CommicCollectionCell.height + 1
     }
@@ -80,7 +69,11 @@ class DetailViewController: UIViewController {
         let nib = UINib(nibName: "CommicCollectionCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "CommicCollectionCell")
     }
-
+    
+    @objc
+    func close() {
+        self.dismiss(animated: true)
+    }
 }
 
 extension DetailViewController: UICollectionViewDelegate {
@@ -113,7 +106,6 @@ extension DetailViewController: UICollectionViewDataSource {
         return viewModel?.commics.count ?? 0
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "CommicCollectionCell", for: indexPath) as? CommicCollectionCell) else {
             return UICollectionViewCell()

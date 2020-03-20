@@ -8,12 +8,6 @@
 
 import Foundation
 
-protocol HomeViewProtocol {
-    var characteres: [Character] { get }
-    var searchText: String { get }
-    func fetchBy(_ name: String, success: @escaping () -> Void)
-}
-
 protocol HomeViewModelDelegate: AnyObject {
     func didOpenDetail(_ character: Character)
 }
@@ -22,8 +16,8 @@ class HomeViewModel {
 
     //MARK: - Private Properties
     private let service: CharactersApi?
-    private var offSet = 0
-    private var fetchMore = true
+    private(set) var offSet = 0
+    private(set) var fetchMore = true
     private(set) var searchText: String = ""
     private(set) var characteres: [Character] {
         didSet {
@@ -33,6 +27,7 @@ class HomeViewModel {
     var foundAnyCharacter: Bool {
          return characteres.count > 0
     }
+    private(set)var fetchState: StatusMessages = .none
     
     //MARK: - Delegates
     weak var delegate: HomeViewModelDelegate?
@@ -44,66 +39,66 @@ class HomeViewModel {
     }
     
     //MARK: - Internal Methods
-    func fetchBy(_ name: String = "", success: @escaping () -> Void) {
+    func fetchBy(_ name: String = "", completion: @escaping () -> Void) {
         guard name.isEmpty && searchText.isEmpty  else {
             if !name.isEmpty {
                 searchText = name
                 self.characteres.removeAll()
             }
             
-            fetchCharactersBy(searchText, success: success)
+            fetchCharactersBy(searchText, completion: completion)
             return
         }
         
-        fetchCharacteres(success: success)
+        fetchCharacteres(completion: completion)
     }
     
-    private func fetchCharacteres(success: @escaping () -> Void) {
-        guard fetchMore else { return }
-        fetchMore = false
-        service?.fetchCharacters(offSet: offSet) { [weak self] (result) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let characters):
-                    self.characteres.append(contentsOf: characters)
-                    success()
-                case.failure(_):
-                    success()
-                }
-                self.fetchMore = true
-            }
-        }
-    }
-    
-    private func fetchCharactersBy(_ name: String, success: @escaping () -> Void) {
-        guard fetchMore else { return }
-        fetchMore = false
-        service?.fetchCharactersBy(name, offSet: offSet) { [weak self] (result) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let characters):
-                    self.characteres.append(contentsOf: characters)
-                    success()
-                case.failure(_):
-                    success()
-                }
-                self.fetchMore = true
-            }
-        }
-    }
-    
-    func disableFilter() {
+    func clearFilter() {
         searchText = ""
-        self.characteres.removeAll()
+        fetchState = .none
+        characteres.removeAll()
     }
     
-    func showHeader() -> Bool {
+    func shoudShowHeader() -> Bool {
         return !searchText.isEmpty
     }
     
     func select(character: Character) {
         delegate?.didOpenDetail(character)
+    }
+    
+    //MARK: - Private Methods
+    private func fetchCharacteres(completion: @escaping () -> Void) {
+        guard fetchMore else { return }
+        fetchMore = false
+        service?.fetchCharacters(offSet: offSet) { [weak self] (result) in
+            self?.checkResult(result, completion: completion)
+        }
+    }
+    
+    private func fetchCharactersBy(_ name: String, completion: @escaping () -> Void) {
+        guard fetchMore else { return }
+        fetchMore = false
+        service?.fetchCharactersBy(name, offSet: offSet) { [weak self] (result) in
+            self?.checkResult(result, completion: completion)
+        }
+    }
+    
+    private func checkResult(_ result: Result<[Character], ApiError>, completion: @escaping () -> Void) {
+        switch result {
+        case .success(let characteres):
+            self.characteres.append(contentsOf: characteres)
+            if self.isEmptyState() {
+                fetchState = .emptyState
+            }
+        case.failure(_):
+            fetchState = .genericError
+        }
+        completion()
+        self.fetchMore = true
+    }
+    
+    private func isEmptyState() -> Bool {
+        return offSet == 0 && characteres.count == 0
     }
 }

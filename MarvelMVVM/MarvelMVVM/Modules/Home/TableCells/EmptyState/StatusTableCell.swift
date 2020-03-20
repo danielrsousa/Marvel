@@ -8,14 +8,7 @@
 
 import UIKit
 
-class StatusTableCell: UITableViewCell {
-    
-    enum StatusMessages: String {
-        case empty = "Character not fount\nTry to search for another character"
-        case genericError = "Sorry, an error occoured please try again"
-        case none = ""
-    }
-    
+class StatusTableCell: UITableViewCell {    
     @IBOutlet weak var label: UILabel!
     
     func setup(status: StatusMessages){

@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     //MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Personagens"
+        title = "Characters"
         navigationItem.largeTitleDisplayMode = .always
         registerCells()
         setupSerachBar()
@@ -52,18 +52,20 @@ class HomeViewController: UIViewController {
     }
     
     func registerCells() {
-        tableView.register(HomeHeaderCell.nib, forHeaderFooterViewReuseIdentifier: "HomeHeaderCell")
+        tableView.register(FilterHeader.nib, forHeaderFooterViewReuseIdentifier: "FilterHeader")
         tableView.register(StatusTableCell.self)
-        tableView.register(HomeItemTableCell.self)
+        tableView.register(CharacterTableCell.self)
     }
 
     func loadCharacters(animated: Bool = false, completion: (() -> Void)? = nil) {
         ProgressHUD.show(tableView)
-        viewModel.fetchBy(success: { [weak self] in
-            ProgressHUD.dismiss()
-            guard let self = self else { return }
-            animated ? self.reloadTableWithAnimation() : self.tableView.reloadData()
-            completion?()
+        viewModel.fetchBy(completion: {
+            DispatchQueue.main.async { [weak self] in
+                ProgressHUD.dismiss()
+                guard let self = self else { return }
+                animated ? self.reloadTableWithAnimation() : self.tableView.reloadData()
+                completion?()
+            }
         })
     }
     
@@ -91,22 +93,23 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard viewModel.foundAnyCharacter else {
-            return tableView.dequeueReusableCell(of: StatusTableCell.self, for: indexPath) { (cell) in
-                cell.setup(status: .none)
+            return tableView.dequeueReusableCell(of: StatusTableCell.self, for: indexPath) { [weak self] (cell) in
+                guard let self = self else { return }
+                cell.setup(status: self.viewModel.fetchState)
             }
         }
         
-        return tableView.dequeueReusableCell(of: HomeItemTableCell.self, for: indexPath) { (cell) in
+        return tableView.dequeueReusableCell(of: CharacterTableCell.self, for: indexPath) { (cell) in
             cell.setup(character: self.viewModel.characteres[indexPath.row])
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard viewModel.showHeader() == true else { return nil }
+        guard viewModel.shoudShowHeader() == true else { return nil }
         
         guard let headerCell = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: "HomeHeaderCell"
-        ) as? HomeHeaderCell else { return nil }
+            withIdentifier: "FilterHeader"
+        ) as? FilterHeader else { return nil }
         
         headerCell.delegate = self
         headerCell.initFilter(viewModel.searchText)
@@ -119,7 +122,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard viewModel.showHeader() == true else { return 0.0 }
+        guard viewModel.shoudShowHeader() == true else { return 0.0 }
         return 60
     }
 }
@@ -139,20 +142,22 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let name = searchBar.text, !name.isEmpty {
             ProgressHUD.show(tableView)
-            viewModel.fetchBy(name, success: { [weak self] in
-                ProgressHUD.dismiss()
-                self?.reloadTableWithAnimation()
-                guard let self = self, self.viewModel.foundAnyCharacter else { return }
-                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            viewModel.fetchBy(name, completion: {
+                DispatchQueue.main.async { [weak self] in
+                    ProgressHUD.dismiss()
+                    self?.reloadTableWithAnimation()
+                    guard let self = self, self.viewModel.foundAnyCharacter else { return }
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                }
             })
         }
         searchController?.isActive = false
     }
 }
 
-extension HomeViewController: HomeHeaderCellDelegate {
-    func disableFilter() {
-        viewModel.disableFilter()
+extension HomeViewController: FilterHeaderDelegate {
+    func clearFilter() {
+        viewModel.clearFilter()
         loadCharacters(animated: true) { [weak self] in
             self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }

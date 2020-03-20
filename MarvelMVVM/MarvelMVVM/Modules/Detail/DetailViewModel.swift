@@ -13,7 +13,6 @@ protocol DetailViewModelDelegate: AnyObject, ViewModelDelegate {}
 class DetailViewModel {
     
     //MARK: - Properties
-    weak var delegate: DetailViewModelDelegate?
     let character: Character
     private let service: CommicsApi
     private var offSet = 0
@@ -23,6 +22,8 @@ class DetailViewModel {
             self.offSet = self.commics.count
         }
     }
+    
+    weak var delegate: DetailViewModelDelegate?
     
     //MARK: - Initializers
     init(character: Character, service: CommicsApi) {

@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol HomeHeaderCellDelegate: AnyObject {
-    func disableFilter()
+protocol FilterHeaderDelegate: AnyObject {
+    func clearFilter()
 }
 
-class HomeHeaderCell: UITableViewHeaderFooterView {
+class FilterHeader: UITableViewHeaderFooterView {
     
     @IBOutlet weak var filterButton: UIPrimaryButton!
-    weak var delegate: HomeHeaderCellDelegate?
+    weak var delegate: FilterHeaderDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +30,6 @@ class HomeHeaderCell: UITableViewHeaderFooterView {
     }
     
     @IBAction func filterAction(_ sender: Any) {
-        delegate?.disableFilter()
+        delegate?.clearFilter()
     }
 }
