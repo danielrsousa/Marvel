@@ -27,7 +27,7 @@ class HomeViewModel {
     var foundAnyCharacter: Bool {
          return characteres.count > 0
     }
-    private(set)var fetchState: StatusMessages = .none
+    private(set) var fetchState: StatusMessages = .none
     
     //MARK: - Delegates
     weak var delegate: HomeViewModelDelegate?

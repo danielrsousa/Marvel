@@ -18,4 +18,5 @@ enum ApiError: Error {
     case serverError
     case timeout
     case unknown
+    case unitTest
 }
