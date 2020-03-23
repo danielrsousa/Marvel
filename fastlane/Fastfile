@@ -20,18 +20,17 @@ platform :ios do
 
   lane :tests do
   	  run_tests(
-  	  		workspace: "MarvelMVVM.xcworkspace",
+  	  	workspace: "MarvelMVVM.xcworkspace",
 	    	scheme: "MarvelMVVMTests",
-        	slack_url: "https://love-gpb1386.slack.com/archives/C010N2P832T",
-        	slack_channel: "#channel"
-        	    slack(
+        slack_url: "https://love-gpb1386.slack.com/archives/C010N2P832T",
+        slack_channel: "#channel",
+        slack(
 			      pretext: "*ANALYSIS SUCCESSFULLY*",
 			      message: "*Author:* #{ commit[:author] } \n*Author email:* #{ commit[:author_email] } \n*Version:* #{ app_version } \n*Branch coverage:* #{ branch_coverage } \n*Code smells:* #{ code_smells } \n*Total tests:* #{ number_of_tests.total } \n*Branch name:* #{ Actions.git_branch.to_s } \n*Commit message:* #{ Actions.last_git_commit_message.to_s }",
 			      success: true,
 			      slack_url: slack_url,
 			      default_payloads: [:test_result]
-			    )
-
-        )
+			   )
+      )
   end
 end
