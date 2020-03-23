@@ -22,7 +22,7 @@ platform :ios do
   	  run_tests(
 	    scheme: "MarvelMVVMTests",
         slack_url: "https://hooks.slack.com/services/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",
-        slack_channel: "#channel"
+        slack_channel: "#marvel-bitrise"
       )
   end
 end
