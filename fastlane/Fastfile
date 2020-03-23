@@ -20,8 +20,7 @@ platform :ios do
 
   lane :tests do
   	  run_tests(
-  	  	workspace: "MarvelMVVM.xcworkspace",
-	    	scheme: "MarvelMVVMTests",
+	    scheme: "MarvelMVVMTests",
         slack_url: "https://love-gpb1386.slack.com/archives/C010N2P832T",
         slack_channel: "#channel"
       )
