@@ -18,9 +18,15 @@ default_platform(:ios)
 platform :ios do
 desc "Description of what the lane does"
 
-before_all do
-	update_fastlane
+
+before_all do |lane|
+	sh("if $CI ;  then echo \"CI - ENABLED\" ; else echo \"CI - DISABLED\" ; fi")
+	ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
+	ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
+  sh("if [ -d ../reports ]; then rm -Rf ../reports; fi")
+  sh("if [ -f *.xml ]; then rm -f *.xml; fi")
 end
+
 
   lane :tests do
   	  run_tests(
