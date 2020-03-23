@@ -21,7 +21,7 @@ platform :ios do
   lane :tests do
   	  run_tests(
 	    scheme: "MarvelMVVMTests",
-        slack_url: "https://love-gpb1386.slack.com/archives/C010N2P832T",
+        slack_url: "https://hooks.slack.com/services/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",
         slack_channel: "#channel"
       )
   end
