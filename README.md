@@ -4,6 +4,7 @@
     <img src="https://img.shields.io/static/v1?label=Minimum%20iOS%20version&message=13.2&color=F76831&style=plastic&logo=appveyo">
     <img src="https://img.shields.io/static/v1?label=Architecture&message=MVVM-C&color=BAE9FF&style=plastic&logo=appveyo">
     <img src="https://img.shields.io/static/v1?label=Dark%20Mode&message=Enable&color=00FF00&style=plastic&logo=appveyo">
+    <img src="https://app.bitrise.io/app/36e35c5275d1d0f6/status.svg?token=TCPwOpPB2ov5rjQm9Xf3dw&branch=master">
 </p>
 
 This application is a example of my knowledge with Swift 5.0 using architecture MVVM-C
