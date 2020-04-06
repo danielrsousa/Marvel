@@ -7,12 +7,14 @@
     <img src="https://app.bitrise.io/app/36e35c5275d1d0f6/status.svg?token=TCPwOpPB2ov5rjQm9Xf3dw&branch=master">
 </p>
 
-This application is a example of my knowledge with Swift 5.0 using architecture MVVM-C
+This application is a example of my knowledge with Swift 5.0 using architecture MVVM-C and unit tests. 
+I used Fastlane and Bitrise as continuous integration tool and use library Kingfisher for cache and image download.
+
 
 ## ❗️Requirements
 
 - iOS 13.2+
-- Swift 5.0+
+- Swift 5.0
 - Carthage
 
 ## 📸 Screenshoots
