@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coordinator: HomeCoordinator?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        coordinator = HomeCoordinator()
-        window?.rootViewController = coordinator?.navigationController
+        let api = Api.shared
+        let service = CharactersApi(api: api)
+        let viewModel = HomeViewModel(service: service)
+        let vc = UIHostingController(rootView: HomeView(viewModel: viewModel))
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
 

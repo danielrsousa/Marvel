@@ -12,14 +12,15 @@ protocol HomeViewModelDelegate: AnyObject {
     func didOpenDetail(_ character: Character)
 }
 
-class HomeViewModel {
+class HomeViewModel: ObservableObject {
 
     //MARK: - Private Properties
     private let service: CharactersApi?
     private(set) var offSet = 0
     private(set) var fetchMore = true
     private(set) var searchText: String = ""
-    private(set) var characteres: [Character] {
+    
+    @Published private(set) var characteres: [Character] {
         didSet {
             self.offSet = self.characteres.count
         }
@@ -39,18 +40,18 @@ class HomeViewModel {
     }
     
     //MARK: - Internal Methods
-    func fetchBy(_ name: String = "", completion: @escaping () -> Void) {
+    func fetch(by name: String = "") {
         guard name.isEmpty && searchText.isEmpty  else {
             if !name.isEmpty {
                 searchText = name
                 self.characteres.removeAll()
             }
             
-            fetchCharactersBy(searchText, completion: completion)
+            fetchCharactersBy(searchText)
             return
         }
         
-        fetchCharacteres(completion: completion)
+        fetchCharacteres()
     }
     
     func clearFilter() {
@@ -68,23 +69,25 @@ class HomeViewModel {
     }
     
     //MARK: - Private Methods
-    private func fetchCharacteres(completion: @escaping () -> Void) {
+    private func fetchCharacteres() {
         guard fetchMore else { return }
         fetchMore = false
         service?.fetchCharacters(offSet: offSet) { [weak self] (result) in
-            self?.checkResult(result, completion: completion)
+            DispatchQueue.main.async {
+                self?.checkResult(result)
+            }
         }
     }
     
-    private func fetchCharactersBy(_ name: String, completion: @escaping () -> Void) {
+    private func fetchCharactersBy(_ name: String) {
         guard fetchMore else { return }
         fetchMore = false
         service?.fetchCharactersBy(name, offSet: offSet) { [weak self] (result) in
-            self?.checkResult(result, completion: completion)
+            self?.checkResult(result)
         }
     }
     
-    private func checkResult(_ result: Result<[Character], ApiError>, completion: @escaping () -> Void) {
+    private func checkResult(_ result: Result<[Character], ApiError>) {
         switch result {
         case .success(let characteres):
             self.characteres.append(contentsOf: characteres)
@@ -94,11 +97,18 @@ class HomeViewModel {
         case.failure(_):
             fetchState = .genericError
         }
-        completion()
         self.fetchMore = true
     }
     
     private func isEmptyState() -> Bool {
         return offSet == 0 && characteres.count == 0
+    }
+    
+    func isLastCharacter(_ character: Character) {
+        guard let last = self.characteres.last, last == character else {
+            return
+        }
+        
+        fetch()
     }
 }

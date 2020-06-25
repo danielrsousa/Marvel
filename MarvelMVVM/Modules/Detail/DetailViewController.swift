@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
     }
     
     required init?(coder: NSCoder) {

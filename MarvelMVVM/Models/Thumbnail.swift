@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Thumbnail: Decodable {
-    let path: String?
-    let extensionThumb: String?
+struct Thumbnail: Codable, Hashable {
+    var path: String?
+    var extensionThumb: String?
     
     func getUrl() -> URL? {
         let urlString = "\(path.unwrapped).\(extensionThumb.unwrapped)"
